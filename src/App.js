@@ -12,6 +12,19 @@ import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import ScrollUp from "./components/scrollup/ScrollUp";
 
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+// optional configuration
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_CENTER,
+  timeout: 5000,
+  offset: "30px",
+  // you can also just use 'scale'
+  transition: transitions.SCALE,
+};
+
 const App = () => {
   return (
     <>
@@ -25,7 +38,9 @@ const App = () => {
         <Qualification />
         <Work />
         {/* <Testimonials /> */}
-        <Contact />
+        <AlertProvider template={AlertTemplate} {...options}>
+          <Contact />
+        </AlertProvider>
       </main>
 
       <Footer />

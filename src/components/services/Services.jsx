@@ -16,7 +16,7 @@ const Services = () => {
       <div className="services__container container grid">
         <div className="services__content">
           <div>
-            <i class="fas fa-solid fa-pager services__icon"></i>
+            <i className="fas fa-solid fa-pager services__icon"></i>
             <h3 className="services__title">
               Frontend <br /> Developer
             </h3>
@@ -24,7 +24,7 @@ const Services = () => {
 
           <span className="services__button" onClick={() => toggleTab(1)}>
             View More
-            <i class="fas fa-solid fa-arrow-right"></i>
+            <i className="fas fa-solid fa-arrow-right"></i>
           </span>
 
           <div
@@ -39,7 +39,7 @@ const Services = () => {
                 onClick={() => toggleTab(0)}
                 className="uil uil-times services__modal-close"
               >
-                <i class="fas fa-times"></i>
+                <i className="fas fa-times"></i>
               </button>
 
               <h3 className="services__modal-title">Frontend Developer</h3>
@@ -50,24 +50,24 @@ const Services = () => {
 
               <ul className="services__modal-services grid">
                 <li className="services__modal-service">
-                  <i class="fas fa-check-circle services__modal-icon"></i>
+                  <i className="fas fa-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
                     User interface development.
                   </p>
                 </li>
 
                 <li className="services__modal-service">
-                  <i class="fas fa-check-circle services__modal-icon"></i>
+                  <i className="fas fa-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">Web page development.</p>
                 </li>
 
                 <li className="services__modal-service">
-                  <i class="fas fa-check-circle services__modal-icon"></i>
+                  <i className="fas fa-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">Web apps development.</p>
                 </li>
 
                 <li className="services__modal-service">
-                  <i class="fas fa-check-circle services__modal-icon"></i>
+                  <i className="fas fa-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
                     I create ux element interactions.
                   </p>
@@ -79,7 +79,7 @@ const Services = () => {
 
         <div className="services__content">
           <div>
-            <i class="fas fa-solid fa-server services__icon"></i>
+            <i className="fas fa-solid fa-server services__icon"></i>
             <h3 className="services__title">
               Backend <br /> Developer
             </h3>
@@ -87,7 +87,7 @@ const Services = () => {
 
           <span onClick={() => toggleTab(2)} className="services__button">
             View More
-            <i class="fas fa-solid fa-arrow-right"></i>
+            <i className="fas fa-solid fa-arrow-right"></i>
           </span>
 
           <div
@@ -102,7 +102,7 @@ const Services = () => {
                 onClick={() => toggleTab(0)}
                 className="uil uil-times services__modal-close"
               >
-                <i class="fas fa-times"></i>
+                <i className="fas fa-times"></i>
               </button>
 
               <h3 className="services__modal-title">Backend Developer</h3>
@@ -113,17 +113,17 @@ const Services = () => {
 
               <ul className="services__modal-services grid">
                 <li className="services__modal-service">
-                  <i class="fas fa-check-circle services__modal-icon"></i>
+                  <i className="fas fa-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">Develope Full Rest API</p>
                 </li>
 
                 <li className="services__modal-service">
-                  <i class="fas fa-check-circle services__modal-icon"></i>
+                  <i className="fas fa-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">Web page development.</p>
                 </li>
 
                 <li className="services__modal-service">
-                  <i class="fas fa-check-circle services__modal-icon"></i>
+                  <i className="fas fa-check-circle services__modal-icon"></i>
                   <p className="services__modal-info">
                     I create ux element interactions.
                   </p>

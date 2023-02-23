@@ -34,7 +34,7 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <i class="fab fa-github-alt"></i>
+            <i className="fab fa-github-alt"></i>
           </a>
 
           <a
@@ -43,7 +43,7 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <i class="fab fa-linkedin"></i>
+            <i className="fab fa-linkedin"></i>
           </a>
 
           <a
@@ -51,9 +51,8 @@ const Footer = () => {
             className="footer__social-link footer__social-link__gmail"
             target="_blank"
             rel="noreferrer"
-            solor
           >
-            <i class="fas fa-at"></i>
+            <i className="fas fa-at"></i>
           </a>
         </div>
 

@@ -1,21 +1,39 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { useAlert } from "react-alert";
+
 import "./contact.css";
 import { ContactCard } from "./components/ContactCard";
 
 const Contact = () => {
+  const alert = useAlert();
+
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+
+    if (
+      !(
+        formData.get("name") &&
+        formData.get("email") &&
+        formData.get("project")
+      )
+    ) {
+      alert.show("Complete all the fields in the form", { type: "error" });
+      return;
+    }
 
     emailjs.sendForm(
-      "service_enqstqe",
+      "service_ie7qk98",
       "template_nmbx5pj",
       form.current,
       "g1ENcarX89BZZQE-j"
     );
     e.target.reset();
+
+    alert.show("Message sent successfully", { type: "success" });
   };
 
   const contacts = [
@@ -46,8 +64,8 @@ const Contact = () => {
           <h3 className="contact__title">Talk to me</h3>
 
           <div className="contact__info">
-            {contacts.map((data) => (
-              <ContactCard {...data} />
+            {contacts.map((data, i) => (
+              <ContactCard key={i} {...data} />
             ))}
           </div>
         </div>
