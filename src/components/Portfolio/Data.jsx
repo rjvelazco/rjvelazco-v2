@@ -3,6 +3,7 @@ import Work2 from "../../assets/work2.png";
 import Work3 from "../../assets/work3.png";
 import Work4 from "../../assets/work4.png";
 import Work5 from "../../assets/work5.png";
+import Work6 from "../../assets/work6.png";
 
 export const projectsData = [
   {
@@ -45,6 +46,14 @@ export const projectsData = [
     private: true,
     label: "Private project, contact me for more info.",
   },
+  {
+    id: 6,
+    image: Work6,
+    title: "Landing Pages",
+    category: "web",
+    repo: "https://github.com/rjvelazco/landing-pages",
+    demo: "https://rjvelazco.github.io/landing-pages"
+  }
 ];
 
 // projects
