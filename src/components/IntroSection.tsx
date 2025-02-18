@@ -1,37 +1,45 @@
 import Link from "next/link";
 import React from "react";
+import { CallToActionButton } from "./CallToActionButton";
 
-export const Presentation = () => {
+export const IntroSection = () => {
   return (
-    <>
-      <h1 className="text-6xl mb-1">Rafael Velazco <span className="">👋🏻</span></h1>
-      <h3 className="text-xl mb-4 em-dash">Full Stack Developer</h3>
-      <p className="mb-12 text-slate-600">
-      I’m a computer engineer with over 3 years in frontend development, specializing in Angular, TypeScript, Next.js, and Node.js. I've resolved 300+ issues for dotCMS, continually honing my skills and driving impactful results. I’m all about creating innovative solutions and embracing complex challenges in web development.
-      </p>
-
-      <Link href="#contact">
-        <button
-          className="inline-flex items-center gap-2 bg-stone-800 rounded-xl text-white font-medium py-5 px-8"
-          aria-label="Contact Rafael Velazco"
-        >
-          Contact Me
-          <Icon />
-        </button>
-      </Link>
-    </>
+    <div className="flex items-center justify-between p-8 bg-gray-50">
+      <div>
+        <h1 className="text-5xl font-bold mb-2">
+          Rafael Velazco{" "}
+          <span role="img" aria-label="wave">
+            👋
+          </span>
+        </h1>
+        <h3 className="text-2xl font-medium mb-4 text-gray-700">
+          <span className="inline-block w-8 h-0.5 bg-gray-400 mr-2"></span>
+          Full Stack Developer
+        </h3>
+        <p className="mb-8 text-gray-600 max-w-md">
+          I am a computer engineer specialized in software development, and I'm
+          very passionate and dedicated to my work.
+        </p>
+        <CallToActionButton href="#contact" label="Say Hello" />
+      </div>
+      <div>
+        <img
+          src="https://placehold.co/150x150"
+          alt="Profile"
+          className="rounded-full"
+        />
+      </div>
+    </div>
   );
 };
 
 const Icon = () => {
   return (
     <svg
-      className="button__icon"
+      className="w-5 h-5"
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
       viewBox="0 0 24 24"
-      fill="white"
+      fill="currentColor"
       role="img"
       aria-label="Icon"
     >
