@@ -4,7 +4,7 @@ import { CallToActionButton } from "./CallToActionButton";
 
 export const IntroSection = () => {
   return (
-    <div className="p-8 bg-gray-50 ">
+    <div>
       <h1 className="text-5xl font-bold mb-2">Rafael Velazco </h1>
 
       <h3 className="text-2xl font-medium mb-4 text-gray-700">

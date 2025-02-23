@@ -6,9 +6,8 @@ import { ContactSection } from "@components/ContactSection";
 
 export default function Home() {
   return (
-    <div className="max-w-4xl bg-background min-h-screen mx-auto font-sans">
+    <div className="max-w-4xl bg-background mx-auto font-sans flex flex-col gap-12">
       <IntroSection />
-      {/* <AboutMe /> */}
       <SkillsSection />
       <ExperienceSection />
       <ContactSection />

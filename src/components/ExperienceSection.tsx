@@ -4,7 +4,7 @@ import { CallToActionButton } from "./CallToActionButton";
 
 export const ExperienceSection = () => {
   return (
-    <div className="p-8">
+    <div>
       <h2 className="text-3xl font-bold mb-2">Experience</h2>
       <ExperienceCard
         title="Senior Software Engineering"
