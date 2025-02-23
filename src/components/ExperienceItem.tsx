@@ -1,6 +1,6 @@
 import React from "react";
 
-interface ExperienceCardProps {
+interface ExperienceItemrops {
   title: string;
   company: string;
   duration: string;
@@ -8,7 +8,7 @@ interface ExperienceCardProps {
   tools: string;
 }
 
-export const ExperienceCard: React.FC<ExperienceCardProps> = ({
+export const ExperienceItem: React.FC<ExperienceItemrops> = ({
   title,
   company,
   duration,

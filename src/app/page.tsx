@@ -1,24 +1,8 @@
 import { MasonryGrid } from "@components/MasonryGrid";
-import { ExperienceSection } from "@components/ExperienceSection";
+import { ExperienceItem } from "@components/ExperienceItem";
+import { CallToActionButton } from "@components/CallToActionButton";
+import { experienceData, skills } from "../data";
 import { ContactSection } from "@components/ContactSection";
-
-const skills = [
-  "Angular",
-  "CSS",
-  "Docker",
-  "Express JS",
-  "Firebase",
-  "Git",
-  "GitHub",
-  "HTML",
-  "JavaScript",
-  "MySQL",
-  "NextJS",
-  "Node Js",
-  "React",
-  "SQL",
-  "TypeScript",
-];
 
 export default function Home() {
   return (
@@ -54,7 +38,21 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-8">Skills</h2>
         <MasonryGrid items={skills} />
       </section>
-      <ExperienceSection />
+      <section>
+        <h2 className="text-3xl font-bold mb-2">Experience</h2>
+        {experienceData.map((experience, index) => (
+          <ExperienceItem key={index} {...experience} />
+        ))}
+        <br />
+        <div className="flex justify-end items-center">
+          <CallToActionButton
+            href="/path/to/your/asset.pdf"
+            label="Download CV"
+            download
+          />
+        </div>
+      </section>
+
       <ContactSection />
     </div>
   );
