@@ -1,12 +1,12 @@
 import React from "react";
 
-interface CallToActionButtonProps {
+interface ButtonProps {
   href: string;
   label: string;
   download?: boolean;
 }
 
-export const CallToActionButton: React.FC<CallToActionButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   href,
   label,
   download = false,
@@ -30,4 +30,4 @@ export const CallToActionButton: React.FC<CallToActionButtonProps> = ({
       </svg>
     </a>
   );
-}; 
+};

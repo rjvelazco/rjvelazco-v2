@@ -1,4 +1,4 @@
-export const skills = [
+export const MY_SKILLS = [
   "Angular",
   "CSS",
   "Docker",
@@ -16,7 +16,7 @@ export const skills = [
   "TypeScript",
 ];
 
-export const experienceData = [
+export const MY_EXPERIENCE = [
   {
     title: "Senior Software Engineering",
     company: "dotCMS",

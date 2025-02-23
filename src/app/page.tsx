@@ -1,8 +1,9 @@
 import { MasonryGrid } from "@components/MasonryGrid";
 import { ExperienceItem } from "@components/ExperienceItem";
-import { CallToActionButton } from "@components/CallToActionButton";
-import { experienceData, skills } from "../data";
+import { Button } from "@components/Button";
 import { ContactSection } from "@components/ContactSection";
+
+import { MY_EXPERIENCE, MY_SKILLS } from "../data";
 
 export default function Home() {
   return (
@@ -36,24 +37,20 @@ export default function Home() {
       </section>
       <section>
         <h2 className="text-3xl font-bold mb-8">Skills</h2>
-        <MasonryGrid items={skills} />
+        <MasonryGrid items={MY_SKILLS} />
       </section>
       <section>
         <h2 className="text-3xl font-bold mb-2">Experience</h2>
-        {experienceData.map((experience, index) => (
+        {MY_EXPERIENCE.map((experience, index) => (
           <ExperienceItem key={index} {...experience} />
         ))}
         <br />
         <div className="flex justify-end items-center">
-          <CallToActionButton
-            href="/path/to/your/asset.pdf"
-            label="Download CV"
-            download
-          />
+          <Button href="/path/to/your/asset.pdf" label="Download CV" download />
         </div>
       </section>
 
-      <ContactSection />
+      {/* <ContactSection /> */}
     </div>
   );
 }

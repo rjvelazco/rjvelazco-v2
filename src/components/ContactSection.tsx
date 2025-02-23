@@ -1,5 +1,5 @@
 import React from "react";
-import { CallToActionButton } from "./CallToActionButton";
+import { Button } from "./Button";
 
 export const ContactSection = () => {
   return (
@@ -16,7 +16,7 @@ export const ContactSection = () => {
           <InputField label="Name" placeholder="Insert your name" />
           <InputField label="Mail" placeholder="Insert your email" />
           <TextAreaField label="Project" placeholder="Write your project" />
-          <CallToActionButton href="#" label="Send Message" />
+          <Button href="#" label="Send Message" />
         </form>
       </div>
     </div>
