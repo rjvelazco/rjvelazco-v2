@@ -24,8 +24,7 @@ const skills = {
 export const SkillsSection = () => {
   return (
     <div className="p-8">
-      <h2 className="text-3xl font-bold mb-2 text-center">Skills</h2>
-      <p className="text-gray-500 mb-8 text-center">My technical level</p>
+      <h2 className="text-3xl font-bold mb-2">Skills</h2>
       <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8">
         <SkillCard title="Frontend Developer" skills={skills.frontend} />
         <SkillCard title="Backend Developer" skills={skills.backend} />
@@ -42,7 +41,7 @@ interface SkillCardProps {
 const SkillCard: React.FC<SkillCardProps> = ({ title, skills }) => {
   return (
     <div className="p-6 bg-white border rounded-lg shadow-md">
-      <h3 className="font-semibold mb-4 text-center">{title}</h3>
+      <h3 className="font-semibold mb-4 text-">{title}</h3>
       <ul className="grid grid-cols-2 gap-4">
         {skills.map((skill) => (
           <li key={skill.name} className="flex flex-col items-start">
