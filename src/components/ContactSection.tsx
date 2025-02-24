@@ -12,11 +12,16 @@ export const ContactSection = () => {
           <ContactCard title="Whatsapp" detail="+58 424-6947763" />
           <ContactCard title="LinkedIn" detail="Rafael Velazco" />
         </div>
-        <form className="space-y-4 md:ml-8 flex-1">
+        <form className="space-y-4 md:ml-8 flex-1" aria-label="Contact Form">
           <InputField label="Name" placeholder="Insert your name" />
-          <InputField label="Mail" placeholder="Insert your email" />
+          <InputField label="Email" placeholder="Insert your email" />
           <TextAreaField label="Project" placeholder="Write your project" />
-          <Button href="#" label="Send Message" />
+          <button
+            type="submit"
+            className="bg-black text-white font-medium py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Send Message
+          </button>
         </form>
       </div>
     </div>
@@ -33,21 +38,25 @@ const ContactCard = ({ title, detail }: { title: string; detail: string }) => (
 
 const InputField = ({ label, placeholder }: { label: string; placeholder: string }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <label className="block text-sm font-medium text-gray-700" htmlFor={label.toLowerCase()}>{label}</label>
     <input
       type="text"
+      id={label.toLowerCase()}
       placeholder={placeholder}
-      className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+      className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      aria-required="true"
     />
   </div>
 );
 
 const TextAreaField = ({ label, placeholder }: { label: string; placeholder: string }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <label className="block text-sm font-medium text-gray-700" htmlFor={label.toLowerCase()}>{label}</label>
     <textarea
+      id={label.toLowerCase()}
       placeholder={placeholder}
-      className="mt-1 block w-full border border-gray-300 rounded-md p-2 h-32"
+      className="mt-1 block w-full border border-gray-300 rounded-md p-2 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      aria-required="true"
     />
   </div>
 ); 

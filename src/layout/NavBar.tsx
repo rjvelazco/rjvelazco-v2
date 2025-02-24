@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const NavBar = () => {
   return (
-    <nav className="p-4 justify-items-end">
+    <nav className="p-4 justify-items-end" aria-label="Main Navigation">
       <ul className="flex justify-center gap-4">
         <NavItem href="/" label="Home" />
         <NavItem href="/blog" label="Blog" />
@@ -17,7 +17,12 @@ export const NavBar = () => {
 const NavItem = ({ href, label }: { href: string; label: string }) => (
   <li>
     <Link href={href}>
-      <span>{label}</span>
+      <span
+        className="hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        aria-label={`Navigate to ${label}`}
+      >
+        {label}
+      </span>
     </Link>
   </li>
 ); 
