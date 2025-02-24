@@ -15,7 +15,6 @@ export const ExperienceItem: React.FC<ExperienceItemrops> = ({
   responsibilities,
   tools,
 }) => {
-  // Color: rgb(51, 51, 51)
   return (
     <div className="border-t border-gray-300 mt-4 pt-4">
       <div className="flex justify-between items-center mb-2">

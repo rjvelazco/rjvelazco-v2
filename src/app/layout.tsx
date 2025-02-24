@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+
 import localFont from "next/font/local";
+import { NavBar } from "../layout/NavBar";
+
 import "./globals.css";
 
 const geistSans = localFont({
@@ -26,9 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background container mx-auto`}
       >
-        {children}
+        <header className="py-6">
+          <NavBar />
+        </header>
+        <main>{children}</main>
       </body>
     </html>
   );
