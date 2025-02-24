@@ -9,11 +9,7 @@ export default function Home() {
   return (
       <div className="max-w-4xl bg-background mx-auto font-sans flex flex-col gap-12">
         <section>
-          <h1 className="text-5xl font-bold mb-2">Rafael Velazco </h1>
-
-          <h3 className="text-2xl font-medium mb-4 text-gray-700">
-            Senior Software Engineering
-          </h3>
+          <h1 className="text-5xl font-bold mb-2">About me</h1>
 
           <blockquote className="text-lg">
             The value of a developer is measured based on their understanding of

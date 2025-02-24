@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 
 import localFont from "next/font/local";
+import Image from "next/image";
+
 import { NavBar } from "../layout/NavBar";
 
+import photo from "../../public/me.jpg";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -29,12 +32,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background container mx-auto`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background container mx-auto max-w-[64rem]`}
       >
-        <header className="py-6">
+        <header className="py-6 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Image
+              src={photo}
+              alt="Rafael Velazco"
+              width={60}
+              height={60}
+              className="rounded-full"
+            />
+            <div>
+              <h2 className="text-3xl font-bold">Rafael Velazco</h2>
+              <p className="text-lg text-gray-500">Senior Software Engineer</p>
+            </div>
+          </div>
           <NavBar />
         </header>
-        <main>{children}</main>
+        <main className="mt-12">{children}</main>
       </body>
     </html>
   );
