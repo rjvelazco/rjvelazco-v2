@@ -18,7 +18,7 @@ const NavItem = ({ href, label }: { href: string; label: string }) => (
   <li>
     <Link href={href}>
       <span
-        className="text-base hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 px-2 py-1 rounded transition-colors duration-200"
+        className="text-lg font-medium hover:text-petrol-dark focus:outline-none focus:ring-2 focus:ring-petrol px-2 py-1 rounded transition-colors duration-200"
         aria-label={`Navigate to ${label}`}
       >
         {label}

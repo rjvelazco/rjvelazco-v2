@@ -7,14 +7,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./styles/globals.css",
   ],
-  theme: {
-    extend: {
-      colors: {
-        background: "rgb(250, 250, 250)",
-        foreground: "var(--foreground)",
-      },
-    },
-  },
-  plugins: [],
+  plugins: []
 };
+
 export default config;

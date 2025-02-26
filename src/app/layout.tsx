@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background container mx-auto max-w-[64rem]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-paperWhite container mx-auto max-w-[64rem]`}
       >
         <header className="py-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
