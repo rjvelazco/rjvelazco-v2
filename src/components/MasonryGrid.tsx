@@ -2,9 +2,9 @@ import React from "react";
 
 export const MasonryGrid = ({ items }: { items: string[] }) => {
   return (
-    <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 gap-y-8 px-8">
+    <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 gap-y-8 px-4 sm:px-6">
       {items.map((item, index) => (
-        <li key={index} className="list-disc">
+        <li key={index} className="list-disc ml-5 leading-relaxed">
           {item}
         </li>
       ))}

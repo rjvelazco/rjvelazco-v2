@@ -50,7 +50,7 @@ export default function RootLayout({
           </div>
           <NavBar />
         </header>
-        <main className="mt-12">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

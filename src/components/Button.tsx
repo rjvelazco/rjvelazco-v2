@@ -15,7 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
     <a
       href={href}
       download={download}
-      className="inline-flex items-center gap-2 bg-black text-white font-medium py-3 px-6 rounded-lg"
+      className="inline-flex items-center gap-3 bg-black text-white font-medium py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors duration-200"
     >
       {label}
       <svg
