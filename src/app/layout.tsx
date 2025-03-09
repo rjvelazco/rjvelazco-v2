@@ -32,11 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-paperWhite container mx-auto max-w-[64rem]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-paperWhite`}
       >
-        <header className="py-6 flex items-center justify-between">
+        <header className="py-6 flex items-center justify-between max-w-[64rem] mx-auto">
           <div className="flex items-center gap-4">
-
             <div>
               <h2 className="text-3xl font-bold">Rafael Velazco</h2>
               <p className="text-lg text-gray-500">Senior Software Engineer</p>
@@ -44,7 +43,12 @@ export default function RootLayout({
           </div>
           <NavBar />
         </header>
-        <main>{children}</main>
+        <main className="container mx-auto max-w-[64rem]">{children}</main>
+        <footer className="py-6 flex items-center justify-center bg-gray-100">
+          <p className="text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} Rafael Velazco. All rights reserved.
+          </p>
+        </footer>
       </body>
     </html>
   );

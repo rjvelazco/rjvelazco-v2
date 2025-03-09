@@ -1,5 +1,8 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+
+import { usePathname } from "next/navigation";
 
 export const NavBar = () => {
   return (
@@ -15,15 +18,22 @@ export const NavBar = () => {
   );
 };
 
-const NavItem = ({ href, label }: { href: string; label: string }) => (
-  <li>
-    <Link href={href}>
-      <span
-        className="text-lg font-medium hover:text-petrol-dark focus:outline-none focus:ring-2 focus:ring-petrol px-2 py-1 rounded transition-colors duration-200"
-        aria-label={`Navigate to ${label}`}
-      >
-        {label}
-      </span>
-    </Link>
-  </li>
-); 
+const NavItem = ({ href, label }: { href: string; label: string }) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  return (
+    <li>
+      <Link href={href}>
+        <span
+          className={`text-lg font-medium px-2 py-1 rounded transition-colors duration-200 focus:ring-2 focus:ring-petrol hover:text-petrol-light hover:underline focus:outline-none ${
+            isActive ? "text-petrol-light underline" : "text-slate-900"
+          }`}
+          aria-label={`Navigate to ${label}`}
+        >
+          {label}
+        </span>
+      </Link>
+    </li>
+  );
+};
