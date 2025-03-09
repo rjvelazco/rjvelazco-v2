@@ -1,7 +1,4 @@
 // https://porfolio.dev/
-
-import { Social } from "@components/Social";
-
 // Onest Variable
 export default function Home() {
   return (
