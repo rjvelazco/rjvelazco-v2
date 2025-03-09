@@ -1,50 +1,108 @@
-import { MasonryGrid } from "@components/MasonryGrid";
-import { ExperienceItem } from "@components/ExperienceItem";
-import { Button } from "@components/Button";
-import { ContactSection } from "@components/ContactSection";
+// https://porfolio.dev/
 
-import { MY_EXPERIENCE, MY_SKILLS } from "../data";
+import { Social } from "@components/Social";
 
+// Onest Variable
 export default function Home() {
   return (
-    <div className="max-w-4xl bg-background mx-auto font-sans flex flex-col gap-12 px-4 sm:px-6 py-8 md:py-12">
+    <div className="bg-background mx-auto font-sans flex flex-col gap-12 px-4 py-8 md:py-12">
       <section className="space-y-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12">About me</h1>
-        <blockquote className="text-lg md:text-xl pl-4 border-l-4 border-gray-300 italic">
-          The value of a developer is measured based on their understanding of
-          the product and the impact they can have on the business.
-        </blockquote>
-        <p className="text-lg leading-relaxed mt-6">
-          Software Engineer with a passion for building scalable and efficient
-          web applications. More than 5 years of experience in the industry. I'm
-          working full time with Angular, TypeScript, CSS, Docker, Git, and
-          GitHub.
-        </p>
-        <p className="text-lg leading-relaxed mt-4">
-          I am passionate about the entire development process, from ideation,
-          planning, design and implementation, and I love actively participating
-          in the product.
-        </p>
-      </section>
-
-      <section aria-labelledby="skills-heading">
-        <h2 id="skills-heading" className="text-3xl font-bold mb-8">Skills</h2>
-        <MasonryGrid items={MY_SKILLS} />
-      </section>
-
-      <section aria-labelledby="experience-heading">
-        <h2 id="experience-heading" className="text-3xl font-bold mb-8">Experience</h2>
-        <div className="flex flex-col gap-8">
-          {MY_EXPERIENCE.map((experience, index) => (
-            <ExperienceItem key={index} {...experience} />
-          ))}
+        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-slate-900">
+          Latest Blog Posts
+        </h1>
+        <div className="featured_cards">
+          <div className="featured_cards_item_large">
+            <a className="bg-petrol-lighter rounded-3xl relative flex clamp-item-large px-[20px] py-[16px] cursor-pointer">
+              <img
+                src="/assets/align-bottom.svg"
+                alt="placeholder"
+                className="absolute center-absolute-x w-[180px]"
+              />
+              <div className="self-end">
+                <span className="text-slate-900">Next.js</span>
+                <h4 className="text-2xl font-bold text-slate-900 mt-1">
+                  How I built my own website
+                </h4>
+              </div>
+            </a>
+          </div>
+          {/* <div className="featured_cards_item_small">2</div> */}
         </div>
-        <div className="flex justify-end items-center mt-4">
-          <Button href="/path/to/your/asset.pdf" label="Download CV" download />
+        <div className="featured_cards">
+          <div className="featured_cards_item">
+            <a className="bg-amber-lighter rounded-3xl relative flex clamp-item-large px-[20px] py-[16px] cursor-pointer">
+              <img
+                src="/assets/align-bottom.svg"
+                alt="placeholder"
+                className="absolute center-absolute-x w-[180px]"
+              />
+              <div className="self-end">
+                <span className="text-slate-900">Next.js</span>
+                <h4 className="text-2xl font-bold text-slate-900 mt-1">
+                  How I built my own website
+                </h4>
+              </div>
+            </a>
+          </div>
+          <div className="featured_cards_item">
+            <a className="bg-petrol-lighter rounded-3xl relative flex clamp-item-large px-[20px] py-[16px] cursor-pointer">
+              <img
+                src="/assets/align-bottom.svg"
+                alt="placeholder"
+                className="absolute center-absolute-x w-[180px]"
+              />
+              <div className="self-end">
+                <span className="text-slate-900">Next.js</span>
+                <h4 className="text-2xl font-bold text-slate-900 mt-1">
+                  How I built my own website
+                </h4>
+              </div>
+            </a>
+          </div>
+          {/* <div className="featured_cards_item_small">2</div> */}
         </div>
       </section>
-
-      <ContactSection />
+      <section className="flex justify-between items-start space-y-4">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-900 mb-8">
+            Topics I've written about
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="/topics/nextjs"
+              className="border border-amber-light rounded-3xl p-2 px-8 shadow-sm"
+            >
+              JavaScript
+            </a>
+            <a
+              href="/topics/nextjs"
+              className="border border-petrol-dark rounded-3xl p-2 px-8 shadow-sm"
+            >
+              Angular
+            </a>
+          </div>
+        </div>
+        <div className="rounded-3xl border border-amber-light shadow-lg p-8 w-[400px]">
+          <h2 className="text-xl font-bold mb-4">Get in touch</h2>
+          <div>
+            <a
+              href="mailto:rjvelazco21@gmail.com"
+              className="text-gray-700 cursor-pointer"
+            >
+              E-mail: rjvelazco21@gmail.com
+            </a>
+          </div>
+          <br />
+          <div className="flex space-x-4">
+            <a href="https://www.linkedin.com/in/rjvelazco21/">
+              <img src="/assets/linkedin.svg" alt="LinkedIn" className="w-8 h-8" />
+            </a>
+            <a href="https://www.linkedin.com/in/rjvelazco21/">
+              <img src="/assets/github.svg" alt="LinkedIn" className="w-8 h-8" />
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

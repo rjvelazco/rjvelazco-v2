@@ -18,5 +18,49 @@
     --color-amber-dark-light: rgba(210, 150, 10, 0.8);
     --color-amber-dark-lighter: rgba(210, 150, 10, 0.5);
     --color-amber-dark-lightest: rgba(210, 150, 10, 0.1);
-    --color-brown-dark: rgb(100, 60, 0);
+    --color-brown-dark: rgb(100, 60, 0); /* for nav items? */
+}
+
+.featured_cards {
+    display: flex;
+    column-gap: 32px;
+    margin-bottom: 32px;
+}
+
+.featured_cards .featured_cards_item {
+    flex: 2 1;
+}
+
+.featured_cards .featured_cards_item_large {
+    flex: 3 1;
+}
+
+.featured_cards .featured_cards_item_small {
+    flex: 1.5 1;
+}
+
+.element  {
+    border-radius: 24px;
+    display: block;
+    height: clamp(18rem, 25vw, 64rem);
+    padding: calc(var(--spacer-small) / 1.2) var(--spacer-small);
+    position: relative;
+    transition: border-radius .3scubic-bezier(.165,.84,.44,1);
+}
+
+.center-absolute-xy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.center-absolute-x {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.clamp-item-large {
+    height: clamp(14rem,25vw,18rem);
 }
