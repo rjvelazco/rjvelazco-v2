@@ -4,11 +4,12 @@ import Link from "next/link";
 export const NavBar = () => {
   return (
     <nav className="px-6 py-4" aria-label="Main Navigation">
-      <ul className="flex justify-center gap-6 md:gap-8">
+      <ul className="flex justify-center gap-6">
         <NavItem href="/" label="Home" />
         <NavItem href="/blog" label="Blog" />
         <NavItem href="/logs" label="Logs" />
-        <NavItem href="/contact" label="Contact" />
+        <NavItem href="/about" label="About" />
+        <NavItem href="mailto:rjvelazco21@gmail.com" label="Contact" />
       </ul>
     </nav>
   );
