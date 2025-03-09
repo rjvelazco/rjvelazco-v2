@@ -79,7 +79,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="rounded-3xl border border-amber-light shadow-lg p-8 w-[400px]">
+        <div className="rounded-3xl border border-amber-light shadow-sm p-8 w-[400px]">
           <h2 className="text-xl font-bold mb-4">Get in touch</h2>
           <div>
             <a
