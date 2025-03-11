@@ -91,11 +91,11 @@ export default function Home() {
           </div>
           <br />
           <div className="flex space-x-4">
-            <a href="https://www.linkedin.com/in/rjvelazco21/">
+            <a href="https://www.linkedin.com/in/rafael-velazco/">
               <img src="/assets/linkedin.svg" alt="LinkedIn" className="w-8 h-8" />
             </a>
-            <a href="https://www.linkedin.com/in/rjvelazco21/">
-              <img src="/assets/github.svg" alt="LinkedIn" className="w-8 h-8" />
+            <a href="https://github.com/rjvelazco">
+              <img src="/assets/github.svg" alt="GitHub" className="w-8 h-8" />
             </a>
           </div>
         </div>
