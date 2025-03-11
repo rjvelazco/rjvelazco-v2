@@ -11,7 +11,7 @@ export const NavBar = () => {
         <NavItem href="/" label="Home" />
         <NavItem href="/blog" label="Blog" />
         <NavItem href="/logs" label="Logs" />
-        <NavItem href="/about" label="About" />
+        <NavItem href="/portfolio" label="Portfolio" />
         <NavItem href="mailto:rjvelazco21@gmail.com" label="Contact" />
       </ul>
     </nav>

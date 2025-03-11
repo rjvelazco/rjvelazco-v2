@@ -4,7 +4,7 @@ import { Button } from "@components/Button";
 
 import { MY_EXPERIENCE, MY_SKILLS } from "../../data";
 
-export default function About() {
+export default function Portfolio() {
   return (
     <div className="max-w-4xl bg-background mx-auto font-sans flex flex-col gap-12 px-4 sm:px-6 py-8 md:py-12">
       <section className="space-y-6">
