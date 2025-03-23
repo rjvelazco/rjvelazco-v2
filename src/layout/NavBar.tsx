@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 export const NavBar = () => {
   return (
-    <nav className="px-6 py-4 pr-0" aria-label="Main Navigation">
+    <nav className="px-6 py-4 pr-0 md:block hidden" aria-label="Main Navigation">
       <ul className="flex justify-center gap-6">
         <NavItem href="/" label="Home" />
         <NavItem href="/blog" label="Blog" />

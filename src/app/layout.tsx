@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} layout_container`}
       >
         {/* This should be a component */}
-        <header className="flex items-center justify-between py-6 w-full mx-auto max-w-[64rem]">
+        <header className="flex items-center justify-between py-6 w-full mx-auto max-w-[64rem] px-4">
           <div className="flex items-center gap-4">
             <div>
               <h2 className="text-3xl font-bold">Rafael Velazco</h2>

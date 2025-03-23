@@ -1,51 +1,101 @@
-import { MasonryGrid } from "@components/MasonryGrid";
-import { ExperienceItem } from "@components/ExperienceItem";
-import { Button } from "@components/Button";
-
-import { MY_EXPERIENCE, MY_SKILLS } from "../../data";
+import { Badge } from "./components/Badge";
+import { SocialPill } from "./components/SocialPill";
+import { SectionContainer } from "./components/SectionContainer";
+import { TitleSection } from "./components/TitleSection";
+import { Experience } from "./components/Experience";
 
 export default function Portfolio() {
   return (
-    <div className="max-w-4xl bg-background mx-auto font-sans flex flex-col gap-12 px-4 sm:px-6 py-8 md:py-12">
-      <section className="space-y-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12">About me</h1>
-        <blockquote className="text-lg md:text-xl pl-4 border-l-4 border-gray-300 italic">
-          The value of a developer is measured based on their understanding of
-          the product and the impact they can have on the business.
-        </blockquote>
-        <p className="text-lg leading-relaxed mt-6">
-          Software Engineer with a passion for building scalable and efficient
-          web applications. More than 5 years of experience in the industry. I'm
-          working full time with Angular, TypeScript, CSS, Docker, Git, and
-          GitHub.
-        </p>
-        <p className="text-lg leading-relaxed mt-4">
-          I am passionate about the entire development process, from ideation,
-          planning, design and implementation, and I love actively participating
-          in the product.
-        </p>
-      </section>
-
-      <section aria-labelledby="skills-heading">
-        <h2 id="skills-heading" className="text-3xl font-bold mb-8">
-          Skills
-        </h2>
-        <MasonryGrid items={MY_SKILLS} />
-      </section>
-
-      <section aria-labelledby="experience-heading">
-        <h2 id="experience-heading" className="text-3xl font-bold mb-8">
-          Experience
-        </h2>
-        <div className="flex flex-col gap-8">
-          {MY_EXPERIENCE.map((experience, index) => (
-            <ExperienceItem key={index} {...experience} />
-          ))}
+    <div className="px-4">
+      <SectionContainer className="py-12 md:py-16">
+        <div className="max-w-xl">
+          <div className="flex gap-4 mb-4">
+            <img
+              className="rounded-full shadow-lg size-16"
+              src="/me.jpg"
+              alt="Rafael Velazco"
+            />
+            <a
+              href="https://linkedin.com/in/midudev"
+              target="_blank"
+              rel="noopener"
+              className="flex items-center transition md:justify-center md:hover:scale-105"
+            >
+              <Badge>Available for work</Badge>
+            </a>
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl">
+            Hello, I'm Rafael Velazco
+          </h1>
+          <p className="mt-6 text-xl text-gray-800">
+            +5 years of experience.{" "}
+            <strong className="text-petrol-light font-semibold">
+              Software Engineer with a passion for building scalable and
+              efficient web applications.
+            </strong>{" "}
+            working full time with Angular, TypeScript, CSS, Docker, Git, and
+            GitHub.{" "}
+          </p>
+          <nav className="flex flex-wrap gap-4 mt-8">
+            <SocialPill href="mailto:rjvelazco21@gmail.com">
+              {/* <MailIcon className="size-4" /> */}
+              Contáctame
+            </SocialPill>
+            <SocialPill href="https://linkedin.com/in/rafael-velazco">
+              {/* <LinkedInIcon className="size-4" /> */}
+              LinkedIn
+            </SocialPill>
+          </nav>
         </div>
-        <div className="flex justify-end items-center mt-4">
-          <Button href="/path/to/your/asset.pdf" label="Download CV" download />
-        </div>
-      </section>
+      </SectionContainer>
+      <div className="space-y-24">
+        <SectionContainer id="experience">
+          <TitleSection>Work Experience</TitleSection>
+          <Experience />
+        </SectionContainer>
+
+        <SectionContainer id="about-me">
+          <TitleSection>About Me</TitleSection>
+          <article className="flex flex-col items-center justify-center gap-8 text-gray-700  md:flex-row">
+            <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1">
+              <p>
+                I&apos;m <strong>Rafael Velazco</strong>, a software engineer
+                passionate about programming and always eager to learn. I
+                consider myself a <strong> sociable, adaptable person </strong>,
+                constantly looking for new challenges.
+              </p>
+
+              <p>
+                Currently, I work at <strong><a className="underline" href="https://dotcms.com" target="_blank" rel="noopener">dotCMS</a></strong> as one of the{" "}
+                <strong>lead software developers</strong>. One of our recent
+                achievements has been the development of the <strong><a className="underline" href="https://dev.dotcms.com/docs/universal-visual-editor" target="_blank" rel="noopener">Universal Visual
+                Editor</a></strong> and the transition of our product from a{" "}
+                <strong>Hybrid CMS</strong> to a <strong>Universal CMS</strong>.
+              </p>
+
+              <p className="mb-0">
+                In recent months, I&apos;ve been focusing on developing my
+                skills in{" "}
+                <strong>
+                  team management, leadership, and product understanding
+                </strong>
+                . I&apos;ve realized that beyond writing code, a developer must{" "}
+                <strong>deliver strategic value</strong> and deeply understand
+                the <strong>business impact of their work</strong>.
+              </p>
+            </div>
+
+            <img
+              width="200"
+              height="200"
+              src="/me.jpg"
+              alt={"Rafael Velazco"}
+              className="order-1 object-cover w-64 h-full md:order-2 lg:w-64 aspect-square rounded-2xl"
+              style={{ objectPosition: "50% 50%" }}
+            />
+          </article>
+        </SectionContainer>
+      </div>
     </div>
   );
 }
