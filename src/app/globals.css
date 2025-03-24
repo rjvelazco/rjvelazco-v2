@@ -28,6 +28,10 @@ body {
     /* background: linear-gradient(0deg,  rgba(255,255,255,1) 0%, rgba(255,241,235,1) 100%); */
 }
 
+.portfolio_gradient {
+    background: linear-gradient(352deg, rgba(202, 237, 254, 0.05) 0%, rgba(255, 247, 243, 0.05) 36%);
+}
+
 .body {
     /* grid antialiased  */
     @apply bg-paperWhite min-h-screen grid-rows-[auto_1fr_auto]

@@ -19,9 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`layout_container relative font-onest`}
-      >
+      <body className="relative font-onest portfolio_gradient">
         <Header />
         <main className="w-full mx-auto max-w-[64rem]">{children}</main>
         <Footer />
