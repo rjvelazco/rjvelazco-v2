@@ -19,8 +19,8 @@ const EXPERIENCE = [
 export const Experience = () => {
   return (
     <ol className="relative mt-16">
-      {EXPERIENCE.map((experience) => (
-        <li><ExperienceItem {...experience} /></li>
+      {EXPERIENCE.map((experience, index) => (
+        <li key={index}><ExperienceItem {...experience} /></li>
       ))}
     </ol>
   );

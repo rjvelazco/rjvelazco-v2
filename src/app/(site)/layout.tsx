@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 
 import localFont from "next/font/local";
 
-import { NavBar } from "../layout/NavBar";
+import { NavBar } from "../../layout/NavBar";
 
-import "./globals.css";
+import "../globals.css";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} layout_container`}
+        className={`${geistSans.variable} ${geistMono.variable} layout_container relative`}
       >
         {/* This should be a component */}
         <header className="flex items-center justify-between py-6 w-full mx-auto max-w-[64rem] px-4">

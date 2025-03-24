@@ -1,10 +1,11 @@
 import { Badge } from "./components/Badge";
-import { SocialPill } from "./components/SocialPill";
-import { SectionContainer } from "./components/SectionContainer";
-import { TitleSection } from "./components/TitleSection";
 import { Experience } from "./components/Experience";
+import { SectionContainer } from "./components/SectionContainer";
+import { SocialPill } from "./components/SocialPill";
+import { TitleSection } from "./components/TitleSection";
 
 export default function Portfolio() {
+
   return (
     <div className="px-4">
       <SectionContainer className="py-12 md:py-16">
@@ -27,14 +28,14 @@ export default function Portfolio() {
           <h1 className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl">
             Hello, I'm Rafael Velazco
           </h1>
-          <p className="mt-6 text-xl text-gray-800">
+          <p className="mt-6 text-lg text-gray-800">
             +5 years of experience.{" "}
             <strong className="text-petrol-light font-semibold">
               Software Engineer with a passion for building scalable and
-              efficient web applications.
-            </strong>{" "}
-            working full time with Angular, TypeScript, CSS, Docker, Git, and
-            GitHub.{" "}
+              efficient web applications
+            </strong>
+            . Working full time with Angular, TypeScript, CSS, Docker, Git,
+            and GitHub.{" "}
           </p>
           <nav className="flex flex-wrap gap-4 mt-8">
             <SocialPill href="mailto:rjvelazco21@gmail.com">
@@ -61,16 +62,38 @@ export default function Portfolio() {
               <p>
                 I&apos;m <strong>Rafael Velazco</strong>, a software engineer
                 passionate about programming and always eager to learn. I
-                consider myself a <strong> sociable, adaptable person </strong>,
-                constantly looking for new challenges.
+                consider myself a{" "}
+                <strong> sociable, adaptable person </strong>, constantly
+                looking for new challenges.
               </p>
 
               <p>
-                Currently, I work at <strong><a className="underline" href="https://dotcms.com" target="_blank" rel="noopener">dotCMS</a></strong> as one of the{" "}
-                <strong>lead software developers</strong>. One of our recent
-                achievements has been the development of the <strong><a className="underline" href="https://dev.dotcms.com/docs/universal-visual-editor" target="_blank" rel="noopener">Universal Visual
-                Editor</a></strong> and the transition of our product from a{" "}
-                <strong>Hybrid CMS</strong> to a <strong>Universal CMS</strong>.
+                Currently, I work at{" "}
+                <strong>
+                  <a
+                    className="underline"
+                    href="https://dotcms.com"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    dotCMS
+                  </a>
+                </strong>{" "}
+                as one of the <strong>lead software developers</strong>. One
+                of our recent achievements has been the development of the{" "}
+                <strong>
+                  <a
+                    className="underline"
+                    href="https://dev.dotcms.com/docs/universal-visual-editor"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Universal Visual Editor
+                  </a>
+                </strong>{" "}
+                and the transition of our product from a{" "}
+                <strong>Hybrid CMS</strong> to a{" "}
+                <strong>Universal CMS</strong>.
               </p>
 
               <p className="mb-0">
@@ -79,9 +102,9 @@ export default function Portfolio() {
                 <strong>
                   team management, leadership, and product understanding
                 </strong>
-                . I&apos;ve realized that beyond writing code, a developer must{" "}
-                <strong>deliver strategic value</strong> and deeply understand
-                the <strong>business impact of their work</strong>.
+                . I&apos;ve realized that beyond writing code, a developer
+                must <strong>deliver strategic value</strong> and deeply
+                understand the <strong>business impact of their work</strong>.
               </p>
             </div>
 
