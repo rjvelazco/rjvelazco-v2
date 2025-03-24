@@ -8,7 +8,7 @@ export default function Portfolio() {
 
   return (
     <div className="px-4">
-      <SectionContainer className="py-12 md:py-16">
+      <SectionContainer className="py-16 md:py-36">
         <div className="max-w-xl">
           <div className="flex gap-4 mb-4">
             <img
