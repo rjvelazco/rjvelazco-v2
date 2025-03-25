@@ -1,5 +1,6 @@
 import { Badge } from "./components/Badge";
 import { Experience } from "./components/Experience";
+import { Projects } from "./components/Projects";
 import { SectionContainer } from "./components/SectionContainer";
 import { SocialPill } from "./components/SocialPill";
 import { TitleSection } from "./components/TitleSection";
@@ -53,6 +54,11 @@ export default function Portfolio() {
         <SectionContainer id="experience">
           <TitleSection>Work Experience</TitleSection>
           <Experience />
+        </SectionContainer>
+
+        <SectionContainer id="projects">
+          <TitleSection>Projects</TitleSection>
+          <Projects />
         </SectionContainer>
 
         <SectionContainer id="about-me">
