@@ -8,7 +8,7 @@ export default function Portfolio() {
 
   return (
     <div className="px-4">
-      <SectionContainer className="py-16 md:py-36">
+      <SectionContainer className="py-16 md:py-36" id="home">
         <div className="max-w-xl">
           <div className="flex gap-4 mb-4">
             <img
@@ -63,7 +63,7 @@ export default function Portfolio() {
                 I&apos;m <strong>Rafael Velazco</strong>, a software engineer
                 passionate about programming and always eager to learn. I
                 consider myself a{" "}
-                <strong> sociable, adaptable person </strong>, constantly
+                <strong> sociable, adaptable person</strong>, constantly
                 looking for new challenges.
               </p>
 
