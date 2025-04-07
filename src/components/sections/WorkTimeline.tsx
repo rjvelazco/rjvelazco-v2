@@ -1,6 +1,6 @@
-import { LinkInline } from "./LinkInline";
+import { LinkInline } from "@components/ui/LinkInline";
 
-const EXPERIENCE = [
+const WORK_TIMELINE = [
   {
     date: "Currently...",
     title: "Senior Software Engineer",
@@ -16,17 +16,17 @@ const EXPERIENCE = [
   },
 ];
 
-export const Experience = () => {
+export const WorkTimeline = () => {
   return (
     <ol className="relative mt-16">
-      {EXPERIENCE.map((experience, index) => (
-        <li key={index}><ExperienceItem {...experience} /></li>
+      {WORK_TIMELINE.map((workTimeline, index) => (
+        <li key={index}><WorkTimelineItem {...workTimeline} /></li>
       ))}
     </ol>
   );
 };
 
-const ExperienceItem = ({ title, company, date, description, link }: any) => {
+const WorkTimelineItem = ({ title, company, date, description, link }: any) => {
     return (
         <div
         className="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]"

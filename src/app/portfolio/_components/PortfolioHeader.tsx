@@ -14,11 +14,11 @@ const navItems = [
     label: "experience",
     url: "/portfolio#experience",
   },
-  // {
-  //   title: "Projects",
-  //   label: "projects",
-  //   url: "/portfolio#projects",
-  // },
+  {
+    title: "Projects",
+    label: "projects",
+    url: "/portfolio#projects",
+  },
   {
     title: "About Me",
     label: "about-me",
@@ -31,7 +31,7 @@ const navItems = [
   },
 ];
 
-export const Header = () => {
+export const PortfolioHeader = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [navActive, setNavActive] = useState<boolean>(false);
 

@@ -1,15 +1,16 @@
-import { Badge } from "./components/Badge";
-import { Experience } from "./components/Experience";
-import { Projects } from "./components/Projects";
-import { SectionContainer } from "./components/SectionContainer";
-import { SocialPill } from "./components/SocialPill";
-import { TitleSection } from "./components/TitleSection";
+import { PageSection } from "@components/PageSection";
+
+import { WorkTimeline } from "@components/sections/WorkTimeline";
+import { ProjectShowcase } from "@components/sections/ProjectShowcase";
+
+import { SectionHeading } from "@components/ui/SectionHeading";
+import { SocialLink } from "@components/ui/SocialLink";
+import { Badge } from "@components/ui/Badge";
 
 export default function Portfolio() {
-
   return (
     <div className="px-4">
-      <SectionContainer className="py-16 md:py-36" id="home">
+      <PageSection className="py-16 md:py-36" id="home">
         <div className="max-w-xl">
           <div className="flex gap-4 mb-4">
             <img
@@ -35,42 +36,39 @@ export default function Portfolio() {
               Software Engineer with a passion for building scalable and
               efficient web applications
             </strong>
-            . Working full time with Angular, TypeScript, CSS, Docker, Git,
-            and GitHub.{" "}
+            . Working full time with Angular, TypeScript, CSS, Docker, Git, and
+            GitHub.{" "}
           </p>
           <nav className="flex flex-wrap gap-4 mt-8">
-            <SocialPill href="mailto:rjvelazco21@gmail.com">
-              {/* <MailIcon className="size-4" /> */}
+            <SocialLink href="mailto:rjvelazco21@gmail.com">
               Contáctame
-            </SocialPill>
-            <SocialPill href="https://linkedin.com/in/rafael-velazco">
-              {/* <LinkedInIcon className="size-4" /> */}
+            </SocialLink>
+            <SocialLink href="https://linkedin.com/in/rafael-velazco">
               LinkedIn
-            </SocialPill>
+            </SocialLink>
           </nav>
         </div>
-      </SectionContainer>
+      </PageSection>
       <div className="space-y-24">
-        <SectionContainer id="experience">
-          <TitleSection>Work Experience</TitleSection>
-          <Experience />
-        </SectionContainer>
+        <PageSection id="experience">
+          <SectionHeading>Work Experience</SectionHeading>
+          <WorkTimeline />
+        </PageSection>
 
-        <SectionContainer id="projects">
-          <TitleSection>Projects</TitleSection>
-          <Projects />
-        </SectionContainer>
+        <PageSection id="projects">
+          <SectionHeading>Projects</SectionHeading>
+          <ProjectShowcase />
+        </PageSection>
 
-        <SectionContainer id="about-me">
-          <TitleSection>About Me</TitleSection>
+        <PageSection id="about-me">
+          <SectionHeading>About Me</SectionHeading>
           <article className="flex flex-col items-center justify-center gap-8 text-gray-700  md:flex-row">
             <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1">
               <p>
                 I&apos;m <strong>Rafael Velazco</strong>, a software engineer
                 passionate about programming and always eager to learn. I
-                consider myself a{" "}
-                <strong> sociable, adaptable person</strong>, constantly
-                looking for new challenges.
+                consider myself a <strong> sociable, adaptable person</strong>,
+                constantly looking for new challenges.
               </p>
 
               <p>
@@ -85,8 +83,8 @@ export default function Portfolio() {
                     dotCMS
                   </a>
                 </strong>{" "}
-                as one of the <strong>lead software developers</strong>. One
-                of our recent achievements has been the development of the{" "}
+                as one of the <strong>lead software developers</strong>. One of
+                our recent achievements has been the development of the{" "}
                 <strong>
                   <a
                     className="underline"
@@ -98,8 +96,7 @@ export default function Portfolio() {
                   </a>
                 </strong>{" "}
                 and the transition of our product from a{" "}
-                <strong>Hybrid CMS</strong> to a{" "}
-                <strong>Universal CMS</strong>.
+                <strong>Hybrid CMS</strong> to a <strong>Universal CMS</strong>.
               </p>
 
               <p className="mb-0">
@@ -108,9 +105,9 @@ export default function Portfolio() {
                 <strong>
                   team management, leadership, and product understanding
                 </strong>
-                . I&apos;ve realized that beyond writing code, a developer
-                must <strong>deliver strategic value</strong> and deeply
-                understand the <strong>business impact of their work</strong>.
+                . I&apos;ve realized that beyond writing code, a developer must{" "}
+                <strong>deliver strategic value</strong> and deeply understand
+                the <strong>business impact of their work</strong>.
               </p>
             </div>
 
@@ -123,7 +120,7 @@ export default function Portfolio() {
               style={{ objectPosition: "50% 50%" }}
             />
           </article>
-        </SectionContainer>
+        </PageSection>
       </div>
     </div>
   );

@@ -1,21 +1,9 @@
+import "@fontsource-variable/onest"
+
 import type { Metadata } from "next";
-
-import localFont from "next/font/local";
-
-import { NavBar } from "../../layout/NavBar";
+import { NavBar } from "@components/NavBar";
 
 import "../globals.css";
-
-const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Rafael Velazco",
@@ -29,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} layout_container relative`}
-      >
+      <body className="layout_container relative">
         {/* This should be a component */}
         <header className="flex items-center justify-between py-6 w-full mx-auto max-w-[64rem] px-4">
           <div className="flex items-center gap-4">

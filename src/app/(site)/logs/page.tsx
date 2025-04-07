@@ -1,4 +1,4 @@
-import { EmptyListMessage } from "@components/EmptyListMessage";
+import { EmptyListMessage } from "@components/ContentPlaceholder";
 
 export default function Logs() {
   return (

@@ -1,9 +1,9 @@
-interface SocialPillProps {
+interface SocialLinkProps {
     children: React.ReactNode;
     href: string;
 }
 
-export const SocialPill = ({ children, href }: SocialPillProps) => {
+export const SocialLink = ({ children, href }: SocialLinkProps) => {
   return (
     <a
       href={href}
