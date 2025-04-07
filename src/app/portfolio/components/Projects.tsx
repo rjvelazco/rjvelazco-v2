@@ -15,16 +15,37 @@ const TAGS = {
     name: "Firebase",
     class: "bg-[#FFC400] text-black",
   },
+  NODEJS: {
+    name: "Node.js",
+    class: "bg-[#333333] text-[#44883e]",
+  },
+  EXPRESS: {
+    name: "Express",
+    class: "bg-gray-50 text-[#44883e]",
+  },
+  MONGODB: {
+    name: "MongoDB",
+    class: "bg-gray-50 text-[#589636]",
+  },
 };
 const PROJECTS = [
   {
-    title: "Gallery App",
+    title: "Dashboard App",
     description:
-      "Gallery App made with Angular and Firebase. It allows you to upload images and videos to a gallery and share them with your friends.",
-    link: "https://rjvelazco.github.io/fotos-angular-firebase/fotos",
-    github: "https://github.com/rjvelazco/fotos-angular-firebase",
-    image: "/projects/movie-premier-app.webp",
-    tags: [TAGS.ANGULAR, TAGS.FIREBASE],
+      "Hospital Dashboard to see branches, personnel, patients, and more.",
+    link: "https://rjvelazco.github.io/dashboard-angular/dashboard",
+    github: "https://github.com/rjvelazco/dashboard-angular",
+    image: "/projects/dashboard-app.webp",
+    tags: [TAGS.ANGULAR],
+  },
+  {
+    title: "Dashboard Backend",
+    description:
+      "Dashboard Backend to see branches, personnel, patients, and more.",
+    link: "https://rjvelazco.github.io/dashboard-angular/dashboard",
+    github: "https://github.com/rjvelazco/dashboard-angular",
+    image: "/projects/dashboard-backend.webp",
+    tags: [TAGS.NODEJS, TAGS.EXPRESS, TAGS.MONGODB],
   },
   {
     title: "Gallery App",
@@ -32,8 +53,17 @@ const PROJECTS = [
       "Gallery App made with Angular and Firebase. It allows you to upload images and videos to a gallery and share them with your friends.",
     link: "https://rjvelazco.github.io/fotos-angular-firebase/fotos",
     github: "https://github.com/rjvelazco/fotos-angular-firebase",
-    image: "/projects/movie-premier-app.webp",
+    image: "/projects/gallery-app.webp",
     tags: [TAGS.ANGULAR, TAGS.FIREBASE],
+  },
+  {
+    title: "Movie Premier App",
+    description:
+      "Movie Premier App that allows you to see the latest movies and their details.",
+    link: "https://rjvelazco.github.io/peliculas-angular/peliculas",
+    github: "https://github.com/rjvelazco/peliculas-angular",
+    image: "/projects/movie-premier-app.webp",
+    tags: [TAGS.ANGULAR],
   },
 ];
 
@@ -43,13 +73,11 @@ export const Projects = () => {
       {PROJECTS.map(({ image, title, description, tags, link, github }) => (
         <article className="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
           <div>
-            <div className="relative flex flex-col items-center mx-auto w-[256px] h-[256px] col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:hover:bg-gray-800/50">
+            <div className="relative flex flex-col items-center mx-auto w-[256px] h-[200px] col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:hover:bg-gray-800/50">
               <img
-                alt="Recién llegado vs 5 años en Nueva Zelanda"
-                className="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                alt="Project Image"
+                className="object-cover w-full h-full transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
                 loading="lazy"
-                width={400}
-                height={400}
                 src={image}
               />
             </div>
@@ -60,7 +88,7 @@ export const Projects = () => {
               {title}
             </h3>
             <div className="flex flex-wrap mt-2">
-              <ul className="flex flex-row mb-2 gap-x-2">
+              <ul className="flex flex-row mb-2 gap-x-2 w-full">
                 {tags.map((tag) => (
                   <li>
                     <span
@@ -71,7 +99,6 @@ export const Projects = () => {
                   </li>
                 ))}
               </ul>
-
               <div className="mt-2 text-gray-700">
                 {description}
               </div>

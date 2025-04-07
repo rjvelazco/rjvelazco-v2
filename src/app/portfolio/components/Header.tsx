@@ -35,25 +35,25 @@ export const Header = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [navActive, setNavActive] = useState<boolean>(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const sections = document.querySelectorAll("section");
 
-      setNavActive(window.scrollY > 50);
+  //     setNavActive(window.scrollY > 50);
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+  //     sections.forEach((section) => {
+  //       const sectionTop = section.offsetTop;
+  //       const sectionHeight = section.clientHeight;
 
-        if (window.scrollY >= sectionTop - sectionHeight / 2) {
-          setActiveSection(section.id);
-        }
-      });
-    };
+  //       if (window.scrollY >= sectionTop - sectionHeight / 2) {
+  //         setActiveSection(section.id);
+  //       }
+  //     });
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <header className="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
