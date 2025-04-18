@@ -7,7 +7,6 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./styles/globals.css",
   ],
-  plugins: []
 };
 
 export default config;

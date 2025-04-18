@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { PROJECTS } from "@utils/projects";
+import { PROJECTS } from "@data/projects";
 
 export const ProjectShowcase = () => {
   const [showAll, setShowAll] = useState(false);

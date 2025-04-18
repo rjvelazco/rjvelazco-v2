@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="layout_container relative">
+      <body className="layout_container relative flex flex-col min-h-screen">
         {/* This should be a component */}
         <header className="flex items-center justify-between py-6 w-full mx-auto max-w-[64rem] px-4">
           <div className="flex items-center gap-4">
@@ -28,8 +28,8 @@ export default function RootLayout({
           </div>
           <NavBar />
         </header>
-        <main className="w-full mx-auto max-w-[64rem]">{children}</main>
-        <footer className="py-6 flex items-center justify-center bg-gray-100">
+        <main className="flex-grow w-full mx-auto max-w-[64rem] px-4">{children}</main>
+        <footer className="py-6 flex items-center justify-center bg-gray-100 px-4">
           <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} Rafael Velazco. All rights reserved.
           </p>
