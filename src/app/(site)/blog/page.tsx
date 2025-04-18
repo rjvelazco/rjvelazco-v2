@@ -7,21 +7,6 @@ export const metadata = {
     "Read the latest articles about web development, programming, and more.",
 };
 
-// Author component for blog posts
-const Author = ({ name, role }: { name: string; role: string }) => (
-  <div className="flex items-center mt-6">
-    <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 text-sm font-medium">
-      {name.charAt(0)}
-    </div>
-    <div className="ml-3">
-      <p className="text-base font-medium text-gray-800 dark:text-gray-200">
-        {name}
-      </p>
-      <p className="text-sm text-gray-500 dark:text-gray-400">{role}</p>
-    </div>
-  </div>
-);
-
 const NoPosts = () => (
   <div className="text-center py-12">
     <p className="text-gray-600 dark:text-gray-400">No blog posts found.</p>
@@ -46,7 +31,6 @@ const PostItem = ({ post }: { post: BlogPost }) => (
       <p className="text-gray-600 dark:text-gray-400 mb-4">
         {post.description}
       </p>
-      <Author name="Rafael Velazco" role="Senior Software Engineer" />
     </div>
   </article>
 );
