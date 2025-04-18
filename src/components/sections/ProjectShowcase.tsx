@@ -33,7 +33,7 @@ export const ProjectShowcase = () => {
 
             <div className="w-full flex-1">
               <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
-              <div className="flex flex-wrap mt-2">
+              <div className="flex flex-wrap my-4">
                 <ul className="flex flex-row mb-2 gap-x-2 w-full">
                   {tags.map((tag) => (
                     <li key={tag.name}>

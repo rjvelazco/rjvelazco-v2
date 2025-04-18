@@ -57,7 +57,7 @@ export const PortfolioHeader = () => {
 
   return (
     <header className="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
-      <nav className={`flex px-3 text-sm font-medium rounded-full text-gray-600 justify-center items-center bg-white/80 backdrop-blur-xs ${navActive ? "shadow-md" : ""}`}>
+      <nav className={`flex px-3 text-sm font-medium rounded-full justify-center items-center bg-white/80 backdrop-blur-xs ${navActive ? "shadow-md" : ""}`}>
         {navItems.map((link, index) => (
           <Link
             key={index}

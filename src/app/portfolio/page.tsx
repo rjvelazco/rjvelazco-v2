@@ -30,9 +30,9 @@ export default function Portfolio() {
           <h1 className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl">
             Hello, I'm Rafael Velazco
           </h1>
-          <p className="mt-6 text-lg text-gray-800">
+          <p className="mt-6 text-lg text-gray-800 leading-[1.7]">
             +5 years of experience.{" "}
-            <strong className="text-petrol-light font-semibold">
+            <strong className="text-petrol-light">
               Software Engineer with a passion for building scalable and
               efficient web applications
             </strong>
@@ -62,10 +62,10 @@ export default function Portfolio() {
 
         <PageSection id="about-me">
           <SectionHeading>About Me</SectionHeading>
-          <article className="flex flex-col items-center justify-center gap-8 text-gray-700  md:flex-row">
-            <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1">
+          <article className="flex flex-col items-center justify-center gap-8 md:flex-row">
+            <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal text-pretty order-2 md:order-1">
               <p>
-                I&apos;m <strong>Rafael Velazco</strong>, a software engineer
+                I&apos;m Rafael Velazco, a software engineer
                 passionate about programming and always eager to learn. I
                 consider myself a <strong> sociable, adaptable person</strong>,
                 constantly looking for new challenges.
