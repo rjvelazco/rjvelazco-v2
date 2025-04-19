@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 
 import { PROJECTS } from "@data/projects";
 
@@ -20,13 +19,11 @@ export const ProjectShowcase = () => {
           >
             <div>
               <div className="relative flex flex-col items-center mx-auto w-[256px] h-[200px] col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:hover:bg-gray-800/50">
-                <Image
+                <img
                   alt={`Screenshot of ${title} project`}
                   className="object-cover w-full h-full transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
                   loading={isPriority ? "eager" : "lazy"}
-                  priority={isPriority}
                   src={image}
-                  fill
                   sizes="(max-width: 768px) 100vw, 256px"
                 />
               </div>
