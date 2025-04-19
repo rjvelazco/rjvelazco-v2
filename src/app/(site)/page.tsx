@@ -62,7 +62,7 @@ export default function Home() {
       <section className="flex justify-between items-start space-y-4">
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-8">
-            Topics I've written about
+            Topics I&apos;ve written about
           </h2>
           <div className="flex flex-wrap gap-4">
             <a

@@ -1,6 +1,8 @@
+import React from "react";
+
 interface SocialLinkProps {
-    children: React.ReactNode;
-    href: string;
+  children: React.ReactNode;
+  href: string;
 }
 
 export const SocialLink = ({ children, href }: SocialLinkProps) => {

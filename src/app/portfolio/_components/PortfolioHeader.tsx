@@ -36,7 +36,7 @@ export const PortfolioHeader = () => {
       "[data-page-section]"
     ) as NodeListOf<HTMLElement>;
 
-    const handleScroll = (event: Event) => {
+    const handleScroll = () => {
       setNavActive(window.scrollY > 50);
       const isAtBottom =
         window.innerHeight + Math.round(window.scrollY) >=

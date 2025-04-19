@@ -28,7 +28,7 @@ export default function Portfolio() {
             </a>
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl">
-            Hello, I'm Rafael Velazco
+            Hello, I&apos;m Rafael Velazco
           </h1>
           <p className="mt-6 text-lg text-gray-800 leading-[1.7]">
             +5 years of experience.{" "}

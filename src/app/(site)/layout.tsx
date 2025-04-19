@@ -1,3 +1,5 @@
+import React from "react";
+
 import "@fontsource-variable/onest"
 
 import type { Metadata } from "next";

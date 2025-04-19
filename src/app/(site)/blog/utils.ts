@@ -1,7 +1,5 @@
-import fs from 'fs';
 import { readdir } from 'fs/promises';
 import { Dirent } from 'fs';
-import Link from 'next/link';
 
 export const metadata = {
   title: 'Blog | My Portfolio',

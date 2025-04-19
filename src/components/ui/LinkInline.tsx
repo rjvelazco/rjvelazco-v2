@@ -1,3 +1,4 @@
+import React from "react"
 
 export const LinkInline = ({ href, children }: { href: string, children: React.ReactNode }) => {
     return (
