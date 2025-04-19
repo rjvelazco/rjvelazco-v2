@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rafael Velazco | Senior Engineer at dotCMS",
     description: "Senior Software Engineer with expertise in web development",
-    creator: "@rafa_velazco",
+    creator: "@rjvelazco21",
   },
   robots: {
     index: true,
@@ -42,12 +42,46 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.rjvelazco.com";
+  
   return (
     <html lang="en">
       <body className="relative font-onest portfolio_gradient">
         <PortfolioHeader />
         <main className="w-full mx-auto max-w-[64rem]">{children}</main>
         <PortfolioFooter />
+        
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Rafael Velazco',
+              jobTitle: 'Senior Software Engineer',
+              url: baseUrl,
+              description: 'Senior Software Engineer with expertise in web development',
+              sameAs: [
+                'https://twitter.com/rjvelazco21',
+                'https://www.linkedin.com/in/rafael-velazco/',
+                'https://github.com/rjvelazco'
+              ],
+              worksFor: {
+                '@type': 'Organization',
+                name: 'dotCMS'
+              },
+              knowsAbout: [
+                'Web Development',
+                'Frontend Development',
+                'React',
+                'NextJS',
+                'TypeScript',
+                'JavaScript'
+              ]
+            }),
+          }}
+        />
       </body>
     </html>
   );
