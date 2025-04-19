@@ -13,7 +13,7 @@ export const ProjectShowcase = () => {
   return (
     <div className="flex flex-col gap-y-16">
       {displayedProjects.map(
-        ({ image, title, description, tags, link, github }) => (
+        ({ image, title, description, tags, link, github, isPriority }) => (
           <article
             key={title}
             className="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"
@@ -23,7 +23,8 @@ export const ProjectShowcase = () => {
                 <Image
                   alt={`Screenshot of ${title} project`}
                   className="object-cover w-full h-full transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                  loading="lazy"
+                  loading={isPriority ? "eager" : "lazy"}
+                  priority={isPriority}
                   src={image}
                   fill
                   sizes="(max-width: 768px) 100vw, 256px"

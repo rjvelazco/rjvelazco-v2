@@ -5,11 +5,6 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   {
-    title: "Home",
-    label: "home",
-    url: "/portfolio",
-  },
-  {
     title: "Experience",
     label: "experience",
     url: "/portfolio#experience",
@@ -35,29 +30,45 @@ export const PortfolioHeader = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [navActive, setNavActive] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const sections = document.querySelectorAll("section");
+  useEffect(() => {
+    setNavActive(window.scrollY > 50);
+    const sections = document.querySelectorAll(
+      "[data-page-section]"
+    ) as NodeListOf<HTMLElement>;
 
-  //     setNavActive(window.scrollY > 50);
+    const handleScroll = (event: Event) => {
+      setNavActive(window.scrollY > 50);
+      const isAtBottom =
+        window.innerHeight + Math.round(window.scrollY) >=
+        document.body.offsetHeight;
 
-  //     sections.forEach((section) => {
-  //       const sectionTop = section.offsetTop;
-  //       const sectionHeight = section.clientHeight;
+      sections.forEach((section) => {
+        const { offsetTop, clientHeight } = section;
 
-  //       if (window.scrollY >= sectionTop - sectionHeight / 2) {
-  //         setActiveSection(section.id);
-  //       }
-  //     });
-  //   };
+        if (isAtBottom) {
+          setActiveSection("about-me");
+          return;
+        }
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+        if (window.scrollY >= offsetTop - clientHeight / 2) {
+          setActiveSection(section.id);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
-      <nav className={`flex px-3 text-sm font-medium rounded-full justify-center items-center bg-white/80 backdrop-blur-xs ${navActive ? "shadow-md" : ""}`}>
+      <nav
+        role="navigation"
+        aria-label="Main navigation"
+        className={`flex px-3 text-sm font-medium rounded-full justify-center items-center backdrop-blur-xs ${
+          navActive ? "shadow-md" : ""
+        }`}
+      >
         {navItems.map((link, index) => (
           <Link
             key={index}
@@ -66,7 +77,7 @@ export const PortfolioHeader = () => {
             onClick={() => setActiveSection(link.label)}
           >
             <span
-              className={`relative block px-2 py-2 transition hover:text-petrol ${
+              className={`relative block p-2 transition hover:text-petrol ${
                 activeSection === link.label ? "text-petrol" : ""
               }`}
             >

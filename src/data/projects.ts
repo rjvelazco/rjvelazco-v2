@@ -10,6 +10,7 @@ interface Project {
     github?: string;
     image: string;
     tags: Tag[];
+    isPriority?: boolean;
 }
 
 const TAGS = {
@@ -60,6 +61,7 @@ export const PROJECTS: Project[] = [
         github: "https://github.com/rjvelazco/dashboard-angular",
         image: "/projects/dashboard-app.webp",
         tags: [TAGS.ANGULAR, TAGS.CSS, TAGS.CHARTJS],
+        isPriority: true,
     },
     {
         title: "Dashboard Backend",
