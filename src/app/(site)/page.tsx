@@ -1,64 +1,81 @@
-// https://porfolio.dev/
-// Onest Variable
+import Link from "next/link";
+
+const items = [
+  {
+    title: "The Post-Developer Era",
+    description:
+      "When OpenAI released GPT-4 back in March 2023, they kickstarted the AI revolution. The consensus online was that front-end development jobs would likely vanish. I had been working in the field for close to four years since then, and I thought it was worth revisiting some of those early predictions, and seeing if we can glean where things are headed.",
+  },
+  {
+    title: "A Million Little Secrets",
+    subtitle:
+      "I spent the past few weeks packing as many easter eggs as I could into my latest side project. In this blog post, I want to dig into some of the more interesting details! If you're interested in animational interactions, you'll want to check this out. I have a bunch of animation secrets and tips!",
+    description:
+      "I spent the past few weeks packing as many easter eggs as I could into my latest side project. In this blog post, I want to dig into some of the more interesting details! If you're interested in animational interactions, you'll want to check this out. I have a bunch of animation secrets and tips!",
+  },
+  {
+    title: "Container Queries Unleashed",
+    subtitle:
+      "Container queries expand the universe of designs that can be implemented, giving us much more control. Now that container queries are broadly available, I think it's time we start exploring this potential! In this post, I'll share some container queries I can't stop using in my work, and explore what's possible with them.",
+    description:
+      "Container queries expand the universe of designs that can be implemented, giving us much more control. Now that container queries are broadly available, I think it's time we start exploring this potential! In this post, I'll share some container queries I can't stop using in my work, and explore what's possible with them.",
+  },
+];
+
 export default function Home() {
   return (
     <div className="bg-background mx-auto font-sans flex flex-col gap-12 px-4 py-8 md:py-12">
-      <section className="space-y-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-slate-900">
-          Latest Blog Posts
-        </h1>
-        <div className="featured_cards">
-          <div className="featured_cards_item_large">
-            <a className="bg-petrol-lighter rounded-3xl relative flex clamp-item-large px-[20px] py-[16px] cursor-pointer">
-              <img
-                src="/assets/align-bottom.svg"
-                alt="placeholder"
-                className="absolute center-absolute-x w-[180px]"
-              />
-              <div className="self-end">
-                <span className="text-slate-900">Next.js</span>
-                <h4 className="text-2xl font-bold text-slate-900 mt-1">
-                  How I built my own website
-                </h4>
-              </div>
-            </a>
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-semibold text-petrol-light">
+          ARTICLES AND TUTORIALS
+        </h2>
+      </div>
+
+      <div className="flex gap-12">
+        <section className="space-y-8">
+          {items.map((item) => (
+            <article className="border-b border-gray-200 pb-8">
+              <Link href={`/blog/${item.title}`}>
+                <h3 className="text-xl font-bold mb-4 hover:underline decoration-petrol underline-offset-8">
+                  {item.title}
+                </h3>
+              </Link>
+              {item.subtitle && (
+                <p className="mb-2">{item.subtitle}</p>
+              )}
+              <p className="mb-4">{item.description}</p>
+              <Link href={`/blog/${item.title}`}>
+                <span className="text-petrol-light font-medium hover:underline">
+                  Read more
+                </span>
+              </Link>
+            </article>
+          ))}
+        </section>
+
+        <section className="gap-12 justify-between w-full">
+          <div>
+            <h2 className="text-xl font-semibold text-petrol mb-6">
+              BROWSE BY CATEGORY
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              <a
+                href="/category/angular"
+                className="border border-gray-200 rounded-md px-3 py-1 text-sm hover:bg-gray-50 transition-colors"
+              >
+                Angular
+              </a>
+              <a
+                href="/category/javascript"
+                className="border border-gray-200 rounded-md px-3 py-1 text-sm hover:bg-gray-50 transition-colors"
+              >
+                JavaScript
+              </a>
+            </div>
           </div>
-          {/* <div className="featured_cards_item_small">2</div> */}
-        </div>
-        <div className="featured_cards">
-          <div className="featured_cards_item">
-            <a className="bg-amber-lighter rounded-3xl relative flex clamp-item-large px-[20px] py-[16px] cursor-pointer">
-              <img
-                src="/assets/align-bottom.svg"
-                alt="placeholder"
-                className="absolute center-absolute-x w-[180px]"
-              />
-              <div className="self-end">
-                <span className="text-slate-900">Next.js</span>
-                <h4 className="text-2xl font-bold text-slate-900 mt-1">
-                  How I built my own website
-                </h4>
-              </div>
-            </a>
-          </div>
-          <div className="featured_cards_item">
-            <a className="bg-petrol-lighter rounded-3xl relative flex clamp-item-large px-[20px] py-[16px] cursor-pointer">
-              <img
-                src="/assets/align-bottom.svg"
-                alt="placeholder"
-                className="absolute center-absolute-x w-[180px]"
-              />
-              <div className="self-end">
-                <span className="text-slate-900">Next.js</span>
-                <h4 className="text-2xl font-bold text-slate-900 mt-1">
-                  How I built my own website
-                </h4>
-              </div>
-            </a>
-          </div>
-          {/* <div className="featured_cards_item_small">2</div> */}
-        </div>
-      </section>
+        </section>
+      </div>
+      {/* 
       <section className="flex justify-between items-start space-y-4">
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-8">
@@ -99,7 +116,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
