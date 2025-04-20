@@ -7,8 +7,8 @@ export const dynamic = 'force-static';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Hardcoded blog posts for static export
   const postPaths = await getPostPaths();
-  const blogRoutes = postPaths.map((postPath) => ({
-    url: `${baseUrl}/blog/posts/${postPath.params.slug}`,
+  const blogRoutes = postPaths.map((path) => ({
+    url: `${baseUrl}/blog/posts/${path}`,
     lastModified: new Date().toISOString().split('T')[0],
   }));
 
