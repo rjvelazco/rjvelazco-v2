@@ -27,7 +27,7 @@ export async function getPosts(): Promise<BlogPost[]> {
   const posts = await Promise.all(
     directories.map(async (dirent: Dirent) => {
       
-      const { metadata } = await import(`../app/(site)/blog/posts/${dirent.name}/page.mdx`);
+      const { metadata = {} } = await import(`../app/(site)/blog/posts/${dirent.name}/page.mdx`);
       return { slug: dirent.name, ...metadata } as BlogPost;
     })
   );
