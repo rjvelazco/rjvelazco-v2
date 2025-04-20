@@ -12,7 +12,7 @@ export default async function Home() {
         </h2>
       </div>
 
-      <div className="flex gap-12">
+      <div className="flex gap-12 flex-col md:flex-row">
         <section className="space-y-8 flex-1">
           {posts.map((item) => (
             <article className="border-b border-gray-200 pb-8" key={item.title}>
