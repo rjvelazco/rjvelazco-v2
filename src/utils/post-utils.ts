@@ -1,12 +1,6 @@
-import { readdir } from 'fs/promises';
-import { Dirent } from 'fs';
+import { Dirent } from "fs";
+import { readdir } from "fs/promises";
 
-export const metadata = {
-  title: 'Blog | My Portfolio',
-  description: 'Read the latest articles about web development, programming, and more.',
-};
-
-// MOVE TO A UTIL
 export interface BlogPost {
   slug: string;
   title: string;
@@ -16,15 +10,24 @@ export interface BlogPost {
   publishDate: string;
 }
 
+export const getPostPaths = async () => {
+  const folders = await readdir('./src/app/(site)/blog/posts', { withFileTypes: true });
+  const directories = folders.filter((dirent: Dirent) => dirent.isDirectory());
+
+  return directories.map((dirent: Dirent) => ({
+    params: { slug: dirent.name },
+  }));
+};
+
 export async function getPosts(): Promise<BlogPost[]> {
-  // Retrieve slugs from post routes
   const slugs = await readdir('./src/app/(site)/blog/posts', { withFileTypes: true });
   const directories = slugs.filter((dirent: Dirent) => dirent.isDirectory());
 
   // Retrieve metadata from MDX files
   const posts = await Promise.all(
     directories.map(async (dirent: Dirent) => {
-      const { metadata } = await import(`./posts/${dirent.name}/page.mdx`);
+      
+      const { metadata } = await import(`../app/(site)/blog/posts/${dirent.name}/page.mdx`);
       return { slug: dirent.name, ...metadata } as BlogPost;
     })
   );
@@ -32,5 +35,5 @@ export async function getPosts(): Promise<BlogPost[]> {
   // Sort posts from newest to oldest
   posts.sort((a: BlogPost, b: BlogPost) => +new Date(b.publishDate) - +new Date(a.publishDate));
 
-  return posts;
+  return posts || [];
 }

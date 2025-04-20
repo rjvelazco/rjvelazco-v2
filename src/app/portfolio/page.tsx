@@ -19,7 +19,7 @@ export default function Portfolio() {
               alt="Rafael Velazco"
             />
             <a
-              href="https://linkedin.com/in/midudev"
+              href="https://linkedin.com/in/rafael-velazco"
               target="_blank"
               rel="noopener"
               className="flex items-center transition md:justify-center md:hover:scale-105"

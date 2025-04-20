@@ -1,4 +1,4 @@
-import { getPostPaths } from '@utils/getPostPaths';
+import { getPostPaths } from '@utils/post-utils';
 import { MetadataRoute } from 'next';
 
 export const baseUrl = 'https://www.rjvelazco.com';
