@@ -1,11 +1,8 @@
 import React from "react";
-import "@fontsource-variable/onest";
 
 import type { Metadata } from "next";
 import { PortfolioHeader } from "./_components/PortfolioHeader";
 import { PortfolioFooter } from "./_components/PortfolioFooter";
-
-import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Rafael Velazco | Senior Software Engineer",
@@ -43,47 +40,47 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.rjvelazco.com";
-  
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || "https://www.rjvelazco.com";
+
   return (
-    <html lang="en">
-      <body className="relative font-onest portfolio_gradient">
-        <PortfolioHeader />
-        <main className="w-full mx-auto max-w-[64rem]">{children}</main>
-        <PortfolioFooter />
-        
-        <script
-          type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Person',
-              name: 'Rafael Velazco',
-              jobTitle: 'Senior Software Engineer',
-              url: baseUrl,
-              description: 'Senior Software Engineer with expertise in web development',
-              sameAs: [
-                'https://twitter.com/rjvelazco21',
-                'https://www.linkedin.com/in/rafael-velazco/',
-                'https://github.com/rjvelazco'
-              ],
-              worksFor: {
-                '@type': 'Organization',
-                name: 'dotCMS'
-              },
-              knowsAbout: [
-                'Web Development',
-                'Frontend Development',
-                'React',
-                'NextJS',
-                'TypeScript',
-                'JavaScript'
-              ]
-            }),
-          }}
-        />
-      </body>
-    </html>
+    <body className="relative font-onest portfolio_gradient">
+      <PortfolioHeader />
+      <main className="w-full mx-auto max-w-[64rem]">{children}</main>
+      <PortfolioFooter />
+
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Rafael Velazco",
+            jobTitle: "Senior Software Engineer",
+            url: baseUrl,
+            description:
+              "Senior Software Engineer with expertise in web development",
+            sameAs: [
+              "https://twitter.com/rjvelazco21",
+              "https://www.linkedin.com/in/rafael-velazco/",
+              "https://github.com/rjvelazco",
+            ],
+            worksFor: {
+              "@type": "Organization",
+              name: "dotCMS",
+            },
+            knowsAbout: [
+              "Web Development",
+              "Frontend Development",
+              "React",
+              "NextJS",
+              "TypeScript",
+              "JavaScript",
+            ],
+          }),
+        }}
+      />
+    </body>
   );
 }
