@@ -1,42 +1,33 @@
 {
-  "name": "rafael-velazco",
+  "name": "rjvelazco",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@emailjs/browser": "^3.10.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-alert": "^7.0.3",
-    "react-alert-template-basic": "^1.0.2",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "swiper": "^9.0.5",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@fontsource-variable/onest": "^5.2.7",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.3.1",
+    "@tailwindcss/postcss": "^4.0.8",
+    "next": "^15.1.7",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.0.8"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^9.25.0",
+    "eslint-config-next": "15.0.2",
+    "postcss": "^8.5.3",
+    "typescript": "^5"
   }
 }
