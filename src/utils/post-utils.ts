@@ -32,14 +32,18 @@ export async function getPosts(): Promise<BlogPost[]> {
     return [];
   }
 
-  // Retrieve metadata from MDX files
   const posts = await Promise.all(
     directories.map(async (dirent: Dirent) => {
-      
-      const { metadata = {} } = await import(`../app/(site)/blog/posts/${dirent.name}/page.mdx`);
-      return { slug: dirent.name, ...metadata } as BlogPost;
-    })
-  );
+      try {
+        const { metadata = {} } = await import(`../app/(site)/blog/posts/${dirent.name}/page.mdx`);
+        return { slug: dirent.name, ...metadata } as BlogPost;
+      } catch (error) {
+        console.error(`Error loading metadata for ${dirent.name}:`, error);
+
+        return undefined;
+      }
+    }).filter((post) => post !== undefined)
+  ) as BlogPost[];
 
   // Sort posts from newest to oldest
   posts.sort((a: BlogPost, b: BlogPost) => +new Date(b.publishDate) - +new Date(a.publishDate));
