@@ -1,6 +1,6 @@
 import { Button } from "@components/ui/Button";
 
-export function ContentPlaceholder({ type }: { type: string }) {
+export function ContentPlaceholder({ type, showButton = true }: { type: string, showButton?: boolean }) {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
       <div className="bg-muted/50 rounded-full p-6 mb-6">
@@ -24,7 +24,7 @@ export function ContentPlaceholder({ type }: { type: string }) {
         There are currently no {type} available. Check back soon for new
         content.
       </p>
-      <Button href="/" label="Back to Home" />
+      {showButton && <Button href="/" label="Back to Home" />}
     </div>
   );
 }

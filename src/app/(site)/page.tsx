@@ -1,8 +1,17 @@
 import Link from "next/link";
 import { getPosts } from "@utils/post-utils";
+import { ContentPlaceholder } from "@components/ui/ContentPlaceholder";
 
 export default async function Home() {
-  const posts = (await getPosts());
+  const posts = await getPosts();
+
+  if (posts.length === 0) {
+    return (
+      <div className="mx-auto font-sans flex flex-col gap-12 py-8 md:py-12">
+        <ContentPlaceholder type="Post" showButton={false} />
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto font-sans flex flex-col gap-12 py-8 md:py-12">
