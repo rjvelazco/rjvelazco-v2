@@ -21,7 +21,16 @@ export const getPostPaths = async () => {
 
 export async function getPosts(): Promise<BlogPost[]> {
   const slugs = await readdir('./src/app/(site)/blog/posts', { withFileTypes: true });
+
+  if (slugs.length === 0) {
+    return [];
+  }
+
   const directories = slugs.filter((dirent: Dirent) => dirent.isDirectory());
+
+  if (directories.length === 0) {
+    return [];
+  }
 
   // Retrieve metadata from MDX files
   const posts = await Promise.all(
