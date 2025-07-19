@@ -1,7 +1,8 @@
 import { Dirent } from "fs";
-import { readdir } from "fs/promises";
+import { readdir, readFile } from "fs/promises";
+import { join } from "path";
 
-const POST_DIR = "./src/app/(site)/blog/posts";
+const POST_DIR = join(process.cwd(), "src/app/(site)/blog/posts");
 
 export interface BlogPost {
   slug: string;
@@ -30,9 +31,24 @@ export async function getPosts(): Promise<BlogPost[]> {
 
     const posts = await Promise.all(
       directories.map(async (dirent: Dirent) => {
-        const path = `${POST_DIR}/${dirent.name}/page.mdx`;
-        const { metadata = {} } = await import(path);
-        return { slug: dirent.name, ...metadata } as BlogPost;
+        try {
+          const filePath = join(POST_DIR, dirent.name, "page.mdx");
+          const content = await readFile(filePath, "utf-8");
+          
+          // Extract metadata from the export statement
+          const metadataMatch = content.match(/export const metadata = ({[\s\S]*?});/);
+          if (metadataMatch) {
+            // Parse the metadata object (this is a simple eval - in production you might want a more robust parser)
+            const metadataStr = metadataMatch[1];
+            const metadata = eval(`(${metadataStr})`);
+            return { slug: dirent.name, ...metadata } as BlogPost;
+          }
+          
+          return { slug: dirent.name, title: dirent.name, date: "", description: "", publishDate: "" } as BlogPost;
+        } catch (error) {
+          console.warn(`Error reading post ${dirent.name}:`, error);
+          return { slug: dirent.name, title: dirent.name, date: "", description: "", publishDate: "" } as BlogPost;
+        }
       })
     );
 

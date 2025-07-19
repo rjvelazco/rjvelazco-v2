@@ -4,6 +4,7 @@ import { ContentPlaceholder } from "@components/ui/ContentPlaceholder";
 
 export default async function Home() {
   const posts = await getPosts();
+  console.log(posts);
 
   if (posts.length === 0) {
     return (
