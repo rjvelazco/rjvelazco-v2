@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getPosts } from "@utils/post-utils";
-import { ContentPlaceholder } from "@components/ui/ContentPlaceholder";
+import { ContentPlaceholder } from "@components/ui/content-placeholder";
 
 export default async function Home() {
   const posts = await getPosts();

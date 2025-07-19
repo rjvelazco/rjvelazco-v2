@@ -1,4 +1,4 @@
-import { ContentPlaceholder } from "@components/ui/ContentPlaceholder";
+import { ContentPlaceholder } from "@components/ui/content-placeholder";
 
 export default function Logs() {
   return (

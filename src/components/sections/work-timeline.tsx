@@ -1,4 +1,4 @@
-import { LinkInline } from "@components/ui/LinkInline";
+import { LinkInline } from "@components/ui/link-inline";
 
 const WORK_TIMELINE = [
   {

@@ -1,11 +1,11 @@
-import { PageSection } from "@components/PageSection";
+import { PageSection } from "@components/sections/page-section";
 
-import { WorkTimeline } from "@components/WorkTimeline";
-import { ProjectShowcase } from "@components/ProjectShowcase";
+import { WorkTimeline } from "@components/sections/work-timeline";
+import { ProjectShowcase } from "@components/sections/project-showcase";
 
-import { SectionHeading } from "@components/ui/SectionHeading";
-import { SocialLink } from "@components/ui/SocialLink";
-import { Badge } from "@components/ui/Badge";
+import { SectionHeading } from "@components/ui/section-heading";
+import { SocialLink } from "@components/ui/social-link";
+import { Badge } from "@components/ui/badge";
 
 export default function Portfolio() {
   return (
