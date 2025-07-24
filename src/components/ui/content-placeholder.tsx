@@ -1,4 +1,5 @@
-import { Button } from "@components/ui/button";
+import { Button } from "./button";
+
 
 export function ContentPlaceholder({ type, showButton = true }: { type: string, showButton?: boolean }) {
   return (
