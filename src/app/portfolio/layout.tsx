@@ -1,8 +1,8 @@
 import React from "react";
 
 import type { Metadata } from "next";
-import { PortfolioHeader } from "./_components/PortfolioHeader";
-import { PortfolioFooter } from "./_components/PortfolioFooter";
+import { PortfolioHeader } from "@components/portfolio/portfolio-header";
+import { PortfolioFooter } from "@components/portfolio/portfolio-footer";
 
 export const metadata: Metadata = {
   title: "Rafael Velazco | Senior Software Engineer",

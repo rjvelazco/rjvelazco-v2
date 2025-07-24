@@ -24,6 +24,37 @@ export const getPostPaths = async () => {
   }
 };
 
+// Safer metadata extraction without eval()
+function extractMetadata(content: string): Partial<BlogPost> {
+  const metadataMatch = content.match(/export const metadata = \{([\s\S]*?)\};/);
+  if (!metadataMatch) return {};
+  
+  const metadataContent = metadataMatch[1];
+  const metadata: Partial<BlogPost> = {};
+  
+  // Extract title
+  const titleMatch = metadataContent.match(/title:\s*["'`](.*?)["'`]/);
+  if (titleMatch) metadata.title = titleMatch[1];
+  
+  // Extract description
+  const descMatch = metadataContent.match(/description:\s*["'`](.*?)["'`]/);
+  if (descMatch) metadata.description = descMatch[1];
+  
+  // Extract date
+  const dateMatch = metadataContent.match(/date:\s*["'`](.*?)["'`]/);
+  if (dateMatch) metadata.date = dateMatch[1];
+  
+  // Extract publishDate
+  const publishDateMatch = metadataContent.match(/publishDate:\s*["'`](.*?)["'`]/);
+  if (publishDateMatch) metadata.publishDate = publishDateMatch[1];
+  
+  // Extract category
+  const categoryMatch = metadataContent.match(/category:\s*["'`](.*?)["'`]/);
+  if (categoryMatch) metadata.category = categoryMatch[1];
+  
+  return metadata;
+}
+
 export async function getPosts(): Promise<BlogPost[]> {
   try {
     const folders = await readdir(POST_DIR, {withFileTypes: true});
@@ -35,16 +66,17 @@ export async function getPosts(): Promise<BlogPost[]> {
           const filePath = join(POST_DIR, dirent.name, "page.mdx");
           const content = await readFile(filePath, "utf-8");
           
-          // Extract metadata from the export statement
-          const metadataMatch = content.match(/export const metadata = ({[\s\S]*?});/);
-          if (metadataMatch) {
-            // Parse the metadata object (this is a simple eval - in production you might want a more robust parser)
-            const metadataStr = metadataMatch[1];
-            const metadata = eval(`(${metadataStr})`);
-            return { slug: dirent.name, ...metadata } as BlogPost;
-          }
+          // Extract metadata safely
+          const metadata = extractMetadata(content);
           
-          return { slug: dirent.name, title: dirent.name, date: "", description: "", publishDate: "" } as BlogPost;
+          return { 
+            slug: dirent.name, 
+            title: metadata.title || dirent.name,
+            date: metadata.date || "",
+            description: metadata.description || "",
+            publishDate: metadata.publishDate || metadata.date || "",
+            category: metadata.category
+          } as BlogPost;
         } catch (error) {
           console.warn(`Error reading post ${dirent.name}:`, error);
           return { slug: dirent.name, title: dirent.name, date: "", description: "", publishDate: "" } as BlogPost;
