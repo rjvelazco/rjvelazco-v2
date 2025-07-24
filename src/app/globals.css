@@ -27,6 +27,36 @@ body {
     line-height: 1.7;
 }
 
+/* Homepage specific styles */
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Ensure gradient text works in all browsers */
+.bg-gradient-to-r {
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/* Smooth transitions for hover effects */
+.group:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+}
+
+.group:hover .group-hover\:translate-x-1 {
+    transform: translateX(0.25rem);
+}
+
+/* Focus states for accessibility */
+.focus\:ring-2:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-petrol-light);
+}
+
 .portfolio_gradient {
     background: linear-gradient(180deg, #f4f7fa 0%, #ffffff 100%);
 }
