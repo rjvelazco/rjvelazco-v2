@@ -83,7 +83,7 @@ const NavItem = ({ href, label }: { href: string; label: string }) => {
     <li>
       <Link href={href}>
         <span
-          className={`text-lg font-medium px-2 py-1 rounded transition-colors duration-200 focus:ring-2 hover:text-blue-600 hover:underline underline-offset-8 focus:outline-none ${
+          className={`px-2 py-1 rounded transition-colors duration-200 focus:ring-2 hover:text-blue-600 hover:underline underline-offset-8 focus:outline-none ${
             isActive ? "text-blue-600 underline" : "text-slate-900"
           }`}
           aria-label={`Navigate to ${label}`}

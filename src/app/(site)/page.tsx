@@ -4,11 +4,10 @@ import { ContentPlaceholder } from "@components/ui/content-placeholder";
 
 export default async function Home() {
   const posts = await getPosts();
-  const featuredPosts = posts.slice(0, 3); // Latest 3 posts
-  // const featuredProjects removed
+  const featuredPosts = posts.slice(0, 3);
 
   return (
-    <div className="mx-auto font-sans flex flex-col gap-8 py-8 md:py-12">
+    <div className="mx-auto flex flex-col gap-8 py-8 md:py-12">
       {/* Hero Section */}
       <section className="pl-4 pb-4 md:pb-12">
           <h1 className="text-3xl md:text-5xl leading-snug pl-2">
@@ -23,7 +22,7 @@ export default async function Home() {
       {featuredPosts.length > 0 && (
         <section className="space-y-8">
           <div className="space-y-2">
-            <h2 className="text-2xl md:text-3xl font-bold">Latest Articles</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold">Latest Articles</h2>
           </div>
           
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -49,7 +48,7 @@ export default async function Home() {
                   </div>
                   
                   <Link href={`/blog/posts/${post.slug}`}>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors leading-tight">
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-600 transition-colors leading-tight">
                       {post.title}
                     </h3>
                   </Link>
