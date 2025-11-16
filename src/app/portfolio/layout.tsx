@@ -2,6 +2,7 @@ import React from "react";
 
 import type { Metadata } from "next";
 import { PortfolioHeader } from "@components/layout/portfolio-header";
+import { NAV_ITEMS } from "@data/portfolio";
 
 export const metadata: Metadata = {
   title: "Rafael Velazco | Senior Software Engineer",
@@ -44,7 +45,7 @@ export default function RootLayout({
 
   return (
     <body className="relative font-onest portfolio_gradient">
-      <PortfolioHeader />
+      <PortfolioHeader navItems={NAV_ITEMS} locale="en" />
       <main className="w-full mx-auto max-w-[64rem]">{children}</main>
       <footer className="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center">
         <div className="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4">

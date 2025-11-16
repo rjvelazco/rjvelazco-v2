@@ -1,34 +1,30 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ToggleGroup, ToggleGroupItem } from "@components/ui/toggle-group";
+import type { NavItem } from "@data/portfolio";
 
-const navItems = [
-  {
-    title: "Experience",
-    label: "experience",
-    url: "/portfolio#experience",
-  },
-  {
-    title: "Projects",
-    label: "projects",
-    url: "/portfolio#projects",
-  },
-  {
-    title: "About Me",
-    label: "about-me",
-    url: "/portfolio#about-me",
-  },
-  {
-    title: "Contact",
-    label: "contact",
-    url: "mailto:rjvelazco21@gmail.com",
-  },
-];
+interface PortfolioHeaderProps {
+  navItems: NavItem[];
+  locale?: "en" | "es";
+}
 
-export const PortfolioHeader = () => {
+export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProps) => {
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [navActive, setNavActive] = useState<boolean>(false);
+
+  const handleLocaleChange = (value: string) => {
+    if (value === locale) return;
+
+    if (value === "es") {
+      router.push("/es/portfolio");
+    } else {
+      router.push("/portfolio");
+    }
+  };
 
   useEffect(() => {
     setNavActive(window.scrollY > 50);
@@ -65,7 +61,7 @@ export const PortfolioHeader = () => {
       <nav
         role="navigation"
         aria-label="Main navigation"
-        className={`flex px-3 text-sm font-medium rounded-full justify-center items-center backdrop-blur-xs ${
+        className={`flex px-3 text-sm font-medium rounded-full justify-center items-center backdrop-blur-xs gap-2 ${
           navActive ? "shadow-md" : ""
         }`}
       >
@@ -85,6 +81,22 @@ export const PortfolioHeader = () => {
             </span>
           </Link>
         ))}
+
+        <div className="ml-2 hidden md:block">
+          <ToggleGroup
+            type="single"
+            value={locale}
+            onValueChange={handleLocaleChange}
+            size="sm"
+          >
+            <ToggleGroupItem value="en" aria-label="Switch to English">
+              EN
+            </ToggleGroupItem>
+            <ToggleGroupItem value="es" aria-label="Switch to Spanish">
+              ES
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
       </nav>
     </header>
   );

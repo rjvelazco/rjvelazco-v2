@@ -22,6 +22,12 @@ export interface WorkTimelineItem {
   linkText?: string;
 }
 
+export interface NavItem {
+  title: string;
+  label: string;
+  url: string;
+}
+
 const TAGS = {
   NEXT: {
     name: "Next.js",
@@ -176,5 +182,51 @@ export const PROJECTS_ES: Project[] = [
     github: "https://github.com/rjvelazco/peliculas-angular",
     image: "/projects/movie-premier-app.webp",
     tags: [TAGS.ANGULAR, TAGS.CSS],
+  },
+];
+
+export const NAV_ITEMS: NavItem[] = [
+  {
+    title: "Experience",
+    label: "experience",
+    url: "/portfolio#experience",
+  },
+  {
+    title: "Projects",
+    label: "projects",
+    url: "/portfolio#projects",
+  },
+  {
+    title: "About Me",
+    label: "about-me",
+    url: "/portfolio#about-me",
+  },
+  {
+    title: "Contact",
+    label: "contact",
+    url: "mailto:rjvelazco21@gmail.com",
+  },
+];
+
+export const NAV_ITEMS_ES: NavItem[] = [
+  {
+    title: "Experiencia",
+    label: "experience",
+    url: "/es/portfolio#experience",
+  },
+  {
+    title: "Proyectos",
+    label: "projects",
+    url: "/es/portfolio#projects",
+  },
+  {
+    title: "Sobre Mí",
+    label: "about-me",
+    url: "/es/portfolio#about-me",
+  },
+  {
+    title: "Contacto",
+    label: "contact",
+    url: "mailto:rjvelazco21@gmail.com",
   },
 ];
