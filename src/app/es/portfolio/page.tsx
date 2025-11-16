@@ -1,7 +1,7 @@
-import { PageSection } from "@components/sections/page-section";
+import { PageSection } from "@components/ui/page-section";
 
-import { WorkTimeline } from "@components/sections/work-timeline";
-import { ProjectShowcase } from "@components/sections/project-showcase";
+import { WorkTimeline } from "@components/ui/work-timeline";
+import { ProjectShowcase } from "@components/ui/project-showcase";
 
 import { SectionHeading } from "@components/ui/section-heading";
 import { SocialLink } from "@components/ui/social-link";

@@ -1,0 +1,205 @@
+import MdxLayout from "@components/layout/mdx-layout";
+
+export const metadata = {
+    title: "Angular Router State Ejemplo Práctico",
+    description: "Aprende a usar el router state en Angular para navegar entre páginas y mantener el estado de la aplicación.",
+    date: "2025-07-28",
+    category: "Angular",
+    publishDate: "2025-07-28"
+};
+
+export default function Layout({ children }) {
+    return <MdxLayout>{children}</MdxLayout>;
+}
+
+
+# Angular Router State Ejemplo Práctico
+
+El router state en Angular es una forma de mantener información mientras navegamos entre páginas sin perder el estado de la aplicación.
+
+Unos de los usos más comunes es evitar realizar peticiones a la API cuando ya tenemos la información la información que necesitamos en otra página. En este articulo, te 
+voy a mostrar un ejemplo práctico donde vamos a usar el router state para mejroar la velocidad de la aplicación evitando realizar peticiones redundantes a una API.
+
+### Resultados de la Sección
+
+![Resultados de la Sección](/assets/angular-router-state-ejemplo-practico.gif)
+
+### Prerequisitos
+
+Para seguir este tutorial, necesitarás tener instalado Angular CLI y Node.js.
+
+Arrancaramos directamente con la implementación del router state. Si quieres obtener el código fuente de este tutorial, puedes encontrarlo en [GitHub](https://github.com/rjvelazco/angular-router-state-example).
+
+### Paso 1: Definir el state a compartir
+
+En este ejemplo, tenemos un listing de usuarios. Lo que queremos es que cuando demos click en `view` podamos ver en otra ruta los destalles del usuario seleccionado.
+
+Entonces, vamos a nuestro `app-users-list.component.ts` y vamos a definir el state a compartir.
+
+```typescript
+@Component({
+  selector: 'app-users-list',
+  standalone: true,
+  template: `
+    <div class="container mx-auto p-4">
+      <p-table
+        [value]="users"
+        [loading]="loading"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        stripedRows
+      >
+        <ng-template #header>
+          <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-user>
+            ...
+            <td>
+              <p-button
+                label="View"
+                icon="pi pi-eye"
+                severity="info"
+                size="small"
+                [routerLink]="['/user', user.id]"
+                /[state]="{ user }"/
+              >
+              </p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  `,
+})
+export class UsersListComponent implements OnInit {
+  users: User[] = [];
+  loading = true;
+
+  private userService = inject(UserService);
+
+  ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(): void {
+    this.loading = true;
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error loading users:', error);
+        this.loading = false;
+      },
+    });
+  }
+}
+```
+
+Observamos que el `state` es un objeto donde podemos definir el estado que queremos compartir. En este caso, el usuario seleccionado.
+
+### Paso 2: Leer el state en la página de detalles
+
+Ahora, vamos a leer el state en nuestro component `app-user-details.component.ts`. Para esto, vamos a usar el `Router` service y leeremos la última navegación exitosa.
+
+```typescript
+@Component({
+  selector: 'app-user-detail',
+  standalone: true,
+  styleUrls: ['./user-detail.component.css'],
+  template: `...`
+})
+export class UserDetailComponent implements OnInit {
+  user: User | null = null;
+  private readonly router = inject(Router);
+
+  constructor() {
+    // También podemos usar el router.getCurrentNavigation()?.extras.state para leer el state desde el constructor
+    const routeState = this.router.getCurrentNavigation()?.extras.state;
+  }
+
+  ngOnInit(): void {
+    const routeState = this.router.lastSuccessfulNavigation?.extras.state;
+    this.user = routeState['user'] as User;
+    console.log(`Usuario seleccionado: ${this.user?.name}`);
+  }
+} 
+```
+
+### Paso 3: Manejar el caso en el que no hay state
+
+El código del paso anterior funcionará correctamente siempre que el usuario haya sido seleccionado desde el listing de usuarios. Pero, ¿qué pasa si el usuario no ha sido seleccionado desde el listing de usuarios?
+
+En este caso, el state no estará definido y no podremos acceder a la información del usuario.
+
+Para manejar este caso, podemos chequear si el state está definido y si no, hacer una llamada desde el API. Este es un caso muy común cuando navegamos cuando ingresamos a la página de detalles desde una URL.
+
+```typescript
+@Component({
+  selector: 'app-user-detail',
+  standalone: true,
+  styleUrls: ['./user-detail.component.css'],
+  template: `...`
+})
+export class UserDetailComponent implements OnInit {
+    user: User | null = null;
+    private readonly router = inject(Router);
+    private readonly userService = inject(UserService);
+
+  ngOnInit(): void {
+    const routeState = this.router.lastSuccessfulNavigation?.extras.state;
+
+    if(routeState && routeState['user']) {
+      this.user = routeState['user'] as User;
+      console.log(`Usuario seleccionado: ${this.user?.name}`);
+    } else {
+        // Cargar el usuario desde la ruta
+      this.loadUserFromRoute();
+    }
+  }
+
+  private loadUserFromRoute(){
+    const id = this.route.snapshot.paramMap.get('id');
+    if(!id) {
+      this.router.navigate(['/users']);
+      return;
+    }
+
+    this.userService.getUserById(id).subscribe({
+      next: (user) => {
+        this.user = user;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error loading user:', error);
+        this.user = null;
+        this.loading = false;
+      }
+    });
+  }
+}
+
+```
+
+Y listo, ahora podemos navegar a la página de detalles desde una URL y el usuario se cargará desde la API. Lo importante es que si el usuario tiene una sección en nuestra aplicación, el state se mantendrá y no se realizará una nueva llamada a la API. mejorando la velocidad de la aplicación.
+
+### Conclusión
+
+El router state en Angular es una forma de mantener información mientras navegamos entre páginas sin perder el estado de la aplicación.
+
+Unos de los usos más comunes es evitar realizar peticiones a la API cuando ya tenemos la información la información que necesitamos en otra página. En este articulo, te 
+voy a mostrar un ejemplo práctico donde vamos a usar el router state para mejroar la velocidad de la aplicación evitando realizar peticiones redundantes a una API.
+
+Si tienes alguna pregunta, no dudes en contactarme.
+
+Es importante aclarar que esto no reemplaza un store de estado, sino que provee una alternativa rápida y sencilla para compartir información entre páginas.

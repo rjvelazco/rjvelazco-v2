@@ -3,9 +3,9 @@ export { NavBar } from './layout/nav-bar';
 export { default as MdxLayout } from './layout/mdx-layout';
 
 // Section components
-export { PageSection } from './sections/page-section';
-export { ProjectShowcase } from './sections/project-showcase';
-export { WorkTimeline } from './sections/work-timeline';
+export { PageSection } from './ui/page-section';
+export { ProjectShowcase } from './ui/project-showcase';
+export { WorkTimeline } from './ui/work-timeline';
 
 // UI components
 export { Badge } from './ui/badge';
@@ -16,5 +16,4 @@ export { SectionHeading } from './ui/section-heading';
 export { SocialLink } from './ui/social-link';
 
 // Portfolio components
-export { PortfolioFooter } from './portfolio/portfolio-footer';
-export { PortfolioHeader } from './portfolio/portfolio-header';
+export { PortfolioHeader } from './layout/portfolio-header';

@@ -59,7 +59,7 @@ export default function RootLayout({
                 href="/portfolio#about-me"
                 className="hover:underline me-4 md:me-6"
               >
-                About Me
+                Sobre Mí
               </a>
             </li>
             <li>
@@ -68,7 +68,7 @@ export default function RootLayout({
                 href="mailto:rjvelazco21@gmail.com"
                 className="hover:underline"
               >
-                Contact
+                Contacto
               </a>
             </li>
           </ul>
