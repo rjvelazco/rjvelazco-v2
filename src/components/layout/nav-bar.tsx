@@ -13,7 +13,7 @@ export const NavBar = () => {
         <NavItem href="/blog" label="Blog" />
         <NavItem href="/logs" label="Logs" />
         <NavItem href="/portfolio" label="Portfolio" />
-        <NavItem href="mailto:rjvelazco21@gmail.com" label="Contact" />
+        <NavItem href="mailto:rjvelazco21@gmail.com" label="Contacto" />
       </ul>
 
       <MobileMenu />

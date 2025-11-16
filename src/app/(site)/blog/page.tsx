@@ -13,7 +13,7 @@ export default async function BlogPage() {
   if (posts.length === 0) {
     return (
       <div className="mx-auto font-sans flex flex-col gap-12 py-8 md:py-12">
-        <h1 className="text-3xl font-bold mb-8">Blog</h1>
+        <h1 className="text-3xl font-bold mb-8">Blogs</h1>
         <ContentPlaceholder type="Post" showButton={false} />
       </div>
     );
@@ -25,7 +25,7 @@ export default async function BlogPage() {
   return (
     <div className="mx-auto font-sans flex flex-col gap-4 py-8 md:py-12">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold mb-8">Latest Articles</h1>
+        <h1 className="text-3xl font-bold mb-8">Artículos Recientes</h1>
       </div>
 
       <div className="flex gap-12 flex-col lg:flex-row">
@@ -64,7 +64,7 @@ export default async function BlogPage() {
                 href={`/blog/posts/${post.slug}`}
                 className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
               >
-                Read more
+                Leer más
                 <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
@@ -76,7 +76,7 @@ export default async function BlogPage() {
         {categories.length > 0 && (
           <aside className="lg:w-64 space-y-6">
             <div>
-              <h3 className="text-lg font-semibold mb-4">Categories</h3>
+              <h3 className="text-lg font-semibold mb-4">Categorías</h3>
               <div className="flex flex-wrap gap-2 lg:flex-col lg:gap-1">
                 {categories.map((category) => (
                   <span

@@ -1,26 +1,11 @@
 import { LinkInline } from "@components/ui/link-inline";
+import type { WorkTimelineItem } from "@data/portfolio";
 
-const WORK_TIMELINE = [
-  {
-    date: "Currently...",
-    title: "Senior Software Engineer",
-    company: "dotCMS",
-    description: "Responsible for the ideation, planning, design, and development of new features. I have a deep understanding of dotCMS as a product and build solutions tailored to our clients' needs. I thrive in team environments and work well with both technical and non-technical stakeholders.",
-    link: "https://github.com/search?q=author%3Arjvelazco+repo%3Adotcms%2Fcore+repo%3Adotcms%2Fcore-web+state%3Aclosed&type=pullrequests",
-    linkText: "Over 300 solutions at dotCMS"
-  },
-  {
-    date: "Feb 2021",
-    title: "Frontend Engineer",
-    company: "dotCMS",
-    description: "Responsible for the development, maintenance, debugging, and testing of components and views within dotCMS. I’m also in charge of the maintenance and continuous improvement of dotcms.com.",
-  },
-];
 
-export const WorkTimeline = () => {
+export const WorkTimeline = ({ workTimeline }: { workTimeline: WorkTimelineItem[] }) => {
   return (
     <ol className="relative mt-16">
-      {WORK_TIMELINE.map((workTimeline, index) => (
+      {workTimeline.map((workTimeline, index) => (
         <li key={index}><WorkTimelineItem {...workTimeline} /></li>
       ))}
     </ol>

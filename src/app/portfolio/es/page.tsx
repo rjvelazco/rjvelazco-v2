@@ -6,7 +6,7 @@ import { ProjectShowcase } from "@components/sections/project-showcase";
 import { SectionHeading } from "@components/ui/section-heading";
 import { SocialLink } from "@components/ui/social-link";
 import { Badge } from "@components/ui/badge";
-import { PROJECTS, WORK_TIMELINE } from "@data/portfolio";
+import { PROJECTS_ES, WORK_TIMELINE_ES } from "@data/portfolio";
 
 export default function Portfolio() {
   return (
@@ -25,19 +25,19 @@ export default function Portfolio() {
               rel="noopener"
               className="flex items-center transition md:justify-center md:hover:scale-105"
             >
-              <Badge>Available for work</Badge>
+              <Badge>Disponible para trabajar</Badge>
             </a>
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl">
-            Hello, I&apos;m Rafael Velazco
+            Hola, soy Rafael Velazco
           </h1>
           <p className="mt-6 text-lg text-gray-800 leading-[1.7]">
-            +5 years of experience.{" "}
+            +5 años de experiencia.{" "}
             <strong className="text-petrol-light">
-              Software Engineer with a passion for building scalable and
-              efficient web applications
+              Ingeniero de software con pasión por construir aplicaciones web
+              escalables y eficientes
             </strong>
-            . Working full time with Angular, TypeScript, CSS, Docker, Git, and
+            . Trabajo a tiempo completo con Angular, TypeScript, CSS, Docker, Git y
             GitHub.{" "}
           </p>
           <nav className="flex flex-wrap gap-4 mt-8">
@@ -50,30 +50,31 @@ export default function Portfolio() {
           </nav>
         </div>
       </PageSection>
+
       <div className="space-y-24">
         <PageSection id="experience">
-          <SectionHeading>Work Experience</SectionHeading>
-          <WorkTimeline workTimeline={WORK_TIMELINE} />
+          <SectionHeading>Experiencia Laboral</SectionHeading>
+          <WorkTimeline workTimeline={WORK_TIMELINE_ES} />
         </PageSection>
 
         <PageSection id="projects">
-          <SectionHeading>Projects</SectionHeading>
-          <ProjectShowcase projects={PROJECTS} />
+          <SectionHeading>Proyectos</SectionHeading>
+          <ProjectShowcase projects={PROJECTS_ES} />
         </PageSection>
 
         <PageSection id="about-me">
-          <SectionHeading>About Me</SectionHeading>
+          <SectionHeading>Sobre Mí</SectionHeading>
           <article className="flex flex-col items-center justify-center gap-8 md:flex-row">
             <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal text-pretty order-2 md:order-1">
               <p>
-                I&apos;m Rafael Velazco, a software engineer
-                passionate about programming and always eager to learn. I
-                consider myself a <strong> sociable, adaptable person</strong>,
-                constantly looking for new challenges.
+                Soy Rafael Velazco, un ingeniero de software apasionado por la
+                programación y siempre con ganas de aprender. Me considero una{" "}
+                <strong>persona sociable y adaptable</strong>, constantemente en
+                búsqueda de nuevos retos.
               </p>
 
               <p>
-                Currently, I work at{" "}
+                Actualmente trabajo en{" "}
                 <strong>
                   <a
                     className="underline"
@@ -84,8 +85,8 @@ export default function Portfolio() {
                     dotCMS
                   </a>
                 </strong>{" "}
-                as one of the <strong>lead software developers</strong>. One of
-                our recent achievements has been the development of the{" "}
+                como uno de los <strong>desarrolladores líderes</strong>. Uno de
+                nuestros logros recientes ha sido el desarrollo del{" "}
                 <strong>
                   <a
                     className="underline"
@@ -96,19 +97,20 @@ export default function Portfolio() {
                     Universal Visual Editor
                   </a>
                 </strong>{" "}
-                and the transition of our product from a{" "}
-                <strong>Hybrid CMS</strong> to a <strong>Universal CMS</strong>.
+                y la transición de nuestro producto de un{" "}
+                <strong>CMS híbrido</strong> a un <strong>CMS universal</strong>.
               </p>
 
               <p className="mb-0">
-                In recent months, I&apos;ve been focusing on developing my
-                skills in{" "}
+                En los últimos meses, me he enfocado en desarrollar mis
+                habilidades en{" "}
                 <strong>
-                  team management, leadership, and product understanding
+                  gestión de equipos, liderazgo y entendimiento de producto
                 </strong>
-                . I&apos;ve realized that beyond writing code, a developer must{" "}
-                <strong>deliver strategic value</strong> and deeply understand
-                the <strong>business impact of their work</strong>.
+                . Me he dado cuenta de que más allá de escribir código, un
+                desarrollador debe{" "}
+                <strong>generar valor estratégico</strong> y comprender a fondo el{" "}
+                <strong>impacto empresarial de su trabajo</strong>.
               </p>
             </div>
 

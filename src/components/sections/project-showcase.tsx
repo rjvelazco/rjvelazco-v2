@@ -2,17 +2,17 @@
 
 import React, { useState } from "react";
 
-import { PROJECTS } from "@data/projects";
+import { Project } from "@data/portfolio";
 
-export const ProjectShowcase = () => {
+export const ProjectShowcase = ({ projects }: { projects: Project[] }): JSX.Element => {
   const [showAll, setShowAll] = useState(false);
-  const displayedProjects = showAll ? PROJECTS : PROJECTS.slice(0, 3);
-  const hasMoreProjects = PROJECTS.length > 3;
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+  const hasMoreProjects = projects.length > 3;
 
   return (
     <div className="flex flex-col gap-y-16">
       {displayedProjects.map(
-        ({ image, title, description, tags, link, github, isPriority }) => (
+        ({ image, title, description, tags, link, github, isPriority }: Project) => (
           <article
             key={title}
             className="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"

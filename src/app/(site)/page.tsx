@@ -11,9 +11,9 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="pl-4 pb-4 md:pb-12">
           <h1 className="text-3xl md:text-5xl leading-snug pl-2">
-            Delivering value {" "}
+            Entrega valor {" "}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              beyond the code
+              más allá del código
             </span>
           </h1>
       </section>
@@ -22,7 +22,7 @@ export default async function Home() {
       {featuredPosts.length > 0 && (
         <section className="space-y-8">
           <div className="space-y-2">
-            <h2 className="text-2xl md:text-3xl font-semibold">Latest Articles</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold">Artículos Recientes</h2>
           </div>
           
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -61,7 +61,7 @@ export default async function Home() {
                     href={`/blog/posts/${post.slug}`}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
                   >
-                    Read more
+                    Leer más
                     <svg className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
@@ -76,7 +76,7 @@ export default async function Home() {
               href="/blog"
               className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition-colors"
             >
-              View all articles
+              Ver todos los artículos
               <svg className="ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
