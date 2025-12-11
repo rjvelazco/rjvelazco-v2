@@ -1,0 +1,280 @@
+
+import MdxLayout from "@components/layout/mdx-layout";
+
+export const metadata = {
+  title: "NgRx Signal Store Best Practices para un state más simple y eficiente",
+  date: "2025-12-11",
+  description: "Signal Store es una solución moderna de state management creada por el equipo de NgRx para trabajar con Angular Signals. Aunque no es obligatoria para usar Signals, sí es una de las opciones más recomendadas por su diseño reactivo, escalabilidad y consistencia con la arquitectura Reactiva de Angular.",
+  category: "NgRx",
+  publishDate: "2025-12-11"
+};
+
+export default function Layout({ children }) {
+  return <MdxLayout>{children}</MdxLayout>;
+}
+
+# **Table of Contents**
+
+1. **Introducción**
+2. **Mantén el state atómico**
+    - Cómo simplificar el state con computed signals
+3. **Evita los mega-computed dividiendo tus dependencias**
+    - Define correctamente tus computeds
+4. **Si un valor es del component, debe vivir en el component**
+5. **Conclusión**
+
+# **NgRx Signal Store Best Practices para un state más simple y eficiente**
+
+Signal Store es una solución moderna de [**state management**](https://ngrx.io/guide/store) creada por el equipo de NgRx para trabajar con [**Angular Signals**](https://angular.dev/guide/signals). Aunque no es obligatoria para usar Signals, sí es una de las opciones más recomendadas por su diseño reactivo, escalabilidad y consistencia con la [**arquitectura Reactiva de Angular**](https://angular.dev/guide/signals#reactivity-in-angular).
+
+Uno de los problemas más comunes al adoptarlo es que muchos developers terminan sobre-complicando sus **store methods**, su **state**, y sus [**computed signals**](https://angular.dev/guide/signals#computed), ya sea por:
+
+- una **mala definición del estado**, o
+- una **extracción prematura** de lógica que no pertenece al store.
+
+Para ayudarte a evitar estos anti-patterns, aquí tienes una serie de tips prácticos aplicables tanto a Signal Store como a cualquier solución de state management moderna.
+
+---
+
+## **⚛️ Mantén el state atómico**
+
+El **state** debe ser lo más **atómico** posible: solo datos “crudos”, sin cálculos, sin información compuesta.
+
+> Una propiedad es atómica cuando no depende de otras propiedades para definirse.
+> 
+
+Al almacenar solo datos base en el store, simplificamos las actualizaciones y evita inconsistencias.
+
+Entendamos este concepto desde el **error**. Miremos el siguiente ejemplo:
+
+```tsx
+// ❌ Algunas propiedades de este state no son propiedades atómicas
+const initialState: CartState = {
+  items: [],
+  couponCode: '',
+  shippingMethod: '',
+  isCheckingOut: false,
+  subtotal: 0,
+  discount: 0,
+  shippingCost: 0,
+  total: 0
+};
+
+const store = signalStore(
+  withState<CartState>(initialState),
+  withMethods(() => {
+    return {
+      addItemsToCart: (items: CartItem[]) => {
+        const newItems = [...store.items(), ...items];
+
+        const subtotal = calculateSubtotal(items);
+        const discount = calculateDiscount(subtotal, store.couponCode());
+        const shippingCost = calculateShippingCost(items, store.shippingMethod());
+        const total = calculateTotalCost({subtotal, shippingCost, discount});
+
+        patchState(store, {
+          items: newItems,
+          subtotal,
+          discount,
+          shippingCost,
+          total,
+        });
+      },
+      deleteItemsInCart: () => {/* Your function */}
+    };
+  })
+);
+
+```
+
+¿Pudiste notar el error en este state?
+
+👉🏻 Las propiedades `subtotal`, `shippingCost`, `discount` y `total` son **derivables**, porque dependen directamente de otras. Por lo que cada vez que actualicemos una propiedad atómica como: `items`, `couponCode` y `shippingMethod` , debemos estar atentos de actualizar las propiedades derivadas.
+
+### **✅ Cómo simplificar el state con computed signals**
+
+Las propiedades derivadas deben implementarse como [**`computed`**](https://angular.dev/guide/signals#computed) dentro del store.
+
+Esto se hace a través de [**`withComputed`**](https://ngrx.io/guide/signals/computed), que permite definir lógica derivada reactiva basada en Signals.
+
+```tsx
+const store = signalStore(
+  withState<CartState>(initialState),
+  withComputed((store) => {
+    const subtotal = computed(() => calculateSubtotal(store.items()));
+    const discount = computed(() =>
+      calculateDiscount(subtotal(), store.couponCode())
+    );
+    const shippingCost = computed(() =>
+      calculateShippingCost(store.items(), store.shippingMethod())
+    );
+    const total = computed(() =>
+      calculateTotalCost({ subtotal, shippingCost, discount })
+    );
+    return {
+      subtotal,
+      discount,
+      shippingCost,
+      total
+    }
+  }),
+  withMethods((store) => ({
+    addItemsToCart: (items: CartItem[]) => {
+      patchState(store, { items: [...store.items(), ...items] });
+    }
+  }))
+);
+
+```
+
+Aquí utilizamos:
+
+- [**`patchState`**](https://ngrx.io/guide/signals/state#patching-state-values) para actualizar el state principal
+- **`computed`** para generar valores derivados que se actualizan automáticamente.
+
+💡 Esto es increíble por ahora cada computed se va a actualizar de forma automática cuando sus dependencias se actualicen.
+
+## **⚠️ Evita los mega-computed dividiendo tus dependencias**
+
+Un error frecuente es construir **un solo computed que devuelve un ViewModel completo**, mezclando demasiadas responsabilidades.
+
+Esto impacta:
+
+- rendimiento,
+- mantenibilidad,
+- claridad del store.
+
+Miremos un ejemplo problemático:
+
+```tsx
+cartViewModel: computed<CartViewModel>(() => {
+  const items = store.items();
+  const couponCode = store.couponCode();
+  const shippingMethod = store.shippingMethod();
+  const isCheckingOut = store.isCheckingOut();
+
+  const subtotal = calculateSubtotal(...);
+  const discount = calculateDiscount(...);
+  const shippingCost = calculateShippingCost(...);
+  const total = calculateTotal(...);
+  const ctaLabel = defineCtaLabel(...);
+
+  return { items, itemsCount, subtotal, discount, shippingCost, total, ctaLabel };
+});
+
+```
+
+Este `computed` se recalcula ante **cualquier cambio en cualquiera de sus dependencias**, aunque solo una parte lo necesite.
+
+<aside>
+💡
+
+Por ejemplo:
+
+Si cambia `shippingMethod`, solo deberíamos recalcular `shippingCost` y `total`. Pero, debido a cómo está definido el `computed`, **todas las propiedades se vuelven a calcular cada vez** 😵
+
+</aside>
+
+### **✅ Define correctamente tus computeds**
+
+Según la documentación de Angular y NgRx, un buen `computed` debe:
+
+- Depender solo de lo necesario.
+- Tener un propósito único.
+- Mantenerse pequeño y derivable.
+- **No mezclar lógica de UI** con lógica de negocio.
+
+Tomando en cuenta el ejemplo anterior, podemos reescribirlo de esta forma:
+
+```tsx
+export const cartStore = signalStore(
+  withState<CartState>(initialState),
+  withComputed((store) => ({
+    $subtotal: computed(() => calculateSubtotal(store.items())),
+    $discount: computed(() => calculateDiscount(store.$subtotal(), store.couponCode())),
+    $shippingCost: computed(() =>
+      calculateShippingCost(store.items(), store.shippingMethod())
+    ),
+    $total: computed(() =>
+      store.$subtotal() - store.$discount() + store.$shippingCost()
+    )
+  }))
+);
+
+```
+
+> Estos `computed` funcionan como **Selectors basados en Signals**, lo cual se alinea con el diseño oficial de NgRx Signals.
+> 
+
+Aquí cada `computed` solo se re-calculará únicamente si sus dependencias cambian ✨.
+
+## **🎯 Si un valor es del component, debe vivir en el component**
+
+El objetivo de **Signal Store** no es reemplazar el estado local, sino complementar la arquitectura.
+
+Angular recomienda que los componentes manejen su propio estado local mediante [**`computed`**](https://angular.dev/guide/signals#computed), [**`signal`**](https://angular.dev/guide/signals#signal) y [**dependency injection**](https://angular.dev/guide/dependency-injection). 
+
+Miremos este ejemplo de “**sobre carga al store**”
+
+```tsx
+const store = signalStore(
+  withState<CartState>(initialState),
+  withComputeds(() => ({
+    // 👇🏻 Una propiedad que solo se utilizará en un componente
+    ctaLabel: computed(() => {
+      if (store.isCheckingOut()) return 'Processing...';
+      return 'Checkout now';
+    })
+  }))
+);
+
+```
+
+Este valor **solo sirve para un botón**, no es dominio global y ni va a ser compartido en múltiples lugares → debe moverse al componente.
+
+Ejemplo correcto aplicado a un component sería:
+
+```tsx
+@Component({
+  selector: 'app-cart-checkout-button',
+  standalone: true,
+  template: `
+    <button [disabled]="$itemsCount() === 0 || $ctaLabel() === 'Processing...'">
+      {{ $ctaLabel() }}
+    </button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class CartCheckoutButtonComponent {
+  private readonly store = inject(cartStore);
+
+  readonly $ctaLabel = computed(() => {
+    const itemsCount = this.store.itemsCount();
+    const isCheckingOut = this.store.isCheckingOut();
+
+    if (itemsCount === 0) return 'Add products';
+    if (isCheckingOut) return 'Processing...';
+
+    return 'Checkout now';
+  });
+}
+
+```
+
+Esto respeta las recomendaciones de:
+
+- [**Standalone Components**](https://angular.dev/guide/components)
+- [**Local component state con Signals**](https://angular.dev/guide/signals#using-signals-in-components)
+- **Principio de responsabilidad única**
+
+## **Conclusión**
+
+Trabajar con Signal Store es mucho más sencillo cuando mantienes el **state** limpio y solo dejas allí lo esencial. Las propiedades derivadas van en **computed**, y las que se usan únicamente en un **component** deben vivir en ese component.
+
+Este enfoque sigue las recomendaciones oficiales de:
+
+- Angular Signals
+- NgRx Signal Store
+- Arquitecturas reactivas modernas
+
+Con esto tu aplicación se vuelve más clara, más ligera y más fácil de mantener.
