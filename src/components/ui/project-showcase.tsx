@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { Project } from "@data/portfolio";
 
-export const ProjectShowcase = ({ projects }: { projects: Project[] }): JSX.Element => {
+export const ProjectShowcase = ({ projects }: { projects: Project[] }): React.ReactElement => {
   const [showAll, setShowAll] = useState(false);
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
   const hasMoreProjects = projects.length > 3;
