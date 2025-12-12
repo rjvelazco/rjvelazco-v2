@@ -1,10 +1,20 @@
 import Link from "next/link";
 import { getPosts } from "@utils/post-utils";
 import { ContentPlaceholder } from "@components/ui/content-placeholder";
+import { Badge } from "@components/ui/badge";
 
 export default async function Home() {
   const posts = await getPosts();
   const featuredPosts = posts.slice(0, 3);
+  const nowMs = Date.now();
+
+  const isNewPost = (publishDate: string) => {
+    const publishMs = new Date(publishDate).getTime();
+    if (Number.isNaN(publishMs)) return false;
+    if (publishMs > nowMs) return false;
+    const oneWeekMs = 7 * 24 * 60 * 60 * 1000;
+    return nowMs - publishMs < oneWeekMs;
+  };
 
   return (
     <div className="mx-auto flex flex-col gap-8 py-8 md:py-12">
@@ -27,8 +37,20 @@ export default async function Home() {
           
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {featuredPosts.map((post) => (
-              <article key={post.slug} className="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <article
+                key={post.slug}
+                className="group relative bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 overflow-hidden-x"
+              >
                 <div className="p-6">
+                  {isNewPost(post.publishDate) && (
+                    <Badge
+                      variant="blue"
+                      className="absolute right-0 -top-3 -translate-x-1/2 z-10 shadow-md"
+                      aria-label="New post"
+                    >
+                      NEW
+                    </Badge>
+                  )}
                   <div className="flex items-center gap-2 mb-3">
                     <time className="text-sm text-gray-500" dateTime={post.publishDate}>
                       {new Date(post.publishDate).toLocaleDateString('en-US', {
