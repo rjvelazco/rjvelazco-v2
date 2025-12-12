@@ -3,9 +3,37 @@ import MdxLayout from "@components/layout/mdx-layout";
 export const metadata = {
   title: "Set Up ESLint + Prettier + Husky in Angular v20 (In Minutes)",
   date: "2025-07-17",
-  description: "Keeping your code clean, consistent, and error-free is no longer optional, it's essential. If you’re working with Angular v20, this quick guide will help you integrate ESLint, Prettier and Husky to enforce quality from the very first commit.",
+  description:
+    "Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.",
   category: "Angular",
-  publishDate: "2025-07-17"
+  publishDate: "2025-07-17",
+  openGraph: {
+    title: "ESLint + Prettier + Husky in Angular v20 (Fast Setup)",
+    description:
+      "Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.",
+    type: "article",
+    locale: "en_US",
+    url: "https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/",
+    siteName: "Rafael Velazco",
+    images: [
+      {
+        url: "/assets/ngrx-signal-store.png",
+        alt: "Angular v20 - ESLint, Prettier, Husky setup",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ESLint + Prettier + Husky in Angular v20 (Fast Setup)",
+    description:
+      "Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.",
+    creator: "@rjvelazco21",
+    images: ["/assets/ngrx-signal-store.png"],
+  },
+  alternates: {
+    canonical:
+      "https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/",
+  },
 };
 
 export default function Layout({ children }) {
@@ -15,14 +43,14 @@ export default function Layout({ children }) {
 # Set Up ESLint + Prettier + Husky in Angular v20 (In Minutes)
 
 Keeping your code clean, consistent, and error-free is no longer optional, it's essential.
-If you’re working with Angular v20, this quick guide will help you integrate **ESLint**, **Prettier**, and **Husky** to enforce quality from the very first commit.
+If you're working with Angular v20, this quick guide will help you integrate **ESLint**, **Prettier**, and **Husky** to enforce quality from the very first commit.
 
-## Tools You’ll Be Using
+## Tools You'll Be Using
 
-* **Angular CLI** – Angular’s command-line tool
-* **ESLint** – Linter to catch errors and enforce code standards
-* **Prettier** – Code formatter for consistent style
-* **Husky** – Tool to automate tasks on Git hooks (e.g., before commits)
+* **Angular CLI** - Angular's command-line tool
+* **ESLint** - Linter to catch errors and enforce code standards
+* **Prettier** - Code formatter for consistent style
+* **Husky** - Tool to automate tasks on Git hooks (e.g., before commits)
 
 ## Section Preview
 
@@ -150,7 +178,7 @@ echo "npm run lint && npm run format" > .husky/pre-commit
 
 ## Final Check
 
-Run the following commands to make sure everything’s working:
+Run the following commands to make sure everything's working:
 
 ```bash
 # Check linting

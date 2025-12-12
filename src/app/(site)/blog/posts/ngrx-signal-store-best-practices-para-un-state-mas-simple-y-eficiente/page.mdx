@@ -2,11 +2,39 @@
 import MdxLayout from "@components/layout/mdx-layout";
 
 export const metadata = {
-  title: "NgRx Signal Store Best Practices para un state más simple y eficiente",
+  title: "NgRx Signal Store: best practices con Angular Signals",
   date: "2025-12-11",
-  description: "Signal Store es una solución moderna de state management creada por el equipo de NgRx para trabajar con Angular Signals. Aunque no es obligatoria para usar Signals, sí es una de las opciones más recomendadas por su diseño reactivo, escalabilidad y consistencia con la arquitectura Reactiva de Angular.",
+  description:
+    "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
   category: "NgRx",
-  publishDate: "2025-12-11"
+  publishDate: "2025-12-11",
+  openGraph: {
+    title: "NgRx Signal Store: best practices con Angular Signals",
+    description:
+      "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
+    type: "article",
+    locale: "es_ES",
+    url: "https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/",
+    siteName: "Rafael Velazco",
+    images: [
+      {
+        url: "/assets/ngrx-signal-store.png",
+        alt: "NgRx Signal Store (Angular Signals) - best practices",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NgRx Signal Store: best practices con Angular Signals",
+    description:
+      "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
+    creator: "@rjvelazco21",
+    images: ["/assets/ngrx-signal-store.png"],
+  },
+  alternates: {
+    canonical:
+      "https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/",
+  },
 };
 
 export default function Layout({ children }) {
@@ -140,9 +168,9 @@ Un error frecuente es construir **un solo computed que devuelve un ViewModel com
 
 Esto impacta:
 
-- rendimiento,
-- mantenibilidad,
-- claridad del store.
+- Rendimiento.
+- Mantenibilidad.
+- Claridad del store.
 
 Miremos un ejemplo problemático:
 

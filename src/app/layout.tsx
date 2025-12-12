@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.rjvelazco.com"),
   title: "Rafael Velazco",
   description: "Senior Software Engineer",
 };
