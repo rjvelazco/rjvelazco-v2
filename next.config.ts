@@ -7,7 +7,10 @@ const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   distDir: "build",
   output: "export",
-  trailingSlash: true
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  }
 };
 
 const withMDX = createMDX({
