@@ -27,7 +27,6 @@ export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProp
   };
 
   useEffect(() => {
-    setNavActive(window.scrollY > 50);
     const sections = document.querySelectorAll(
       "[data-page-section]"
     ) as NodeListOf<HTMLElement>;
@@ -53,7 +52,11 @@ export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProp
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const rafId = window.requestAnimationFrame(handleScroll);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

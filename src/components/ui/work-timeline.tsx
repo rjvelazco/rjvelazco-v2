@@ -6,13 +6,13 @@ export const WorkTimeline = ({ workTimeline }: { workTimeline: WorkTimelineItem[
   return (
     <ol className="relative mt-16">
       {workTimeline.map((workTimeline, index) => (
-        <li key={index}><WorkTimelineItem {...workTimeline} /></li>
+        <li key={index}><WorkTimelineEntry {...workTimeline} /></li>
       ))}
     </ol>
   );
 };
 
-const WorkTimelineItem = ({ title, company, date, description, link, linkText }: any) => {
+const WorkTimelineEntry = ({ title, company, date, description, link, linkText }: WorkTimelineItem) => {
     return (
         <div
         className="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]"

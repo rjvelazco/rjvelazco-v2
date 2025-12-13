@@ -3,17 +3,18 @@ import { getPosts } from "@utils/post-utils";
 import { ContentPlaceholder } from "@components/ui/content-placeholder";
 import { Badge } from "@components/ui/badge";
 
+const NOW_MS = Date.now();
+
 export default async function Home() {
   const posts = await getPosts();
   const featuredPosts = posts.slice(0, 3);
-  const nowMs = Date.now();
 
   const isNewPost = (publishDate: string) => {
     const publishMs = new Date(publishDate).getTime();
     if (Number.isNaN(publishMs)) return false;
-    if (publishMs > nowMs) return false;
+    if (publishMs > NOW_MS) return false;
     const oneWeekMs = 7 * 24 * 60 * 60 * 1000;
-    return nowMs - publishMs < oneWeekMs;
+    return NOW_MS - publishMs < oneWeekMs;
   };
 
   return (
@@ -45,7 +46,7 @@ export default async function Home() {
                   {isNewPost(post.publishDate) && (
                     <Badge
                       variant="blue"
-                      className="absolute right-0 -top-3 -translate-x-1/2 z-10 shadow-md"
+                      className="absolute right-0 -top-3 -translate-x-1/2 z-10 shadow-md rounded-sm"
                       aria-label="New post"
                     >
                       NEW
