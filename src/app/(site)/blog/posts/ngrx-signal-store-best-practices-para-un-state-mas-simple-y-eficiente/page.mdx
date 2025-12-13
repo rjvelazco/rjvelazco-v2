@@ -38,7 +38,7 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return <MdxLayout>{children}</MdxLayout>;
+  return <MdxLayout metadata={metadata} image={"/assets/ngrx-signal-store.png"}>{children}</MdxLayout>;
 }
 
 # **Tabla de contenido**
@@ -62,8 +62,6 @@ Uno de los problemas más comunes al adoptarlo es que muchos developers terminan
 - una **extracción prematura** de lógica que no pertenece al store.
 
 Para ayudarte a evitar estos anti-patterns, aquí tienes una serie de tips prácticos aplicables tanto a Signal Store como a cualquier solución de state management moderna.
-
----
 
 <a id="mantener-el-state-atomico"></a>
 ## **⚛️ Mantén el state atómico**
