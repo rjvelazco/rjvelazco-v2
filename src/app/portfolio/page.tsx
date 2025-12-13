@@ -7,6 +7,7 @@ import { SectionHeading } from "@components/ui/section-heading";
 import { SocialLink } from "@components/ui/social-link";
 import { Badge } from "@components/ui/badge";
 import { PROJECTS, WORK_TIMELINE } from "@data/portfolio";
+import Image from "next/image";
 
 export default function Portfolio() {
   return (
@@ -14,10 +15,12 @@ export default function Portfolio() {
       <PageSection className="py-16 md:py-36" id="home">
         <div className="max-w-xl">
           <div className="flex gap-4 mb-4">
-            <img
+            <Image
               className="rounded-full shadow-lg size-16"
               src="/me.jpg"
               alt="Rafael Velazco"
+              width={64}
+              height={64}
             />
             <a
               href="https://linkedin.com/in/rafael-velazco"
@@ -112,10 +115,10 @@ export default function Portfolio() {
               </p>
             </div>
 
-            <img
-              width="200"
-              height="200"
+            <Image
               src="/me.jpg"
+              width={200}
+              height={200}
               alt={"Rafael Velazco"}
               className="order-1 object-cover w-64 h-full md:order-2 lg:w-64 aspect-square rounded-2xl"
               style={{ objectPosition: "50% 50%" }}

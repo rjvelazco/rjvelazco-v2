@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { NavBar } from "@components/layout/nav-bar";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Rafael Velazco",
@@ -35,19 +36,23 @@ export default function RootLayout({
           <ul className="flex flex-wrap items-center mt-3 font-medium gap-2 sm:mt-0">
             <Link href="https://github.com/rjvelazco">
               <li>
-                <img
+                <Image
+                  className="cursor-pointer"
                   src="/assets/github.svg"
                   alt="GitHub"
-                  className="cursor-pointer w-4 h-4"
+                  width={16}
+                  height={16}
                 />
               </li>
             </Link>
             <Link href="https://www.linkedin.com/in/rafael-velazco/">
               <li>
-                <img
+                  <Image
+                    className="cursor-pointer"
                   src="/assets/linkedin.svg"
                   alt="LinkedIn"
-                  className="cursor-pointer w-4 h-4"
+                  width={16}
+                  height={16}
                 />
               </li>
             </Link>

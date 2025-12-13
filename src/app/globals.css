@@ -32,6 +32,21 @@ body {
     line-height: 1.7;
 }
 
+/* Material Symbols (icon font) */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+}
+
 /* Homepage specific styles */
 .line-clamp-3 {
     display: -webkit-box;

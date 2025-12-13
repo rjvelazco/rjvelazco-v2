@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { usePathname } from "next/navigation";
 
@@ -29,7 +30,7 @@ const MobileMenu = () => {
   return (
     <div className="md:hidden">
       <button className="cursor-pointer" onClick={() => handleOpenMenu()}>
-        <img src="/assets/menu-icon.svg" alt="Menu" className="w-8 h-8" />
+        <span className="material-symbols-outlined" style={{ fontSize: "2.5rem" }}>menu</span>
       </button>
 
       {isOpen && (
@@ -39,7 +40,7 @@ const MobileMenu = () => {
         ></div>
       )}
       <ul
-        className={`fixed top-0 right-0 w-0 h-full shadow-lg bg-white flex flex-col gap-6 overflow-x-hidden  duration-500 font-bold z-1 pt-14 pb-10 ${
+        className={`fixed top-0 right-0 w-0 h-full shadow-lg bg-white flex flex-col gap-6 overflow-x-hidden  duration-500 font-bold z-100 pt-14 pb-10 ${
           isOpen ? "w-[264px] px-6" : ""
         }`}
       >
@@ -47,27 +48,18 @@ const MobileMenu = () => {
           className="absolute top-4 left-8 cursor-pointer"
           onClick={() => handleCloseMenu()}
         >
-          <img src="/assets/arrow-left.svg" alt="Close" className="w-6 h-6" />
+          <span className="material-symbols-outlined">arrow_left_alt</span>
         </button>
         <NavItem href="/" label="Home" />
-        <NavItem href="/logs" label="Logs" />
         <NavItem href="/portfolio" label="Portfolio" />
         <NavItem href="mailto:rjvelazco21@gmail.com" label="Contact" />
 
         <div className="flex-1 flex gap-2 justify-end items-end">
           <Link href="https://github.com/rjvelazco">
-            <img
-              src="/assets/github.svg"
-              alt="GitHub"
-              className="cursor-pointer w-6 h-6"
-            />
+            <Image src="/assets/github.svg" alt="GitHub" width={24} height={24} />
           </Link>
           <Link href="https://www.linkedin.com/in/rafael-velazco/">
-            <img
-              src="/assets/linkedin.svg"
-              alt="LinkedIn"
-              className="cursor-pointer w-6 h-6"
-            />
+            <Image src="/assets/linkedin.svg" alt="LinkedIn" width={24} height={24} />
           </Link>
         </div>
       </ul>
