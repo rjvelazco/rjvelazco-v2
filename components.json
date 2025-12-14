@@ -17,6 +17,5 @@
     "ui": "@components/ui",
     "lib": "@components/lib",
     "hooks": "@components/hooks"
-  },
-  "registries": {}
+  }
 }
