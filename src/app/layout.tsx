@@ -29,7 +29,7 @@ export default function RootLayout({
         {/* eslint-disable-next-line @next/next/google-font-display, @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_left_alt,menu,palette,settings&display=block"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..20&icon_names=arrow_left_alt,arrow_right_alt,ios_share,menu,palette,settings,share&display=block"
         />
       </head>
       {children}

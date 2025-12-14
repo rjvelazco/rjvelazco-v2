@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getPosts } from "@utils/post-utils";
-import { ContentPlaceholder } from "@components/ui/content-placeholder";
 import { Badge } from "@components/ui/badge";
 
 const NOW_MS = Date.now();
@@ -85,9 +84,7 @@ export default async function Home() {
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
                   >
                     Leer más
-                    <svg className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
+                    <span className="material-symbols-outlined">arrow_right_alt</span>
                   </Link>
                 </div>
               </article>
@@ -105,13 +102,6 @@ export default async function Home() {
               </svg>
             </Link>
           </div>
-        </section>
-      )}
-
-      {/* Fallback for no content */}
-      {posts.length === 0 && (
-        <section className="py-12">
-          <ContentPlaceholder type="content" showButton={false} />
         </section>
       )}
     </div>
