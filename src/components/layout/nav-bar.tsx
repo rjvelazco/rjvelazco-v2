@@ -7,6 +7,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export const NavBar = () => {
+
   return (
     <nav className="px-6 py-4 pr-0" aria-label="Main Navigation">
       <ul className="hidden md:flex justify-center gap-1">
@@ -69,7 +70,8 @@ const MobileMenu = () => {
 
 const NavItem = ({ href, label }: { href: string; label: string }) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const mainPath = pathname.split("/")[1];
+  const isActive = `/${mainPath}` === href;
 
   return (
     <li>
