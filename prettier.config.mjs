@@ -1,11 +1,16 @@
 /** @type {import("prettier").Config} */
 const config = {
-  semi: true,
-  singleQuote: false,
-  trailingComma: "all",
-  printWidth: 100,
+  printWidth: 120,
+  useTabs: false,
   tabWidth: 2,
-  arrowParens: "always",
+  trailingComma: 'es5',
+  semi: true,
+  singleQuote: true,
+  bracketSpacing: true,
+  arrowParens: 'always',
+  jsxSingleQuote: false,
+  bracketSameLine: false,
+  endOfLine: 'lf'
 };
 
 export default config;

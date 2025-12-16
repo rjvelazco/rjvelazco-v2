@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { ToggleGroup, ToggleGroupItem } from "@components/ui/toggle-group";
-import type { NavItem } from "@data/portfolio";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { ToggleGroup, ToggleGroupItem } from '@components/ui/toggle-group';
+import type { NavItem } from '@data/portfolio';
 
 interface PortfolioHeaderProps {
   navItems: NavItem[];
-  locale?: "en" | "es";
+  locale?: 'en' | 'es';
 }
 
-export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProps) => {
+export const PortfolioHeader = ({ navItems, locale = 'en' }: PortfolioHeaderProps) => {
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [navActive, setNavActive] = useState<boolean>(false);
@@ -19,26 +19,25 @@ export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProp
   const handleLocaleChange = (value: string) => {
     if (value === locale) return;
 
-    if (value === "es") {
-      router.push("/es/portfolio");
+    if (value === 'es') {
+      router.push('/es/portfolio');
     } else {
-      router.push("/portfolio");
+      router.push('/portfolio');
     }
   };
 
   useEffect(() => {
-    const sections = document.querySelectorAll("[data-page-section]") as NodeListOf<HTMLElement>;
+    const sections = document.querySelectorAll('[data-page-section]') as NodeListOf<HTMLElement>;
 
     const handleScroll = () => {
       setNavActive(window.scrollY > 50);
-      const isAtBottom =
-        window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight;
+      const isAtBottom = window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight;
 
       sections.forEach((section) => {
         const { offsetTop, clientHeight } = section;
 
         if (isAtBottom) {
-          setActiveSection("about-me");
+          setActiveSection('about-me');
           return;
         }
 
@@ -48,11 +47,11 @@ export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProp
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     const rafId = window.requestAnimationFrame(handleScroll);
     return () => {
       window.cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -62,19 +61,14 @@ export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProp
         role="navigation"
         aria-label="Main navigation"
         className={`flex px-3 text-sm font-medium rounded-full justify-center items-center backdrop-blur-xs gap-2 ${
-          navActive ? "shadow-md" : ""
+          navActive ? 'shadow-md' : ''
         }`}
       >
         {navItems.map((link, index) => (
-          <Link
-            key={index}
-            aria-label={link.label}
-            href={link.url}
-            onClick={() => setActiveSection(link.label)}
-          >
+          <Link key={index} aria-label={link.label} href={link.url} onClick={() => setActiveSection(link.label)}>
             <span
               className={`relative block p-2 transition hover:text-petrol ${
-                activeSection === link.label ? "text-petrol" : ""
+                activeSection === link.label ? 'text-petrol' : ''
               }`}
             >
               {link.title}

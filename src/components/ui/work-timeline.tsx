@@ -1,5 +1,5 @@
-import { LinkInline } from "@components/ui/link-inline";
-import type { WorkTimelineItem } from "@data/portfolio";
+import { LinkInline } from '@components/ui/link-inline';
+import type { WorkTimelineItem } from '@data/portfolio';
 
 export const WorkTimeline = ({ workTimeline }: { workTimeline: WorkTimelineItem[] }) => {
   return (
@@ -13,14 +13,7 @@ export const WorkTimeline = ({ workTimeline }: { workTimeline: WorkTimelineItem[
   );
 };
 
-const WorkTimelineEntry = ({
-  title,
-  company,
-  date,
-  description,
-  link,
-  linkText,
-}: WorkTimelineItem) => {
+const WorkTimelineEntry = ({ title, company, date, description, link, linkText }: WorkTimelineItem) => {
   return (
     <div className="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]">
       <div className="relative pb-12 md:col-span-2">
@@ -35,7 +28,7 @@ const WorkTimelineEntry = ({
         {description}
         {link && (
           <LinkInline href={link}>
-            {linkText}{" "}
+            {linkText}{' '}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 icon icon-tabler icon-tabler-chevron-right"

@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { NavBar } from "@components/layout/nav-bar";
-import Link from "next/link";
-import Image from "next/image";
+import type { Metadata } from 'next';
+import { NavBar } from '@components/layout/nav-bar';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: "Rafael Velazco",
-  description: "Senior Software Engineer",
+  title: 'Rafael Velazco',
+  description: 'Senior Software Engineer',
 };
 
 export default function RootLayout({
@@ -35,24 +35,12 @@ export default function RootLayout({
           <ul className="flex flex-wrap items-center mt-3 font-medium gap-2 sm:mt-0">
             <Link href="https://github.com/rjvelazco">
               <li>
-                <Image
-                  className="cursor-pointer"
-                  src="/assets/github.svg"
-                  alt="GitHub"
-                  width={16}
-                  height={16}
-                />
+                <Image className="cursor-pointer" src="/assets/github.svg" alt="GitHub" width={16} height={16} />
               </li>
             </Link>
             <Link href="https://www.linkedin.com/in/rafael-velazco/">
               <li>
-                <Image
-                  className="cursor-pointer"
-                  src="/assets/linkedin.svg"
-                  alt="LinkedIn"
-                  width={16}
-                  height={16}
-                />
+                <Image className="cursor-pointer" src="/assets/linkedin.svg" alt="LinkedIn" width={16} height={16} />
               </li>
             </Link>
             <li className="hover:underline">

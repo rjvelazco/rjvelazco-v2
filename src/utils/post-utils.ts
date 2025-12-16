@@ -1,8 +1,8 @@
-import { Dirent } from "fs";
-import { readdir, readFile } from "fs/promises";
-import { join } from "path";
+import { Dirent } from 'fs';
+import { readdir, readFile } from 'fs/promises';
+import { join } from 'path';
 
-const POST_DIR = join(process.cwd(), "src/app/(site)/blog/posts");
+const POST_DIR = join(process.cwd(), 'src/app/(site)/blog/posts');
 
 export interface BlogPost {
   slug: string;
@@ -19,7 +19,7 @@ export const getPostPaths = async () => {
     const directories = folders.filter((dirent: Dirent) => dirent.isDirectory());
     return directories.map((dirent: Dirent) => dirent.name);
   } catch (error) {
-    console.warn("Error getting post paths: ", error);
+    console.warn('Error getting post paths: ', error);
     return [];
   }
 };
@@ -63,8 +63,8 @@ export async function getPosts(): Promise<BlogPost[]> {
     const posts = await Promise.all(
       directories.map(async (dirent: Dirent) => {
         try {
-          const filePath = join(POST_DIR, dirent.name, "page.mdx");
-          const content = await readFile(filePath, "utf-8");
+          const filePath = join(POST_DIR, dirent.name, 'page.mdx');
+          const content = await readFile(filePath, 'utf-8');
 
           // Extract metadata safely
           const metadata = extractMetadata(content);
@@ -72,9 +72,9 @@ export async function getPosts(): Promise<BlogPost[]> {
           return {
             slug: dirent.name,
             title: metadata.title || dirent.name,
-            date: metadata.date || "",
-            description: metadata.description || "",
-            publishDate: metadata.publishDate || metadata.date || "",
+            date: metadata.date || '',
+            description: metadata.description || '',
+            publishDate: metadata.publishDate || metadata.date || '',
             category: metadata.category,
           } as BlogPost;
         } catch (error) {
@@ -82,12 +82,12 @@ export async function getPosts(): Promise<BlogPost[]> {
           return {
             slug: dirent.name,
             title: dirent.name,
-            date: "",
-            description: "",
-            publishDate: "",
+            date: '',
+            description: '',
+            publishDate: '',
           } as BlogPost;
         }
-      }),
+      })
     );
 
     // Sort posts from newest to oldest
@@ -95,7 +95,7 @@ export async function getPosts(): Promise<BlogPost[]> {
 
     return posts || [];
   } catch (error) {
-    console.warn("Error loading metadata for posts: ", error);
+    console.warn('Error loading metadata for posts: ', error);
 
     return [];
   }

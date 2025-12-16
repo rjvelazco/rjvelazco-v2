@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { BlogPost, getPosts } from "@utils/post-utils";
+import Link from 'next/link';
+import { BlogPost, getPosts } from '@utils/post-utils';
 
 export const metadata = {
-  title: "Blog - Rafael Velazco",
-  description: "Articles and tutorials about web development, Angular, and software engineering",
+  title: 'Blog - Rafael Velazco',
+  description: 'Articles and tutorials about web development, Angular, and software engineering',
 };
 
 export default async function BlogPage() {
@@ -52,18 +52,16 @@ const BlogItem = ({ post }: { post: BlogPost }) => {
     <article className="border-b border-gray-200 pb-8 last:border-b-0" key={post.slug}>
       <div className="flex items-center gap-2 mb-2">
         <time className="text-sm text-gray-500" dateTime={post.publishDate}>
-          {new Date(post.publishDate).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
+          {new Date(post.publishDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
           })}
         </time>
         {post.category && (
           <>
             <span className="text-gray-300">•</span>
-            <span className="text-sm bg-gray-100 px-2 py-1 rounded-md text-gray-700">
-              {post.category}
-            </span>
+            <span className="text-sm bg-gray-100 px-2 py-1 rounded-md text-gray-700">{post.category}</span>
           </>
         )}
       </div>

@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
-import { SharePost } from "@components/ui/share-post";
+import Link from 'next/link';
+import Image from 'next/image';
+import { SharePost } from '@components/ui/share-post';
 
 interface MdxLayoutProps {
   children: React.ReactNode;
@@ -55,21 +55,15 @@ export default function MdxLayout({ children, metadata, image }: MdxLayoutProps)
  * @param image - Article cover image
  * @returns Article header component
  */
-const ArticleHeader = ({
-  metadata,
-  image,
-}: {
-  metadata: MdxLayoutProps["metadata"];
-  image?: string;
-}) => {
-  const postUrl = metadata.alternates?.canonical ?? metadata.openGraph?.url ?? "/";
+const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata']; image?: string }) => {
+  const postUrl = metadata.alternates?.canonical ?? metadata.openGraph?.url ?? '/';
   return (
     <header className="mb-12 border-b border-gray-200 pb-8">
       {image && (
         <div className="relative mb-8 aspect-[16/9] w-full overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-sm">
           <Image
             src={image}
-            alt={metadata.title || "Article cover image"}
+            alt={metadata.title || 'Article cover image'}
             fill
             priority
             className="object-cover"
@@ -87,10 +81,10 @@ const ArticleHeader = ({
             dateTime={metadata.publishDate}
             className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700"
           >
-            {new Date(metadata.publishDate).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
+            {new Date(metadata.publishDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
             })}
           </time>
           <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-800 ring-1 ring-blue-100">
@@ -105,9 +99,7 @@ const ArticleHeader = ({
         <SharePost url={postUrl} className="shrink-0" />
       </div>
 
-      <p className="max-w-prose text-base leading-relaxed text-slate-600 sm:text-lg">
-        {metadata.description}
-      </p>
+      <p className="max-w-prose text-base leading-relaxed text-slate-600 sm:text-lg">{metadata.description}</p>
     </header>
   );
 };
@@ -126,12 +118,7 @@ const ArticleFooter = () => {
             className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto"
             aria-label="More Articles"
           >
-            <svg
-              className="mr-2 h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
+            <svg className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path
                 fillRule="evenodd"
                 d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
@@ -143,9 +130,7 @@ const ArticleFooter = () => {
 
           <div className="text-center text-sm text-slate-600 sm:text-right">
             <div className="font-medium text-slate-800">Gracias por leer!</div>
-            <div className="mt-0.5 text-slate-600">
-              ¿Quieres más artículos como este? Explora la sección de blog.
-            </div>
+            <div className="mt-0.5 text-slate-600">¿Quieres más artículos como este? Explora la sección de blog.</div>
           </div>
         </div>
       </div>

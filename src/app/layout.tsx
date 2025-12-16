@@ -1,16 +1,16 @@
-import React from "react";
-import { Inter } from "next/font/google";
-import type { Metadata } from "next";
+import React from 'react';
+import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
 
-import "./globals.css";
+import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rjvelazco.com"),
-  title: "Rafael Velazco",
-  description: "Senior Software Engineer",
+  metadataBase: new URL('https://www.rjvelazco.com'),
+  title: 'Rafael Velazco',
+  description: 'Senior Software Engineer',
 };
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export default function RootLayout({
   children,

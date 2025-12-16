@@ -1,37 +1,37 @@
-import MdxLayout from "@components/layout/mdx-layout";
+import MdxLayout from '@components/layout/mdx-layout';
 
 export const metadata = {
-  title: "Angular Router State Ejemplo Práctico",
+  title: 'Angular Router State Ejemplo Práctico',
   description:
-    "Aprende a usar el router state en Angular para navegar entre páginas y mantener el estado de la aplicación.",
-  date: "2025-07-28",
-  category: "Angular",
-  publishDate: "2025-07-28",
+    'Aprende a usar el router state en Angular para navegar entre páginas y mantener el estado de la aplicación.',
+  date: '2025-07-28',
+  category: 'Angular',
+  publishDate: '2025-07-28',
   openGraph: {
-    title: "Angular Router State: ejemplo práctico",
+    title: 'Angular Router State: ejemplo práctico',
     description:
-      "Aprende a usar el router state en Angular para navegar entre páginas y mantener el estado de la aplicación.",
-    type: "article",
-    locale: "es_ES",
-    url: "https://www.rjvelazco.com/blog/posts/angular-router-state-ejemplo-practico/",
-    siteName: "Rafael Velazco",
+      'Aprende a usar el router state en Angular para navegar entre páginas y mantener el estado de la aplicación.',
+    type: 'article',
+    locale: 'es_ES',
+    url: 'https://www.rjvelazco.com/blog/posts/angular-router-state-ejemplo-practico/',
+    siteName: 'Rafael Velazco',
     images: [
       {
-        url: "/assets/ngrx-signal-store.png",
-        alt: "Angular - router state (ejemplo práctico)",
+        url: '/assets/ngrx-signal-store.png',
+        alt: 'Angular - router state (ejemplo práctico)',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Angular Router State: ejemplo práctico",
+    card: 'summary_large_image',
+    title: 'Angular Router State: ejemplo práctico',
     description:
-      "Aprende a usar el router state en Angular para navegar entre páginas y mantener el estado de la aplicación.",
-    creator: "@rjvelazco21",
-    images: ["/assets/ngrx-signal-store.png"],
+      'Aprende a usar el router state en Angular para navegar entre páginas y mantener el estado de la aplicación.',
+    creator: '@rjvelazco21',
+    images: ['/assets/ngrx-signal-store.png'],
   },
   alternates: {
-    canonical: "https://www.rjvelazco.com/blog/posts/angular-router-state-ejemplo-practico/",
+    canonical: 'https://www.rjvelazco.com/blog/posts/angular-router-state-ejemplo-practico/',
   },
 };
 
@@ -60,7 +60,7 @@ Entonces, vamos a nuestro `app-users-list.component.ts` y vamos a definir el sta
 
 ```typescript
 @Component({
-  selector: "app-users-list",
+  selector: 'app-users-list',
   standalone: true,
   template: `
     <div class="container mx-auto p-4">
@@ -120,7 +120,7 @@ export class UsersListComponent implements OnInit {
         this.loading = false;
       },
       error: (error) => {
-        console.error("Error loading users:", error);
+        console.error('Error loading users:', error);
         this.loading = false;
       },
     });
@@ -136,9 +136,9 @@ Ahora, vamos a leer el state en nuestro component `app-user-details.component.ts
 
 ```typescript
 @Component({
-  selector: "app-user-detail",
+  selector: 'app-user-detail',
   standalone: true,
-  styleUrls: ["./user-detail.component.css"],
+  styleUrls: ['./user-detail.component.css'],
   template: `...`,
 })
 export class UserDetailComponent implements OnInit {
@@ -152,7 +152,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const routeState = this.router.lastSuccessfulNavigation?.extras.state;
-    this.user = routeState["user"] as User;
+    this.user = routeState['user'] as User;
     console.log(`Usuario seleccionado: ${this.user?.name}`);
   }
 }
@@ -168,9 +168,9 @@ Para manejar este caso, podemos chequear si el state está definido y si no, hac
 
 ```typescript
 @Component({
-  selector: "app-user-detail",
+  selector: 'app-user-detail',
   standalone: true,
-  styleUrls: ["./user-detail.component.css"],
+  styleUrls: ['./user-detail.component.css'],
   template: `...`,
 })
 export class UserDetailComponent implements OnInit {
@@ -181,8 +181,8 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     const routeState = this.router.lastSuccessfulNavigation?.extras.state;
 
-    if (routeState && routeState["user"]) {
-      this.user = routeState["user"] as User;
+    if (routeState && routeState['user']) {
+      this.user = routeState['user'] as User;
       console.log(`Usuario seleccionado: ${this.user?.name}`);
     } else {
       // Cargar el usuario desde la ruta
@@ -191,9 +191,9 @@ export class UserDetailComponent implements OnInit {
   }
 
   private loadUserFromRoute() {
-    const id = this.route.snapshot.paramMap.get("id");
+    const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
-      this.router.navigate(["/users"]);
+      this.router.navigate(['/users']);
       return;
     }
 
@@ -203,7 +203,7 @@ export class UserDetailComponent implements OnInit {
         this.loading = false;
       },
       error: (error) => {
-        console.error("Error loading user:", error);
+        console.error('Error loading user:', error);
         this.user = null;
         this.loading = false;
       },

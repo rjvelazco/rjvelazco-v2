@@ -1,28 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import type { Metadata } from "next";
-import { PortfolioHeader } from "@components/layout/portfolio-header";
-import { NAV_ITEMS_ES } from "@data/portfolio";
+import type { Metadata } from 'next';
+import { PortfolioHeader } from '@components/layout/portfolio-header';
+import { NAV_ITEMS_ES } from '@data/portfolio';
 
 export const metadata: Metadata = {
-  title: "Rafael Velazco | Senior Software Engineer",
-  description: "Senior Software Engineer with expertise in web development",
-  keywords: ["software engineer", "senior engineer", "web development", "portfolio"],
-  authors: [{ name: "Rafael Velazco" }],
-  creator: "Rafael Velazco",
-  publisher: "Rafael Velazco",
+  title: 'Rafael Velazco | Senior Software Engineer',
+  description: 'Senior Software Engineer with expertise in web development',
+  keywords: ['software engineer', 'senior engineer', 'web development', 'portfolio'],
+  authors: [{ name: 'Rafael Velazco' }],
+  creator: 'Rafael Velazco',
+  publisher: 'Rafael Velazco',
   openGraph: {
-    title: "Rafael Velazco | Senior Engineer at dotCMS",
-    description: "Senior Software Engineer with expertise in web development",
-    type: "website",
-    locale: "en_US",
-    siteName: "Rafael Velazco Portfolio",
+    title: 'Rafael Velazco | Senior Engineer at dotCMS',
+    description: 'Senior Software Engineer with expertise in web development',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Rafael Velazco Portfolio',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Rafael Velazco | Senior Engineer at dotCMS",
-    description: "Senior Software Engineer with expertise in web development",
-    creator: "@rjvelazco21",
+    card: 'summary_large_image',
+    title: 'Rafael Velazco | Senior Engineer at dotCMS',
+    description: 'Senior Software Engineer with expertise in web development',
+    creator: '@rjvelazco21',
   },
   robots: {
     index: true,
@@ -35,7 +35,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.rjvelazco.com";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.rjvelazco.com';
 
   return (
     <body className="relative font-onest portfolio-gradient">
@@ -68,29 +68,22 @@ export default function RootLayout({
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Rafael Velazco",
-            jobTitle: "Senior Software Engineer",
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Rafael Velazco',
+            jobTitle: 'Senior Software Engineer',
             url: baseUrl,
-            description: "Senior Software Engineer with expertise in web development",
+            description: 'Senior Software Engineer with expertise in web development',
             sameAs: [
-              "https://twitter.com/rjvelazco21",
-              "https://www.linkedin.com/in/rafael-velazco/",
-              "https://github.com/rjvelazco",
+              'https://twitter.com/rjvelazco21',
+              'https://www.linkedin.com/in/rafael-velazco/',
+              'https://github.com/rjvelazco',
             ],
             worksFor: {
-              "@type": "Organization",
-              name: "dotCMS",
+              '@type': 'Organization',
+              name: 'dotCMS',
             },
-            knowsAbout: [
-              "Web Development",
-              "Frontend Development",
-              "React",
-              "NextJS",
-              "TypeScript",
-              "JavaScript",
-            ],
+            knowsAbout: ['Web Development', 'Frontend Development', 'React', 'NextJS', 'TypeScript', 'JavaScript'],
           }),
         }}
       />

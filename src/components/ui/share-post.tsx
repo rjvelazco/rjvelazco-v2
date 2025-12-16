@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { cn } from "@components/utils";
-import { Popover, PopoverContent, PopoverTrigger } from "@components/ui/popover";
-import { buildShareUrls } from "@utils/share-utils";
+import { cn } from '@components/utils';
+import { Popover, PopoverContent, PopoverTrigger } from '@components/ui/popover';
+import { buildShareUrls } from '@utils/share-utils';
 
 type SharePostProps = {
   url: string;
@@ -36,7 +36,7 @@ export const SharePost = ({ url, className }: SharePostProps) => {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      console.error("[SharePost]: Failed to copy link");
+      console.error('[SharePost]: Failed to copy link');
     }
   };
 
@@ -46,8 +46,8 @@ export const SharePost = ({ url, className }: SharePostProps) => {
         <button
           type="button"
           className={cn(
-            "inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer",
-            className,
+            'inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer',
+            className
           )}
           aria-label="Share this post"
         >
@@ -65,24 +65,16 @@ export const SharePost = ({ url, className }: SharePostProps) => {
             aria-label="Copy link"
           >
             <span className="material-symbols-outlined">link</span>
-            {copied ? "Link copied! 🎉" : "Copy link"}
+            {copied ? 'Link copied! 🎉' : 'Copy link'}
           </button>
 
           <div className="my-1 h-px w-full bg-slate-200" />
 
           <ShareMenuLink href={xUrl} label="Share on X" ariaLabel="Share on X" />
 
-          <ShareMenuLink
-            href={facebookUrl}
-            label="Share on Facebook"
-            ariaLabel="Share on Facebook"
-          />
+          <ShareMenuLink href={facebookUrl} label="Share on Facebook" ariaLabel="Share on Facebook" />
 
-          <ShareMenuLink
-            href={linkedinUrl}
-            label="Share on LinkedIn"
-            ariaLabel="Share on LinkedIn"
-          />
+          <ShareMenuLink href={linkedinUrl} label="Share on LinkedIn" ariaLabel="Share on LinkedIn" />
         </div>
       </PopoverContent>
     </Popover>
@@ -104,7 +96,7 @@ const ShareMenuLink = ({ href, label, ariaLabel, iconName }: ShareMenuLinkProps)
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2",
+        'flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
       )}
       role="menuitem"
       aria-label={ariaLabel}

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 
 export const NavBar = () => {
   return (
@@ -30,17 +30,15 @@ const MobileMenu = () => {
   return (
     <div className="md:hidden">
       <button className="cursor-pointer" onClick={() => handleOpenMenu()}>
-        <span className="material-symbols-outlined" style={{ fontSize: "2.5rem" }}>
+        <span className="material-symbols-outlined" style={{ fontSize: '2.5rem' }}>
           menu
         </span>
       </button>
 
-      {isOpen && (
-        <div className="fixed top-0 right-0 w-full h-full" onClick={() => handleCloseMenu()}></div>
-      )}
+      {isOpen && <div className="fixed top-0 right-0 w-full h-full" onClick={() => handleCloseMenu()}></div>}
       <ul
         className={`fixed top-0 right-0 w-0 h-full shadow-lg bg-white flex flex-col gap-6 overflow-x-hidden  duration-500 font-bold z-100 pt-14 pb-10 ${
-          isOpen ? "w-[264px] px-6" : ""
+          isOpen ? 'w-[264px] px-6' : ''
         }`}
       >
         <button className="absolute top-4 left-8 cursor-pointer" onClick={() => handleCloseMenu()}>
@@ -65,7 +63,7 @@ const MobileMenu = () => {
 
 const NavItem = ({ href, label }: { href: string; label: string }) => {
   const pathname = usePathname();
-  const mainPath = pathname.split("/")[1];
+  const mainPath = pathname.split('/')[1];
   const isActive = `/${mainPath}` === href;
 
   return (
@@ -73,7 +71,7 @@ const NavItem = ({ href, label }: { href: string; label: string }) => {
       <Link href={href}>
         <span
           className={`px-2 py-1 rounded transition-colors duration-200 focus:ring-2 hover:text-blue-600 hover:underline underline-offset-8 focus:outline-none ${
-            isActive ? "text-blue-600 underline" : "text-slate-900"
+            isActive ? 'text-blue-600 underline' : 'text-slate-900'
           }`}
           aria-label={`Navigate to ${label}`}
         >

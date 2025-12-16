@@ -1,44 +1,44 @@
-import MdxLayout from "@components/layout/mdx-layout";
+import MdxLayout from '@components/layout/mdx-layout';
 
 export const metadata = {
-  title: "NgRx Signal Store: best practices con Angular Signals",
-  date: "2025-12-11",
+  title: 'NgRx Signal Store: best practices con Angular Signals',
+  date: '2025-12-11',
   description:
-    "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
-  category: "NgRx",
-  publishDate: "2025-12-11",
+    'Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.',
+  category: 'NgRx',
+  publishDate: '2025-12-11',
   openGraph: {
-    title: "NgRx Signal Store: best practices con Angular Signals",
+    title: 'NgRx Signal Store: best practices con Angular Signals',
     description:
-      "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
-    type: "article",
-    locale: "es_ES",
-    url: "https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/",
-    siteName: "Rafael Velazco",
+      'Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.',
+    type: 'article',
+    locale: 'es_ES',
+    url: 'https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/',
+    siteName: 'Rafael Velazco',
     images: [
       {
-        url: "/assets/ngrx-signal-store.png",
-        alt: "NgRx Signal Store (Angular Signals) - best practices",
+        url: '/assets/ngrx-signal-store.png',
+        alt: 'NgRx Signal Store (Angular Signals) - best practices',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "NgRx Signal Store: best practices con Angular Signals",
+    card: 'summary_large_image',
+    title: 'NgRx Signal Store: best practices con Angular Signals',
     description:
-      "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
-    creator: "@rjvelazco21",
-    images: ["/assets/ngrx-signal-store.png"],
+      'Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.',
+    creator: '@rjvelazco21',
+    images: ['/assets/ngrx-signal-store.png'],
   },
   alternates: {
     canonical:
-      "https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/",
+      'https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/',
   },
 };
 
 export default function Layout({ children }) {
   return (
-    <MdxLayout metadata={metadata} image={"/assets/ngrx-signal-store.png"}>
+    <MdxLayout metadata={metadata} image={'/assets/ngrx-signal-store.png'}>
       {children}
     </MdxLayout>
   );
@@ -80,8 +80,8 @@ Entendamos este concepto desde el **error**. Miremos el siguiente ejemplo:
 // ❌ Algunas propiedades de este state no son propiedades atómicas
 const initialState: CartState = {
   items: [],
-  couponCode: "",
-  shippingMethod: "",
+  couponCode: '',
+  shippingMethod: '',
   isCheckingOut: false,
   subtotal: 0,
   discount: 0,
@@ -113,7 +113,7 @@ const store = signalStore(
         /* Your function */
       },
     };
-  }),
+  })
 );
 ```
 
@@ -134,9 +134,7 @@ const store = signalStore(
   withComputed((store) => {
     const subtotal = computed(() => calculateSubtotal(store.items()));
     const discount = computed(() => calculateDiscount(subtotal(), store.couponCode()));
-    const shippingCost = computed(() =>
-      calculateShippingCost(store.items(), store.shippingMethod()),
-    );
+    const shippingCost = computed(() => calculateShippingCost(store.items(), store.shippingMethod()));
     const total = computed(() => calculateTotalCost({ subtotal, shippingCost, discount }));
     return {
       subtotal,
@@ -149,7 +147,7 @@ const store = signalStore(
     addItemsToCart: (items: CartItem[]) => {
       patchState(store, { items: [...store.items(), ...items] });
     },
-  })),
+  }))
 );
 ```
 
@@ -222,7 +220,7 @@ export const cartStore = signalStore(
     $discount: computed(() => calculateDiscount(store.$subtotal(), store.couponCode())),
     $shippingCost: computed(() => calculateShippingCost(store.items(), store.shippingMethod())),
     $total: computed(() => store.$subtotal() - store.$discount() + store.$shippingCost()),
-  })),
+  }))
 );
 ```
 
@@ -245,10 +243,10 @@ const store = signalStore(
   withComputeds(() => ({
     // 👇🏻 Una propiedad que solo se utilizará en un componente
     ctaLabel: computed(() => {
-      if (store.isCheckingOut()) return "Processing...";
-      return "Checkout now";
+      if (store.isCheckingOut()) return 'Processing...';
+      return 'Checkout now';
     }),
-  })),
+  }))
 );
 ```
 
@@ -258,7 +256,7 @@ Ejemplo correcto aplicado a un component sería:
 
 ```tsx
 @Component({
-  selector: "app-cart-checkout-button",
+  selector: 'app-cart-checkout-button',
   standalone: true,
   template: `
     <button [disabled]="$itemsCount() === 0 || $ctaLabel() === 'Processing...'">
@@ -274,10 +272,10 @@ export class CartCheckoutButtonComponent {
     const itemsCount = this.store.itemsCount();
     const isCheckingOut = this.store.isCheckingOut();
 
-    if (itemsCount === 0) return "Add products";
-    if (isCheckingOut) return "Processing...";
+    if (itemsCount === 0) return 'Add products';
+    if (isCheckingOut) return 'Processing...';
 
-    return "Checkout now";
+    return 'Checkout now';
   });
 }
 ```

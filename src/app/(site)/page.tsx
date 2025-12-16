@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { getPosts } from "@utils/post-utils";
-import { Badge } from "@components/ui/badge";
+import Link from 'next/link';
+import { getPosts } from '@utils/post-utils';
+import { Badge } from '@components/ui/badge';
 
 const NOW_MS = Date.now();
 
@@ -21,7 +21,7 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="pl-4 pb-4 md:pb-12">
         <h1 className="text-3xl md:text-5xl leading-snug pl-2">
-          Entrega valor{" "}
+          Entrega valor{' '}
           <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             más allá del código
           </span>
@@ -53,10 +53,10 @@ export default async function Home() {
                   )}
                   <div className="flex items-center gap-2 mb-3">
                     <time className="text-sm text-gray-500" dateTime={post.publishDate}>
-                      {new Date(post.publishDate).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
+                      {new Date(post.publishDate).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
                       })}
                     </time>
                     {post.category && (
@@ -75,9 +75,7 @@ export default async function Home() {
                     </h3>
                   </Link>
 
-                  <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
-                    {post.description}
-                  </p>
+                  <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">{post.description}</p>
 
                   <Link
                     href={`/blog/posts/${post.slug}`}
