@@ -67,7 +67,7 @@ const BlogItem = ({ post }: { post: BlogPost }) => {
       </div>
 
       <Link href={`/blog/posts/${post.slug}`}>
-        <h2 className="text-xl font-bold mb-4 text-foreground hover:underline decoration-blue-500 underline-offset-4 transition-colors">
+        <h2 className="text-xl font-bold mb-4 text-foreground hover:underline decoration-petrol underline-offset-4 transition-colors">
           {post.title}
         </h2>
       </Link>
@@ -76,7 +76,7 @@ const BlogItem = ({ post }: { post: BlogPost }) => {
 
       <Link
         href={`/blog/posts/${post.slug}`}
-        className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
+        className="inline-flex items-center text-petrol-light hover:text-petrol font-medium transition-colors"
       >
         Leer más
         <span className="material-symbols-outlined">arrow_right_alt</span>

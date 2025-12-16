@@ -19,14 +19,16 @@ export default function RootLayout({
   return (
     <div className="relative flex flex-col min-h-screen max-w-[68rem] mx-auto px-4 bg-background text-foreground">
       <SiteThemeController />
-      <header className="flex items-center justify-between py-6 w-full mx-auto px-4">
-        <div className="flex items-center gap-4">
-          <div>
-            <h2 className="text-3xl font-bold">Rafael Velazco</h2>
-            <p className="text-lg text-muted-foreground">Senior Software Engineer</p>
+      <header className="sticky top-0 z-40 -mx-4 px-4 py-5 sm:py-6 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+        <div className="flex items-center justify-between w-full mx-auto max-w-[68rem]">
+          <div className="flex items-center gap-4">
+            <div>
+              <h2 className="text-3xl font-bold">Rafael Velazco</h2>
+              <p className="text-lg text-muted-foreground">Senior Software Engineer</p>
+            </div>
           </div>
+          <NavBar />
         </div>
-        <NavBar />
       </header>
       <main className="flex-grow w-full mx-auto px-4">{children}</main>
       <footer className="mx-auto w-full mx-auto p-4 gap-4 flex justify-center flex-col-reverse sm:flex-col sm:items-end text-muted-foreground">

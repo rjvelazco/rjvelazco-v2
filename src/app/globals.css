@@ -10,7 +10,9 @@
 /* -------------------------------------------------------------------------- */
 @theme {
   --color-petrol: rgb(0, 105, 128);
-  --color-petrol-light: rgba(0, 105, 128, 0.8);
+  /* Slightly softer for links (avoids neon look in dark mode). */
+  --color-petrol-light: rgba(0, 105, 128, 0.7);
+  --color-petrol-soft: rgba(0, 105, 128, 0.17);
 }
 
 /* -------------------------------------------------------------------------- */

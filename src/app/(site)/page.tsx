@@ -22,7 +22,7 @@ export default async function Home() {
       <section className="pl-4 pb-4 md:pb-12">
         <h1 className="text-3xl md:text-5xl leading-snug pl-2">
           Entrega valor{' '}
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-petrol-light to-indigo-400 bg-clip-text text-transparent">
             más allá del código
           </span>
         </h1>
@@ -62,7 +62,7 @@ export default async function Home() {
                     {post.category && (
                       <>
                         <span className="text-gray-300">•</span>
-                        <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
+                        <span className="text-xs bg-petrol-soft text-petrol px-2 py-1 rounded-full">
                           {post.category}
                         </span>
                       </>
@@ -70,7 +70,7 @@ export default async function Home() {
                   </div>
 
                   <Link href={`/blog/posts/${post.slug}`}>
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-600 transition-colors leading-tight text-foreground">
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-petrol-light transition-colors leading-tight text-foreground">
                       {post.title}
                     </h3>
                   </Link>
@@ -79,7 +79,7 @@ export default async function Home() {
 
                   <Link
                     href={`/blog/posts/${post.slug}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                    className="inline-flex items-center text-petrol-light hover:text-petrol font-medium transition-colors"
                   >
                     Leer más
                     <span className="material-symbols-outlined">arrow_right_alt</span>
@@ -92,7 +92,7 @@ export default async function Home() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+              className="inline-flex items-center text-petrol-light hover:text-petrol font-semibold transition-colors"
             >
               Ver todos los artículos
               <svg className="ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">

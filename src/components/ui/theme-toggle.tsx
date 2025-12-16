@@ -31,7 +31,7 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
       type="button"
       onClick={handleToggleTheme}
       className={cn(
-        'inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border bg-background text-foreground transition hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer',
+        'inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border bg-background text-foreground transition hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer',
         className
       )}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}

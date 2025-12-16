@@ -27,7 +27,7 @@ export default function MdxLayout({ children, metadata, image }: MdxLayoutProps)
       <nav className="mb-8 pt-6">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50 hover:text-blue-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+          className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-petrol-light hover:bg-accent hover:text-foreground dark:text-cyan-300 dark:hover:text-cyan-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label="Back to Blog"
         >
           <span className="material-symbols-outlined">arrow_left_alt</span>
@@ -71,15 +71,15 @@ const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata
           />
         </div>
       )}
-      <h1 className="mb-5 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight">
+      <h1 className="mb-5 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl leading-tight">
         {metadata.title}
       </h1>
 
       <div className="mb-5 flex items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <time
             dateTime={metadata.publishDate}
-            className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700"
+            className="inline-flex items-center rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground"
           >
             {new Date(metadata.publishDate).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -87,11 +87,11 @@ const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata
               day: 'numeric',
             })}
           </time>
-          <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-800 ring-1 ring-blue-100">
+          <span className="inline-flex items-center rounded-full bg-petrol-soft px-3 py-1 font-medium text-petrol dark:bg-cyan-500/10 dark:text-cyan-200 ring-1 ring-border">
             {metadata.category}
           </span>
 
-          <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+          <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
             Rafael Velazco
           </span>
         </div>
@@ -99,7 +99,7 @@ const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata
         <SharePost url={postUrl} className="shrink-0" />
       </div>
 
-      <p className="max-w-prose text-base leading-relaxed text-slate-600 sm:text-lg">{metadata.description}</p>
+      <p className="max-w-prose text-base leading-relaxed text-muted-foreground sm:text-lg">{metadata.description}</p>
     </header>
   );
 };
@@ -111,11 +111,11 @@ const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata
 const ArticleFooter = () => {
   return (
     <footer className="mt-14 border-t border-gray-200 pt-8 pb-10">
-      <div className="rounded-2xl bg-slate-50/70 p-4 ring-1 ring-slate-200 sm:p-6">
+      <div className="rounded-2xl bg-muted/40 p-4 ring-1 ring-border sm:p-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/blog"
-            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-xl bg-petrol px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-petrol/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:w-auto"
             aria-label="More Articles"
           >
             <svg className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -128,9 +128,11 @@ const ArticleFooter = () => {
             Más artículos
           </Link>
 
-          <div className="text-center text-sm text-slate-600 sm:text-right">
-            <div className="font-medium text-slate-800">¡Gracias por leer!</div>
-            <div className="mt-0.5 text-slate-600">¿Quieres más artículos como este? Explora la sección de blog.</div>
+          <div className="text-center text-sm text-muted-foreground sm:text-right">
+            <div className="font-medium text-foreground">¡Gracias por leer!</div>
+            <div className="mt-0.5 text-muted-foreground">
+              ¿Quieres más artículos como este? Explora la sección de blog.
+            </div>
           </div>
         </div>
       </div>
