@@ -16,7 +16,7 @@ export default function RootLayout({
   const currentYear = new Date().getFullYear();
 
   return (
-    <body className="layout_container relative flex flex-col min-h-screen max-w-[68rem] mx-auto px-4">
+    <div className="layout_container relative flex flex-col min-h-screen max-w-[68rem] mx-auto px-4">
       <header className="flex items-center justify-between py-6 w-full mx-auto px-4">
         <div className="flex items-center gap-4">
           <div>
@@ -49,6 +49,6 @@ export default function RootLayout({
           </ul>
         </div>
       </footer>
-    </body>
+    </div>
   );
 }

@@ -28,7 +28,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..20&icon_names=arrow_left_alt,arrow_right_alt,ios_share,link,menu,palette,settings,share&display=block"
         />
       </head>
-      {children}
+      <body>{children}</body>
     </html>
   );
 }

@@ -38,7 +38,7 @@ export default function RootLayout({
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.rjvelazco.com';
 
   return (
-    <body className="relative font-onest portfolio-gradient">
+    <div className="relative font-onest portfolio-gradient">
       <PortfolioHeader navItems={NAV_ITEMS} locale="en" />
       <main className="w-full mx-auto max-w-[64rem]">{children}</main>
       <footer className="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center">
@@ -62,7 +62,6 @@ export default function RootLayout({
           </ul>
         </div>
       </footer>
-
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -87,6 +86,6 @@ export default function RootLayout({
           }),
         }}
       />
-    </body>
+    </div>
   );
 }
