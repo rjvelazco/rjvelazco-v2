@@ -7,8 +7,8 @@ const badgeVariants = cva('inline-flex items-center justify-center rounded-full 
   variants: {
     variant: {
       default: 'border border-green-800 bg-green-100 px-3 py-1 text-sm font-medium text-green-900',
-      // AA contrast with white text (petrol-bright was too light in dark mode).
-      blue: 'border border-petrol/40 bg-petrol px-3 py-1 text-sm font-semibold text-white shadow-[0_1px_0_rgba(255,255,255,0.12)_inset]',
+      // AA contrast with white text (previous accent was too light in dark mode).
+      blue: 'border border-primary-700/40 bg-primary-600 px-3 py-1 text-sm font-semibold text-white shadow-[0_1px_0_rgba(255,255,255,0.12)_inset]',
       newGold:
         'border border-amber-300/50 bg-neutral-950 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-amber-200 shadow-[0_0_0_1px_rgba(245,158,11,0.18),0_10px_22px_rgba(0,0,0,0.28)]',
     },

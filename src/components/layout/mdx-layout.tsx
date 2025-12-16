@@ -27,7 +27,7 @@ export default function MdxLayout({ children, metadata, image }: MdxLayoutProps)
       <nav className="mb-8 pt-6">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-petrol-light hover:bg-accent hover:text-foreground dark:text-cyan-300 dark:hover:text-cyan-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-primary-500 hover:bg-accent hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label="Back to Blog"
         >
           <span className="material-symbols-outlined">arrow_left_alt</span>
@@ -38,7 +38,7 @@ export default function MdxLayout({ children, metadata, image }: MdxLayoutProps)
       <ArticleHeader metadata={metadata} image={image} />
 
       {/* Article content */}
-      <article className="prose prose-lg prose-gray max-w-none prose-headings:scroll-mt-20 prose-pre:bg-gray-900 prose-pre:text-gray-100">
+      <article className="prose prose-lg prose-zinc max-w-none prose-headings:scroll-mt-20 prose-pre:bg-zinc-900 prose-pre:text-zinc-100 prose-a:text-primary-600 prose-a:decoration-primary-300 prose-a:underline-offset-4 hover:prose-a:text-primary-700 dark:prose-invert dark:prose-a:text-primary-300 dark:hover:prose-a:text-primary-200 dark:prose-pre:bg-zinc-950">
         {children}
       </article>
 
@@ -58,7 +58,7 @@ export default function MdxLayout({ children, metadata, image }: MdxLayoutProps)
 const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata']; image?: string }) => {
   const postUrl = metadata.alternates?.canonical ?? metadata.openGraph?.url ?? '/';
   return (
-    <header className="mb-12 border-b border-gray-200 pb-8">
+    <header className="mb-12 border-b border-border pb-8">
       {image && (
         <div className="relative mb-8 aspect-[16/9] w-full overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-sm">
           <Image
@@ -87,7 +87,7 @@ const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata
               day: 'numeric',
             })}
           </time>
-          <span className="inline-flex items-center rounded-full bg-petrol-soft px-3 py-1 font-medium text-petrol dark:bg-cyan-500/10 dark:text-cyan-200 ring-1 ring-border">
+          <span className="inline-flex items-center rounded-full bg-primary-50 text-primary-700 dark:bg-primary-900/40 dark:text-primary-200 px-3 py-1 font-medium ring-1 ring-border">
             {metadata.category}
           </span>
 
@@ -110,12 +110,12 @@ const ArticleHeader = ({ metadata, image }: { metadata: MdxLayoutProps['metadata
  */
 const ArticleFooter = () => {
   return (
-    <footer className="mt-14 border-t border-gray-200 pt-8 pb-10">
+    <footer className="mt-14 border-t border-border pt-8 pb-10">
       <div className="rounded-2xl bg-muted/40 p-4 ring-1 ring-border sm:p-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/blog"
-            className="inline-flex w-full items-center justify-center rounded-xl bg-petrol px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-petrol/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:w-auto"
             aria-label="More Articles"
           >
             <svg className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

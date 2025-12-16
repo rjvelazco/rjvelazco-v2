@@ -27,7 +27,7 @@ export default function Portfolio() {
           <h1 className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl">Hola, soy Rafael Velazco</h1>
           <p className="mt-6 text-lg text-gray-800 leading-[1.7]">
             +5 años de experiencia.{' '}
-            <strong className="text-petrol-light">
+            <strong className="text-primary-500">
               Ingeniero de software con pasión por construir aplicaciones web escalables y eficientes
             </strong>
             . Trabajo a tiempo completo con Angular, TypeScript, CSS, Docker, Git y GitHub.{' '}
@@ -53,7 +53,7 @@ export default function Portfolio() {
         <PageSection id="about-me">
           <SectionHeading>Sobre Mí</SectionHeading>
           <article className="flex flex-col items-center justify-center gap-8 md:flex-row">
-            <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal text-pretty order-2 md:order-1">
+            <div className="[&>p]:mb-4 [&>p>strong]:text-primary-500 [&>p>strong]:font-normal text-pretty order-2 md:order-1">
               <p>
                 Soy Rafael Velazco, un ingeniero de software apasionado por la programación y siempre con ganas de
                 aprender. Me considero una <strong>persona sociable y adaptable</strong>, constantemente en búsqueda de

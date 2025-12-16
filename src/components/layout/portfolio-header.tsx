@@ -67,8 +67,8 @@ export const PortfolioHeader = ({ navItems, locale = 'en' }: PortfolioHeaderProp
         {navItems.map((link, index) => (
           <Link key={index} aria-label={link.label} href={link.url} onClick={() => setActiveSection(link.label)}>
             <span
-              className={`relative block p-2 transition hover:text-petrol ${
-                activeSection === link.label ? 'text-petrol' : ''
+              className={`relative block p-2 transition hover:text-primary-500 ${
+                activeSection === link.label ? 'text-primary-500' : ''
               }`}
             >
               {link.title}

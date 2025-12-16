@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <div className="relative flex flex-col min-h-screen max-w-[68rem] mx-auto px-4 bg-background text-foreground">
       <SiteThemeController />
-      <header className="sticky top-0 z-40 -mx-4 px-4 py-5 sm:py-6 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+      <header className="px-4 py-5 sm:py-6 bg-background-white">
         <div className="flex items-center justify-between w-full mx-auto max-w-[68rem]">
           <div className="flex items-center gap-4">
             <div>

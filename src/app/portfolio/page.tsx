@@ -36,7 +36,7 @@ export default function Portfolio() {
           </h1>
           <p className="mt-6 text-lg text-gray-800 leading-[1.7]">
             +5 years of experience.{' '}
-            <strong className="text-petrol-light">
+            <strong className="text-primary-500">
               Software Engineer with a passion for building scalable and efficient web applications
             </strong>
             . Working full time with Angular, TypeScript, CSS, Docker, Git, and GitHub.{' '}
@@ -61,7 +61,7 @@ export default function Portfolio() {
         <PageSection id="about-me">
           <SectionHeading>About Me</SectionHeading>
           <article className="flex flex-col items-center justify-center gap-8 md:flex-row">
-            <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal text-pretty order-2 md:order-1">
+            <div className="[&>p]:mb-4 [&>p>strong]:text-primary-500 [&>p>strong]:font-normal text-pretty order-2 md:order-1">
               <p>
                 I&apos;m Rafael Velazco, a software engineer passionate about programming and always eager to learn. I
                 consider myself a <strong> sociable, adaptable person</strong>, constantly looking for new challenges.
