@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { NavBar } from '@components/layout/nav-bar';
 import Link from 'next/link';
 import Image from 'next/image';
+import { SiteThemeController } from './site-theme-controller';
 
 export const metadata: Metadata = {
   title: 'Rafael Velazco',
@@ -16,18 +17,19 @@ export default function RootLayout({
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="layout_container relative flex flex-col min-h-screen max-w-[68rem] mx-auto px-4">
+    <div className="relative flex flex-col min-h-screen max-w-[68rem] mx-auto px-4 bg-background text-foreground">
+      <SiteThemeController />
       <header className="flex items-center justify-between py-6 w-full mx-auto px-4">
         <div className="flex items-center gap-4">
           <div>
             <h2 className="text-3xl font-bold">Rafael Velazco</h2>
-            <p className="text-lg">Senior Software Engineer</p>
+            <p className="text-lg text-muted-foreground">Senior Software Engineer</p>
           </div>
         </div>
         <NavBar />
       </header>
       <main className="flex-grow w-full mx-auto px-4">{children}</main>
-      <footer className="bg-white rounded-lg mx-auto w-full mx-auto p-4 gap-4 flex justify-center flex-col-reverse sm:flex-col sm:items-end text-gray-500">
+      <footer className="mx-auto w-full mx-auto p-4 gap-4 flex justify-center flex-col-reverse sm:flex-col sm:items-end text-muted-foreground">
         <div className="w-full flex flex-col-reverse gap-4 justify-center items-center sm:flex-row sm:items-center sm:justify-between">
           <span className="sm:text-center">
             © {currentYear} <Link href="/">Rafael Velazco</Link>. All Rights Reserved.

@@ -39,7 +39,7 @@ export default async function Home() {
             {featuredPosts.map((post) => (
               <article
                 key={post.slug}
-                className="group relative bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 overflow-hidden-x"
+                className="group relative rounded-xl border border-border bg-card hover:shadow-lg transition-all duration-300"
               >
                 <div className="p-6">
                   {isNewPost(post.publishDate) && (
@@ -70,12 +70,12 @@ export default async function Home() {
                   </div>
 
                   <Link href={`/blog/posts/${post.slug}`}>
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-600 transition-colors leading-tight">
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-600 transition-colors leading-tight text-foreground">
                       {post.title}
                     </h3>
                   </Link>
 
-                  <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">{post.description}</p>
+                  <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-3">{post.description}</p>
 
                   <Link
                     href={`/blog/posts/${post.slug}`}

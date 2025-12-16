@@ -15,7 +15,7 @@ export default async function BlogPage() {
   return (
     <div className="mx-auto font-sans flex flex-col gap-4 py-8 md:py-12">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold mb-8">Artículos Recientes</h1>
+        <h1 className="text-3xl font-bold mb-8 text-foreground">Artículos Recientes</h1>
       </div>
 
       <div className="flex gap-12 flex-col lg:flex-row">
@@ -28,12 +28,12 @@ export default async function BlogPage() {
         {categories.length > 0 && (
           <aside className="lg:w-64 space-y-6">
             <div>
-              <h3 className="text-lg font-semibold mb-4">Categorías</h3>
+              <h3 className="text-lg font-semibold mb-4 text-foreground">Categorías</h3>
               <div className="flex flex-wrap gap-2 lg:flex-col lg:gap-1">
                 {categories.map((category) => (
                   <span
                     key={category}
-                    className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer"
+                    className="bg-muted hover:bg-muted/80 text-muted-foreground px-3 py-2 rounded-md text-sm transition-colors cursor-pointer"
                   >
                     {category}
                   </span>
@@ -49,9 +49,9 @@ export default async function BlogPage() {
 
 const BlogItem = ({ post }: { post: BlogPost }) => {
   return (
-    <article className="border-b border-gray-200 pb-8 last:border-b-0" key={post.slug}>
+    <article className="border-b border-border pb-8 last:border-b-0" key={post.slug}>
       <div className="flex items-center gap-2 mb-2">
-        <time className="text-sm text-gray-500" dateTime={post.publishDate}>
+        <time className="text-sm text-muted-foreground" dateTime={post.publishDate}>
           {new Date(post.publishDate).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -61,18 +61,18 @@ const BlogItem = ({ post }: { post: BlogPost }) => {
         {post.category && (
           <>
             <span className="text-gray-300">•</span>
-            <span className="text-sm bg-gray-100 px-2 py-1 rounded-md text-gray-700">{post.category}</span>
+            <span className="text-sm bg-muted px-2 py-1 rounded-md text-muted-foreground">{post.category}</span>
           </>
         )}
       </div>
 
       <Link href={`/blog/posts/${post.slug}`}>
-        <h2 className="text-xl font-bold mb-4 hover:underline decoration-blue-500 underline-offset-4 transition-colors">
+        <h2 className="text-xl font-bold mb-4 text-foreground hover:underline decoration-blue-500 underline-offset-4 transition-colors">
           {post.title}
         </h2>
       </Link>
 
-      <p className="mb-4 text-gray-600 leading-relaxed">{post.description}</p>
+      <p className="mb-4 text-muted-foreground leading-relaxed">{post.description}</p>
 
       <Link
         href={`/blog/posts/${post.slug}`}

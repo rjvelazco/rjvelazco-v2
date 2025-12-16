@@ -5,16 +5,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { usePathname } from 'next/navigation';
+import { ThemeToggle } from '@components/ui/theme-toggle';
 
 export const NavBar = () => {
   return (
     <nav className="px-6 py-4 pr-0" aria-label="Main Navigation">
-      <ul className="hidden md:flex justify-center gap-1">
+      <ul className="hidden md:flex justify-center gap-1 items-center">
         <NavItem href="/" label="Home" />
         <NavItem href="/blog" label="Blog" />
         {/* <NavItem href="/logs" label="Logs" /> */}
         <NavItem href="/portfolio" label="Portfolio" />
         <NavItem href="mailto:rjvelazco21@gmail.com" label="Contacto" />
+        <li className="ml-2">
+          <ThemeToggle />
+        </li>
       </ul>
 
       <MobileMenu />
@@ -37,7 +41,7 @@ const MobileMenu = () => {
 
       {isOpen && <div className="fixed top-0 right-0 w-full h-full" onClick={() => handleCloseMenu()}></div>}
       <ul
-        className={`fixed top-0 right-0 w-0 h-full shadow-lg bg-white flex flex-col gap-6 overflow-x-hidden  duration-500 font-bold z-100 pt-14 pb-10 ${
+        className={`fixed top-0 right-0 w-0 h-full shadow-lg bg-background flex flex-col gap-6 overflow-x-hidden duration-500 font-bold z-100 pt-14 pb-10 ${
           isOpen ? 'w-[264px] px-6' : ''
         }`}
       >
@@ -47,6 +51,10 @@ const MobileMenu = () => {
         <NavItem href="/" label="Home" />
         <NavItem href="/portfolio" label="Portfolio" />
         <NavItem href="mailto:rjvelazco21@gmail.com" label="Contact" />
+
+        <div className="pt-2">
+          <ThemeToggle />
+        </div>
 
         <div className="flex-1 flex gap-2 justify-end items-end">
           <Link href="https://github.com/rjvelazco">
