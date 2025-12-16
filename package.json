@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "prepare": "husky"
   },
   "dependencies": {
     "@fontsource-variable/onest": "5.2.7",
@@ -44,6 +45,7 @@
     "eslint": "9.25.0",
     "eslint-config-next": "16.0.10",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
     "postcss": "8.5.3",
     "prettier": "^3.7.4",
     "shadcn": "^3.6.1",

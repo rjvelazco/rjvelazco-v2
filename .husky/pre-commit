@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+set -e
+
+# Colors
+RED="$(printf '\033[0;31m')"
+GREEN="$(printf '\033[0;32m')"
+YELLOW="$(printf '\033[0;33m')"
+BLUE="$(printf '\033[0;34m')"
+NC="$(printf '\033[0m')"
+
+step() {
+  printf "${BLUE}▶ %s${NC}\n" "$1"
+}
+
+ok() {
+  printf "${GREEN}✓ %s${NC}\n" "$1"
+}
+
+fail() {
+  printf "${RED}✗ %s${NC}\n" "$1"
+  exit 1
+}
+
+step "Running ESLint (yarn lint)"
+yarn -s lint || fail "ESLint failed"
+ok "ESLint passed"
+
+step "Running Prettier (yarn format)"
+yarn -s format || fail "Prettier failed"
+ok "Prettier passed"
+
+printf "${YELLOW}ℹ Note:${NC} Prettier may have modified files. Review changes and re-stage as needed.\n"

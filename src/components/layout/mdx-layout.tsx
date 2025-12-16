@@ -129,7 +129,7 @@ const ArticleFooter = () => {
           </Link>
 
           <div className="text-center text-sm text-slate-600 sm:text-right">
-            <div className="font-medium text-slate-800">Gracias por leer!</div>
+            <div className="font-medium text-slate-800">¡Gracias por leer!</div>
             <div className="mt-0.5 text-slate-600">¿Quieres más artículos como este? Explora la sección de blog.</div>
           </div>
         </div>
