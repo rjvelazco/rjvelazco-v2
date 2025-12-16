@@ -31,4 +31,6 @@ step "Running Prettier (yarn format)"
 yarn -s format || fail "Prettier failed"
 ok "Prettier passed"
 
+git add .
+
 printf "${YELLOW}ℹ Note:${NC} Prettier may have modified files. Review changes and re-stage as needed.\n"

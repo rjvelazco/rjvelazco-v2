@@ -10,7 +10,7 @@ const config = {
   arrowParens: 'always',
   jsxSingleQuote: false,
   bracketSameLine: false,
-  endOfLine: 'lf'
+  endOfLine: 'lf',
 };
 
 export default config;
