@@ -31,8 +31,7 @@ export const metadata = {
     images: ["/assets/ngrx-signal-store.png"],
   },
   alternates: {
-    canonical:
-      "https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/",
+    canonical: "https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/",
   },
 };
 
@@ -47,10 +46,10 @@ If you're working with Angular v20, this quick guide will help you integrate **E
 
 ## Tools You'll Be Using
 
-* **Angular CLI** - Angular's command-line tool
-* **ESLint** - Linter to catch errors and enforce code standards
-* **Prettier** - Code formatter for consistent style
-* **Husky** - Tool to automate tasks on Git hooks (e.g., before commits)
+- **Angular CLI** - Angular's command-line tool
+- **ESLint** - Linter to catch errors and enforce code standards
+- **Prettier** - Code formatter for consistent style
+- **Husky** - Tool to automate tasks on Git hooks (e.g., before commits)
 
 ## Section Preview
 
@@ -66,9 +65,9 @@ ng add @angular-eslint/schematics
 
 This command will:
 
-* Install ESLint and generate an `eslint.config.js` file
-* Add a `lint` script to your `package.json`
-* Configure Angular CLI to use ESLint schematics
+- Install ESLint and generate an `eslint.config.js` file
+- Add a `lint` script to your `package.json`
+- Configure Angular CLI to use ESLint schematics
 
 ## Step 2: Integrate Prettier
 
@@ -129,12 +128,9 @@ export default tseslint.config(
   },
   {
     files: ["**/*.html"],
-    extends: [
-      ...angular.configs.templateRecommended,
-      ...angular.configs.templateAccessibility,
-    ],
+    extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
     rules: {},
-  }
+  },
 );
 ```
 

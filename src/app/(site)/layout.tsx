@@ -30,8 +30,7 @@ export default function RootLayout({
       <footer className="bg-white rounded-lg mx-auto w-full mx-auto p-4 gap-4 flex justify-center flex-col-reverse sm:flex-col sm:items-end text-gray-500">
         <div className="w-full flex flex-col-reverse gap-4 justify-center items-center sm:flex-row sm:items-center sm:justify-between">
           <span className="sm:text-center">
-            © {currentYear} <Link href="/">Rafael Velazco</Link>. All Rights
-            Reserved.
+            © {currentYear} <Link href="/">Rafael Velazco</Link>. All Rights Reserved.
           </span>
           <ul className="flex flex-wrap items-center mt-3 font-medium gap-2 sm:mt-0">
             <Link href="https://github.com/rjvelazco">
@@ -47,8 +46,8 @@ export default function RootLayout({
             </Link>
             <Link href="https://www.linkedin.com/in/rafael-velazco/">
               <li>
-                  <Image
-                    className="cursor-pointer"
+                <Image
+                  className="cursor-pointer"
                   src="/assets/linkedin.svg"
                   alt="LinkedIn"
                   width={16}

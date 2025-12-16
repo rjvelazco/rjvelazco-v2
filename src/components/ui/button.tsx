@@ -7,11 +7,7 @@ interface ButtonProps {
   icon?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  href,
-  label,
-  download = false
-}) => {
+export const Button: React.FC<ButtonProps> = ({ href, label, download = false }) => {
   return (
     <a
       href={href}

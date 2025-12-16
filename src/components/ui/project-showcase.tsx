@@ -56,10 +56,7 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }): React.Re
                     </ProjectLink>
                   )}
                   {link && (
-                    <ProjectLink
-                      href={link}
-                      ariaLabel={`View live demo of ${title}`}
-                    >
+                    <ProjectLink href={link} ariaLabel={`View live demo of ${title}`}>
                       Preview
                     </ProjectLink>
                   )}
@@ -67,7 +64,7 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }): React.Re
               </div>
             </div>
           </article>
-        )
+        ),
       )}
 
       {hasMoreProjects && !showAll && (

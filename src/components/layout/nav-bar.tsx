@@ -7,7 +7,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export const NavBar = () => {
-
   return (
     <nav className="px-6 py-4 pr-0" aria-label="Main Navigation">
       <ul className="hidden md:flex justify-center gap-1">
@@ -31,24 +30,20 @@ const MobileMenu = () => {
   return (
     <div className="md:hidden">
       <button className="cursor-pointer" onClick={() => handleOpenMenu()}>
-        <span className="material-symbols-outlined" style={{ fontSize: "2.5rem" }}>menu</span>
+        <span className="material-symbols-outlined" style={{ fontSize: "2.5rem" }}>
+          menu
+        </span>
       </button>
 
       {isOpen && (
-        <div
-          className="fixed top-0 right-0 w-full h-full"
-          onClick={() => handleCloseMenu()}
-        ></div>
+        <div className="fixed top-0 right-0 w-full h-full" onClick={() => handleCloseMenu()}></div>
       )}
       <ul
         className={`fixed top-0 right-0 w-0 h-full shadow-lg bg-white flex flex-col gap-6 overflow-x-hidden  duration-500 font-bold z-100 pt-14 pb-10 ${
           isOpen ? "w-[264px] px-6" : ""
         }`}
       >
-        <button
-          className="absolute top-4 left-8 cursor-pointer"
-          onClick={() => handleCloseMenu()}
-        >
+        <button className="absolute top-4 left-8 cursor-pointer" onClick={() => handleCloseMenu()}>
           <span className="material-symbols-outlined">arrow_left_alt</span>
         </button>
         <NavItem href="/" label="Home" />

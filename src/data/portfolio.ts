@@ -108,8 +108,7 @@ export const WORK_TIMELINE_ES: WorkTimelineItem[] = [
 export const PROJECTS: Project[] = [
   {
     title: "Dashboard App",
-    description:
-      "Hospital Dashboard to see branches, personnel, patients, and more.",
+    description: "Hospital Dashboard to see branches, personnel, patients, and more.",
     link: "https://rjvelazco.github.io/dashboard-angular/dashboard",
     github: "https://github.com/rjvelazco/dashboard-angular",
     image: "/projects/dashboard-app.webp",
@@ -118,8 +117,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Dashboard Backend",
-    description:
-      "Dashboard Backend to see branches, personnel, patients, and more.",
+    description: "Dashboard Backend to see branches, personnel, patients, and more.",
     link: "https://rjvelazco.github.io/dashboard-angular/dashboard",
     github: "https://github.com/rjvelazco/dashboard-angular",
     image: "/projects/dashboard-backend.webp",
@@ -136,8 +134,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Movie Premier App",
-    description:
-      "Movie Premier App that allows you to see the latest movies and their details.",
+    description: "Movie Premier App that allows you to see the latest movies and their details.",
     link: "https://rjvelazco.github.io/peliculas-angular/peliculas",
     github: "https://github.com/rjvelazco/peliculas-angular",
     image: "/projects/movie-premier-app.webp",
@@ -148,8 +145,7 @@ export const PROJECTS: Project[] = [
 export const PROJECTS_ES: Project[] = [
   {
     title: "Dashboard App",
-    description:
-      "Dashboard hospitalario para ver sucursales, personal, pacientes y más.",
+    description: "Dashboard hospitalario para ver sucursales, personal, pacientes y más.",
     link: "https://rjvelazco.github.io/dashboard-angular/dashboard",
     github: "https://github.com/rjvelazco/dashboard-angular",
     image: "/projects/dashboard-app.webp",
@@ -158,8 +154,7 @@ export const PROJECTS_ES: Project[] = [
   },
   {
     title: "Dashboard Backend",
-    description:
-      "Backend del dashboard para ver sucursales, personal, pacientes y más.",
+    description: "Backend del dashboard para ver sucursales, personal, pacientes y más.",
     link: "https://rjvelazco.github.io/dashboard-angular/dashboard",
     github: "https://github.com/rjvelazco/dashboard-angular",
     image: "/projects/dashboard-backend.webp",

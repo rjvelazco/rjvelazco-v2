@@ -14,11 +14,7 @@ export default function Portfolio() {
       <PageSection className="py-16 md:py-36" id="home">
         <div className="max-w-xl">
           <div className="flex gap-4 mb-4">
-            <img
-              className="rounded-full shadow-lg size-16"
-              src="/me.jpg"
-              alt="Rafael Velazco"
-            />
+            <img className="rounded-full shadow-lg size-16" src="/me.jpg" alt="Rafael Velazco" />
             <a
               href="https://linkedin.com/in/rafael-velazco"
               target="_blank"
@@ -34,19 +30,14 @@ export default function Portfolio() {
           <p className="mt-6 text-lg text-gray-800 leading-[1.7]">
             +5 años de experiencia.{" "}
             <strong className="text-petrol-light">
-              Ingeniero de software con pasión por construir aplicaciones web
-              escalables y eficientes
+              Ingeniero de software con pasión por construir aplicaciones web escalables y
+              eficientes
             </strong>
-            . Trabajo a tiempo completo con Angular, TypeScript, CSS, Docker, Git y
-            GitHub.{" "}
+            . Trabajo a tiempo completo con Angular, TypeScript, CSS, Docker, Git y GitHub.{" "}
           </p>
           <nav className="flex flex-wrap gap-4 mt-8">
-            <SocialLink href="mailto:rjvelazco21@gmail.com">
-              Contáctame
-            </SocialLink>
-            <SocialLink href="https://linkedin.com/in/rafael-velazco">
-              LinkedIn
-            </SocialLink>
+            <SocialLink href="mailto:rjvelazco21@gmail.com">Contáctame</SocialLink>
+            <SocialLink href="https://linkedin.com/in/rafael-velazco">LinkedIn</SocialLink>
           </nav>
         </div>
       </PageSection>
@@ -67,26 +58,21 @@ export default function Portfolio() {
           <article className="flex flex-col items-center justify-center gap-8 md:flex-row">
             <div className="[&>p]:mb-4 [&>p>strong]:text-petrol [&>p>strong]:font-normal text-pretty order-2 md:order-1">
               <p>
-                Soy Rafael Velazco, un ingeniero de software apasionado por la
-                programación y siempre con ganas de aprender. Me considero una{" "}
-                <strong>persona sociable y adaptable</strong>, constantemente en
-                búsqueda de nuevos retos.
+                Soy Rafael Velazco, un ingeniero de software apasionado por la programación y
+                siempre con ganas de aprender. Me considero una{" "}
+                <strong>persona sociable y adaptable</strong>, constantemente en búsqueda de nuevos
+                retos.
               </p>
 
               <p>
                 Actualmente trabajo en{" "}
                 <strong>
-                  <a
-                    className="underline"
-                    href="https://dotcms.com"
-                    target="_blank"
-                    rel="noopener"
-                  >
+                  <a className="underline" href="https://dotcms.com" target="_blank" rel="noopener">
                     dotCMS
                   </a>
                 </strong>{" "}
-                como uno de los <strong>desarrolladores líderes</strong>. Uno de
-                nuestros logros recientes ha sido el desarrollo del{" "}
+                como uno de los <strong>desarrolladores líderes</strong>. Uno de nuestros logros
+                recientes ha sido el desarrollo del{" "}
                 <strong>
                   <a
                     className="underline"
@@ -97,18 +83,14 @@ export default function Portfolio() {
                     Universal Visual Editor
                   </a>
                 </strong>{" "}
-                y la transición de nuestro producto de un{" "}
-                <strong>CMS híbrido</strong> a un <strong>CMS universal</strong>.
+                y la transición de nuestro producto de un <strong>CMS híbrido</strong> a un{" "}
+                <strong>CMS universal</strong>.
               </p>
 
               <p className="mb-0">
-                En los últimos meses, me he enfocado en desarrollar mis
-                habilidades en{" "}
-                <strong>
-                  gestión de equipos, liderazgo y entendimiento de producto
-                </strong>
-                . Me he dado cuenta de que más allá de escribir código, un
-                desarrollador debe{" "}
+                En los últimos meses, me he enfocado en desarrollar mis habilidades en{" "}
+                <strong>gestión de equipos, liderazgo y entendimiento de producto</strong>. Me he
+                dado cuenta de que más allá de escribir código, un desarrollador debe{" "}
                 <strong>generar valor estratégico</strong> y comprender a fondo el{" "}
                 <strong>impacto empresarial de su trabajo</strong>.
               </p>

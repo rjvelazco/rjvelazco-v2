@@ -47,7 +47,7 @@ export const SharePost = ({ url, className }: SharePostProps) => {
           type="button"
           className={cn(
             "inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer",
-            className
+            className,
           )}
           aria-label="Share this post"
         >
@@ -70,11 +70,7 @@ export const SharePost = ({ url, className }: SharePostProps) => {
 
           <div className="my-1 h-px w-full bg-slate-200" />
 
-          <ShareMenuLink
-            href={xUrl}
-            label="Share on X"
-            ariaLabel="Share on X"
-          />
+          <ShareMenuLink href={xUrl} label="Share on X" ariaLabel="Share on X" />
 
           <ShareMenuLink
             href={facebookUrl}
@@ -93,7 +89,6 @@ export const SharePost = ({ url, className }: SharePostProps) => {
   );
 };
 
-
 /**
  * Share menu link component
  * @param href - The href of the link
@@ -103,14 +98,13 @@ export const SharePost = ({ url, className }: SharePostProps) => {
  * @returns Share menu link component
  */
 const ShareMenuLink = ({ href, label, ariaLabel, iconName }: ShareMenuLinkProps) => {
-
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+        "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2",
       )}
       role="menuitem"
       aria-label={ariaLabel}

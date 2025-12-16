@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Rafael Velazco",
   description: "Senior Software Engineer",
 };
- 
+
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export default function RootLayout({
@@ -21,11 +21,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/google-font-display, @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"

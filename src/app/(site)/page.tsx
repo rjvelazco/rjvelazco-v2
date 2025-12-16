@@ -20,12 +20,12 @@ export default async function Home() {
     <div className="mx-auto flex flex-col gap-8 py-8 md:py-12">
       {/* Hero Section */}
       <section className="pl-4 pb-4 md:pb-12">
-          <h1 className="text-3xl md:text-5xl leading-snug pl-2">
-            Entrega valor {" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              más allá del código
-            </span>
-          </h1>
+        <h1 className="text-3xl md:text-5xl leading-snug pl-2">
+          Entrega valor{" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            más allá del código
+          </span>
+        </h1>
       </section>
 
       {/* Latest Posts Section */}
@@ -34,7 +34,7 @@ export default async function Home() {
           <div className="space-y-2">
             <h2 className="text-2xl md:text-3xl font-semibold">Artículos Recientes</h2>
           </div>
-          
+
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {featuredPosts.map((post) => (
               <article
@@ -53,10 +53,10 @@ export default async function Home() {
                   )}
                   <div className="flex items-center gap-2 mb-3">
                     <time className="text-sm text-gray-500" dateTime={post.publishDate}>
-                      {new Date(post.publishDate).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
+                      {new Date(post.publishDate).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
                       })}
                     </time>
                     {post.category && (
@@ -68,18 +68,18 @@ export default async function Home() {
                       </>
                     )}
                   </div>
-                  
+
                   <Link href={`/blog/posts/${post.slug}`}>
                     <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-600 transition-colors leading-tight">
                       {post.title}
                     </h3>
                   </Link>
-                  
+
                   <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
                     {post.description}
                   </p>
-                  
-                  <Link 
+
+                  <Link
                     href={`/blog/posts/${post.slug}`}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
                   >
@@ -90,15 +90,19 @@ export default async function Home() {
               </article>
             ))}
           </div>
-          
+
           <div className="text-center">
-            <Link 
+            <Link
               href="/blog"
               className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition-colors"
             >
               Ver todos los artículos
               <svg className="ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
               </svg>
             </Link>
           </div>

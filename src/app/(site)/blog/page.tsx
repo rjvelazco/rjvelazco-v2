@@ -10,7 +10,7 @@ export default async function BlogPage() {
   const posts = await getPosts();
 
   // Get unique categories
-  const categories = [...new Set(posts.map(post => post.category).filter(Boolean))];
+  const categories = [...new Set(posts.map((post) => post.category).filter(Boolean))];
 
   return (
     <div className="mx-auto font-sans flex flex-col gap-4 py-8 md:py-12">
@@ -20,7 +20,6 @@ export default async function BlogPage() {
 
       <div className="flex gap-12 flex-col lg:flex-row">
         <section className="space-y-8 flex-1">
-          
           {posts.map((post) => (
             <BlogItem key={post.slug} post={post} />
           ))}
@@ -46,47 +45,44 @@ export default async function BlogPage() {
       </div>
     </div>
   );
-} 
+}
 
 const BlogItem = ({ post }: { post: BlogPost }) => {
-
   return (
     <article className="border-b border-gray-200 pb-8 last:border-b-0" key={post.slug}>
-    <div className="flex items-center gap-2 mb-2">
-      <time className="text-sm text-gray-500" dateTime={post.publishDate}>
-        {new Date(post.publishDate).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })}
-      </time>
-      {post.category && (
-        <>
-          <span className="text-gray-300">•</span>
-          <span className="text-sm bg-gray-100 px-2 py-1 rounded-md text-gray-700">
-            {post.category}
-          </span>
-        </>
-      )}
-    </div>
-    
-    <Link href={`/blog/posts/${post.slug}`}>
-      <h2 className="text-xl font-bold mb-4 hover:underline decoration-blue-500 underline-offset-4 transition-colors">
-        {post.title}
-      </h2>
-    </Link>
-    
-    <p className="mb-4 text-gray-600 leading-relaxed">
-      {post.description}
-    </p>
-    
-    <Link 
-      href={`/blog/posts/${post.slug}`}
-      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
-    >
-      Leer más
-      <span className="material-symbols-outlined">arrow_right_alt</span>
-    </Link>
-  </article>
-  )
-}
+      <div className="flex items-center gap-2 mb-2">
+        <time className="text-sm text-gray-500" dateTime={post.publishDate}>
+          {new Date(post.publishDate).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </time>
+        {post.category && (
+          <>
+            <span className="text-gray-300">•</span>
+            <span className="text-sm bg-gray-100 px-2 py-1 rounded-md text-gray-700">
+              {post.category}
+            </span>
+          </>
+        )}
+      </div>
+
+      <Link href={`/blog/posts/${post.slug}`}>
+        <h2 className="text-xl font-bold mb-4 hover:underline decoration-blue-500 underline-offset-4 transition-colors">
+          {post.title}
+        </h2>
+      </Link>
+
+      <p className="mb-4 text-gray-600 leading-relaxed">{post.description}</p>
+
+      <Link
+        href={`/blog/posts/${post.slug}`}
+        className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
+      >
+        Leer más
+        <span className="material-symbols-outlined">arrow_right_alt</span>
+      </Link>
+    </article>
+  );
+};

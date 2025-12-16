@@ -7,12 +7,7 @@ import { NAV_ITEMS } from "@data/portfolio";
 export const metadata: Metadata = {
   title: "Rafael Velazco | Senior Software Engineer",
   description: "Senior Software Engineer with expertise in web development",
-  keywords: [
-    "software engineer",
-    "senior engineer",
-    "web development",
-    "portfolio",
-  ],
+  keywords: ["software engineer", "senior engineer", "web development", "portfolio"],
   authors: [{ name: "Rafael Velazco" }],
   creator: "Rafael Velazco",
   publisher: "Rafael Velazco",
@@ -40,8 +35,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://www.rjvelazco.com";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.rjvelazco.com";
 
   return (
     <body className="relative font-onest portfolio-gradient">
@@ -56,19 +50,12 @@ export default function RootLayout({
           </span>
           <ul className="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
             <li>
-              <a
-                href="/portfolio#about-me"
-                className="hover:underline me-4 md:me-6"
-              >
+              <a href="/portfolio#about-me" className="hover:underline me-4 md:me-6">
                 About Me
               </a>
             </li>
             <li>
-              <a
-                id="contacto"
-                href="mailto:rjvelazco21@gmail.com"
-                className="hover:underline"
-              >
+              <a id="contacto" href="mailto:rjvelazco21@gmail.com" className="hover:underline">
                 Contact
               </a>
             </li>
@@ -86,8 +73,7 @@ export default function RootLayout({
             name: "Rafael Velazco",
             jobTitle: "Senior Software Engineer",
             url: baseUrl,
-            description:
-              "Senior Software Engineer with expertise in web development",
+            description: "Senior Software Engineer with expertise in web development",
             sameAs: [
               "https://twitter.com/rjvelazco21",
               "https://www.linkedin.com/in/rafael-velazco/",

@@ -27,15 +27,12 @@ export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProp
   };
 
   useEffect(() => {
-    const sections = document.querySelectorAll(
-      "[data-page-section]"
-    ) as NodeListOf<HTMLElement>;
+    const sections = document.querySelectorAll("[data-page-section]") as NodeListOf<HTMLElement>;
 
     const handleScroll = () => {
       setNavActive(window.scrollY > 50);
       const isAtBottom =
-        window.innerHeight + Math.round(window.scrollY) >=
-        document.body.offsetHeight;
+        window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight;
 
       sections.forEach((section) => {
         const { offsetTop, clientHeight } = section;
@@ -86,12 +83,7 @@ export const PortfolioHeader = ({ navItems, locale = "en" }: PortfolioHeaderProp
         ))}
 
         <div className="ml-2 hidden md:block">
-          <ToggleGroup
-            type="single"
-            value={locale}
-            onValueChange={handleLocaleChange}
-            size="sm"
-          >
+          <ToggleGroup type="single" value={locale} onValueChange={handleLocaleChange} size="sm">
             <ToggleGroupItem value="en" aria-label="Switch to English">
               EN
             </ToggleGroupItem>

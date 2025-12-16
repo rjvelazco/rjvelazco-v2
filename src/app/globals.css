@@ -29,7 +29,11 @@
   text-transform: none;
   letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -195,5 +199,3 @@
     line-height: 1.7;
   }
 }
-
-

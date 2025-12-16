@@ -20,11 +20,7 @@ interface MdxLayoutProps {
   image?: string;
 }
 
-export default function MdxLayout({
-  children,
-  metadata,
-  image,
-}: MdxLayoutProps) {
+export default function MdxLayout({ children, metadata, image }: MdxLayoutProps) {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
       {/* Back to blog navigation */}
@@ -106,10 +102,7 @@ const ArticleHeader = ({
           </span>
         </div>
 
-        <SharePost
-          url={postUrl}
-          className="shrink-0"
-        />
+        <SharePost url={postUrl} className="shrink-0" />
       </div>
 
       <p className="max-w-prose text-base leading-relaxed text-slate-600 sm:text-lg">

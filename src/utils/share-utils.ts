@@ -18,5 +18,3 @@ export const buildShareUrls = (url: string): ShareUrls => {
     linkedinUrl: `https://www.linkedin.com/feed/?shareActive=true&shareUrl=${encodedUrl}`,
   };
 };
-
-
