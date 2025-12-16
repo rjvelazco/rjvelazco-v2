@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { SharePost } from "@components/ui/share-post";
 
 interface MdxLayoutProps {
   children: React.ReactNode;
@@ -9,6 +10,12 @@ interface MdxLayoutProps {
     description: string;
     category: string;
     publishDate: string;
+    alternates?: {
+      canonical?: string;
+    };
+    openGraph?: {
+      url?: string;
+    };
   };
   image?: string;
 }
@@ -59,6 +66,7 @@ const ArticleHeader = ({
   metadata: MdxLayoutProps["metadata"];
   image?: string;
 }) => {
+  const postUrl = metadata.alternates?.canonical ?? metadata.openGraph?.url ?? "/";
   return (
     <header className="mb-12 border-b border-gray-200 pb-8">
       {image && (
@@ -76,24 +84,32 @@ const ArticleHeader = ({
       <h1 className="mb-5 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight">
         {metadata.title}
       </h1>
-      <div className="mb-5 flex flex-wrap items-center gap-2 text-sm text-slate-600">
-        <time
-          dateTime={metadata.publishDate}
-          className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700"
-        >
-          {new Date(metadata.publishDate).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-800 ring-1 ring-blue-100">
-          {metadata.category}
-        </span>
 
-        <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
-          Rafael Velazco
-        </span>
+      <div className="mb-5 flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+          <time
+            dateTime={metadata.publishDate}
+            className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700"
+          >
+            {new Date(metadata.publishDate).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+          <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-800 ring-1 ring-blue-100">
+            {metadata.category}
+          </span>
+
+          <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+            Rafael Velazco
+          </span>
+        </div>
+
+        <SharePost
+          url={postUrl}
+          className="shrink-0"
+        />
       </div>
 
       <p className="max-w-prose text-base leading-relaxed text-slate-600 sm:text-lg">
