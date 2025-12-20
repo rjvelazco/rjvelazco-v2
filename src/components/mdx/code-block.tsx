@@ -53,7 +53,7 @@ export function CodeBlock({ className, children, ...props }: CodeBlockProps) {
           )}
           aria-label={copied ? 'Copied' : 'Copy code'}
         >
-          <span className="material-symbols-outlined text-[18px] leading-none" aria-hidden="true">
+          <span className="material-symbol text-[18px] leading-none" aria-hidden="true">
             {copied ? 'check' : 'content_copy'}
           </span>
         </button>

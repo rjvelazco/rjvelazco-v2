@@ -35,7 +35,7 @@ const MobileMenu = () => {
   return (
     <div className="md:hidden">
       <button className="cursor-pointer" onClick={() => handleOpenMenu()}>
-        <span className="material-symbols-outlined text-foreground" style={{ fontSize: '2.5rem' }}>
+        <span className="material-symbol text-foreground" style={{ fontSize: '2.5rem' }}>
           menu
         </span>
       </button>
@@ -47,7 +47,7 @@ const MobileMenu = () => {
         }`}
       >
         <button className="absolute top-4 left-8 cursor-pointer" onClick={() => handleCloseMenu()}>
-          <span className="material-symbols-outlined text-foreground">arrow_left_alt</span>
+          <span className="material-symbol text-foreground">arrow_left_alt</span>
         </button>
         <NavItem href="/" label="Home" />
         <NavItem href="/portfolio" label="Portfolio" />

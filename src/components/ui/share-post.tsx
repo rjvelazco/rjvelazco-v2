@@ -51,7 +51,7 @@ export const SharePost = ({ url, className }: SharePostProps) => {
           )}
           aria-label="Share this post"
         >
-          <span className="material-symbols-outlined" aria-hidden="true">
+          <span className="material-symbol" aria-hidden="true">
             ios_share
           </span>
         </button>
@@ -66,7 +66,7 @@ export const SharePost = ({ url, className }: SharePostProps) => {
             role="menuitem"
             aria-label="Copy link"
           >
-            <span className="material-symbols-outlined">link</span>
+            <span className="material-symbol">link</span>
             {copied ? 'Link copied! 🎉' : 'Copy link'}
           </button>
 
@@ -105,7 +105,7 @@ const ShareMenuLink = ({ href, label, ariaLabel, iconName }: ShareMenuLinkProps)
       tabIndex={0}
     >
       {iconName ? (
-        <span className="material-symbols-outlined" aria-hidden="true">
+        <span className="material-symbol" aria-hidden="true">
           {iconName}
         </span>
       ) : null}

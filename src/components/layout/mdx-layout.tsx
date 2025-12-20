@@ -30,7 +30,7 @@ export default function MdxLayout({ children, metadata, image }: MdxLayoutProps)
           className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-primary-500 hover:bg-accent hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label="Back to Blog"
         >
-          <span className="material-symbols-outlined">arrow_left_alt</span>
+          <span className="material-symbol">arrow_left_alt</span>
           Volver al explorador
         </Link>
       </nav>

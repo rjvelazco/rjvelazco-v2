@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { NavBar } from '@components/layout/nav-bar';
 import Link from 'next/link';
 import Image from 'next/image';
-import { SiteThemeController } from './site-theme-controller';
 
 export const metadata: Metadata = {
   title: 'Rafael Velazco',
@@ -18,7 +17,6 @@ export default function RootLayout({
 
   return (
     <div className="relative flex flex-col min-h-screen max-w-[68rem] mx-auto px-4 bg-background text-foreground">
-      <SiteThemeController />
       <header className="px-4 py-5 sm:py-6 bg-background-white">
         <div className="flex items-center justify-between w-full mx-auto max-w-[68rem]">
           <div className="flex items-center gap-4">

@@ -79,7 +79,7 @@ const BlogItem = ({ post }: { post: BlogPost }) => {
         className="inline-flex items-center text-primary-500 hover:text-primary-700 font-medium transition-colors"
       >
         Leer más
-        <span className="material-symbols-outlined">arrow_right_alt</span>
+        <span className="material-symbol">arrow_right_alt</span>
       </Link>
     </article>
   );
