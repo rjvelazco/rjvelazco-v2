@@ -6,8 +6,7 @@ import { cn } from '@components/utils';
 type CodeBlockProps = React.ComponentPropsWithoutRef<'pre'>;
 
 async function copyToClipboard(text: string) {
-  // Modern API (no execCommand fallback; deprecated).
-  if (!navigator.clipboard?.writeText) throw new Error('Clipboard API not available');
+  if (!navigator.clipboard?.writeText) throw new Error('[CodeBlock]: Clipboard API not available in this browser');
   await navigator.clipboard.writeText(text);
 }
 
@@ -34,7 +33,7 @@ export function CodeBlock({ className, children, ...props }: CodeBlockProps) {
       if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => setCopied(false), 1200);
     } catch {
-      // Clipboard can still fail due to permissions/user gesture policies.
+      alert('The copy action failed. Please try again.');
       setCopied(false);
     }
   };
@@ -64,7 +63,7 @@ export function CodeBlock({ className, children, ...props }: CodeBlockProps) {
         ref={preRef}
         className={cn(
           // Fit nicely inside the wrapper (no extra rounding since wrapper handles it).
-          'mt-0 rounded-none border-0',
+          'mt-0 mb-0 rounded-none border-0',
           className
         )}
         {...props}
