@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Project } from "@data/portfolio";
+import { Project } from '@data/portfolio';
+import Image from 'next/image';
 
 export const ProjectShowcase = ({ projects }: { projects: Project[] }): React.ReactElement => {
   const [showAll, setShowAll] = useState(false);
@@ -11,62 +12,50 @@ export const ProjectShowcase = ({ projects }: { projects: Project[] }): React.Re
 
   return (
     <div className="flex flex-col gap-y-16">
-      {displayedProjects.map(
-        ({ image, title, description, tags, link, github, isPriority }: Project) => (
-          <article
-            key={title}
-            className="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"
-          >
-            <div>
-              <div className="relative flex flex-col items-center mx-auto w-[256px] h-[200px] col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:hover:bg-gray-800/50">
-                <img
-                  alt={`Screenshot of ${title} project`}
-                  className="object-cover w-full h-full transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                  loading={isPriority ? "eager" : "lazy"}
-                  src={image}
-                  sizes="(max-width: 768px) 100vw, 256px"
-                />
-              </div>
+      {displayedProjects.map(({ image, title, description, tags, link, github, isPriority }: Project) => (
+        <article key={title} className="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+          <div>
+            <div className="relative flex flex-col items-center mx-auto w-[256px] h-[200px] col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:hover:bg-gray-800/50">
+              <Image
+                fill
+                alt={`Screenshot of ${title} project`}
+                className="object-cover w-full h-full transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                loading={isPriority ? 'eager' : 'lazy'}
+                src={image}
+                sizes="(max-width: 768px) 100vw, 256px"
+              />
             </div>
+          </div>
 
-            <div className="w-full flex-1">
-              <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
-              <div className="flex flex-wrap my-4">
-                <ul className="flex flex-row mb-2 gap-x-2 w-full">
-                  {tags.map((tag) => (
-                    <li key={tag.name}>
-                      <span
-                        className={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 pointer-events-none`}
-                      >
-                        {tag.name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-2 text-gray-700">{description}</div>
-                <footer className="flex items-end justify-start mt-4 gap-x-4">
-                  {github && (
-                    <ProjectLink
-                      href={github}
-                      ariaLabel={`View source code for ${title} on GitHub`}
-                    >
-                      Code
-                    </ProjectLink>
-                  )}
-                  {link && (
-                    <ProjectLink
-                      href={link}
-                      ariaLabel={`View live demo of ${title}`}
-                    >
-                      Preview
-                    </ProjectLink>
-                  )}
-                </footer>
-              </div>
+          <div className="w-full flex-1">
+            <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
+            <div className="flex flex-wrap my-4">
+              <ul className="flex flex-row mb-2 gap-x-2 w-full">
+                {tags.map((tag) => (
+                  <li key={tag.name}>
+                    <span className={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 pointer-events-none`}>
+                      {tag.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-2 text-gray-700">{description}</div>
+              <footer className="flex items-end justify-start mt-4 gap-x-4">
+                {github && (
+                  <ProjectLink href={github} ariaLabel={`View source code for ${title} on GitHub`}>
+                    Code
+                  </ProjectLink>
+                )}
+                {link && (
+                  <ProjectLink href={link} ariaLabel={`View live demo of ${title}`}>
+                    Preview
+                  </ProjectLink>
+                )}
+              </footer>
             </div>
-          </article>
-        )
-      )}
+          </div>
+        </article>
+      ))}
 
       {hasMoreProjects && !showAll && (
         <div className="flex justify-center mt-6">

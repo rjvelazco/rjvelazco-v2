@@ -1,58 +1,60 @@
-
-import MdxLayout from "@components/layout/mdx-layout";
+import MdxLayout from '@components/layout/mdx-layout';
 
 export const metadata = {
-  title: "NgRx Signal Store: best practices con Angular Signals",
-  date: "2025-12-11",
+  title: 'NgRx Signal Store: best practices con Angular Signals',
+  date: '2025-12-11',
   description:
-    "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
-  category: "NgRx",
-  publishDate: "2025-12-11",
+    'Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.',
+  category: 'NgRx',
+  publishDate: '2025-12-11',
   openGraph: {
-    title: "NgRx Signal Store: best practices con Angular Signals",
+    title: 'NgRx Signal Store: best practices con Angular Signals',
     description:
-      "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
-    type: "article",
-    locale: "es_ES",
-    url: "https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/",
-    siteName: "Rafael Velazco",
+      'Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.',
+    type: 'article',
+    locale: 'es_ES',
+    url: 'https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/',
+    siteName: 'Rafael Velazco',
     images: [
       {
-        url: "/assets/ngrx-signal-store.png",
-        alt: "NgRx Signal Store (Angular Signals) - best practices",
+        url: '/assets/ngrx-signal-store.png',
+        alt: 'NgRx Signal Store (Angular Signals) - best practices',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "NgRx Signal Store: best practices con Angular Signals",
+    card: 'summary_large_image',
+    title: 'NgRx Signal Store: best practices con Angular Signals',
     description:
-      "Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.",
-    creator: "@rjvelazco21",
-    images: ["/assets/ngrx-signal-store.png"],
+      'Guía práctica de Signal Store (NgRx) para Angular Signals: state atómico, computed pequeños y cuándo mantener el estado en el componente.',
+    creator: '@rjvelazco21',
+    images: ['/assets/ngrx-signal-store.png'],
   },
   alternates: {
     canonical:
-      "https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/",
+      'https://www.rjvelazco.com/blog/posts/ngrx-signal-store-best-practices-para-un-state-mas-simple-y-eficiente/',
   },
 };
 
 export default function Layout({ children }) {
-  return <MdxLayout metadata={metadata} image={"/assets/ngrx-signal-store.png"}>{children}</MdxLayout>;
+  return (
+    <MdxLayout metadata={metadata} image={'/assets/ngrx-signal-store.png'}>
+      {children}
+    </MdxLayout>
+  );
 }
 
 # **Tabla de contenido**
 
 1. [**Introducción**](#introduccion)
 2. [**Mantén el state atómico**](#mantener-el-state-atomico)
-    - [Cómo simplificar el state con computed signals](#como-simplificar-el-state-con-computed-signals)
+   - [Cómo simplificar el state con computed signals](#como-simplificar-el-state-con-computed-signals)
 3. [**Evita los mega-computed dividiendo tus dependencias**](#evita-los-mega-computed-dividiendo-tus-dependencias)
-    - [Define correctamente tus computeds](#define-correctamente-tus-computeds)
+   - [Define correctamente tus computeds](#define-correctamente-tus-computeds)
 4. [**Si un valor es del component, debe vivir en el component**](#si-un-valor-es-del-component-debe-vivir-en-el-component)
 5. [**Conclusión**](#conclusion)
 
 <a id="introduccion"></a>
-# **NgRx Signal Store Best Practices para un state más simple y eficiente**
 
 Signal Store es una solución moderna de [**state management**](https://ngrx.io/guide/store) creada por el equipo de NgRx para trabajar con [**Angular Signals**](https://angular.dev/guide/signals). Aunque no es obligatoria para usar Signals, sí es una de las opciones más recomendadas por su diseño reactivo, escalabilidad y consistencia con la [**arquitectura Reactiva de Angular**](https://angular.dev/guide/signals#reactivity-in-angular).
 
@@ -69,7 +71,6 @@ Para ayudarte a evitar estos anti-patterns, aquí tienes una serie de tips prác
 El **state** debe ser lo más **atómico** posible: solo datos “crudos”, sin cálculos, sin información compuesta.
 
 > Una propiedad es atómica cuando no depende de otras propiedades para definirse.
-> 
 
 Al almacenar solo datos base en el store, simplificamos las actualizaciones y evita inconsistencias.
 
@@ -85,7 +86,7 @@ const initialState: CartState = {
   subtotal: 0,
   discount: 0,
   shippingCost: 0,
-  total: 0
+  total: 0,
 };
 
 const store = signalStore(
@@ -98,7 +99,7 @@ const store = signalStore(
         const subtotal = calculateSubtotal(items);
         const discount = calculateDiscount(subtotal, store.couponCode());
         const shippingCost = calculateShippingCost(items, store.shippingMethod());
-        const total = calculateTotalCost({subtotal, shippingCost, discount});
+        const total = calculateTotalCost({ subtotal, shippingCost, discount });
 
         patchState(store, {
           items: newItems,
@@ -108,11 +109,12 @@ const store = signalStore(
           total,
         });
       },
-      deleteItemsInCart: () => {/* Your function */}
+      deleteItemsInCart: () => {
+        /* Your function */
+      },
     };
   })
 );
-
 ```
 
 ¿Pudiste notar el error en este state?
@@ -131,29 +133,22 @@ const store = signalStore(
   withState<CartState>(initialState),
   withComputed((store) => {
     const subtotal = computed(() => calculateSubtotal(store.items()));
-    const discount = computed(() =>
-      calculateDiscount(subtotal(), store.couponCode())
-    );
-    const shippingCost = computed(() =>
-      calculateShippingCost(store.items(), store.shippingMethod())
-    );
-    const total = computed(() =>
-      calculateTotalCost({ subtotal, shippingCost, discount })
-    );
+    const discount = computed(() => calculateDiscount(subtotal(), store.couponCode()));
+    const shippingCost = computed(() => calculateShippingCost(store.items(), store.shippingMethod()));
+    const total = computed(() => calculateTotalCost({ subtotal, shippingCost, discount }));
     return {
       subtotal,
       discount,
       shippingCost,
-      total
-    }
+      total,
+    };
   }),
   withMethods((store) => ({
     addItemsToCart: (items: CartItem[]) => {
       patchState(store, { items: [...store.items(), ...items] });
-    }
+    },
   }))
 );
-
 ```
 
 Aquí utilizamos:
@@ -223,19 +218,13 @@ export const cartStore = signalStore(
   withComputed((store) => ({
     $subtotal: computed(() => calculateSubtotal(store.items())),
     $discount: computed(() => calculateDiscount(store.$subtotal(), store.couponCode())),
-    $shippingCost: computed(() =>
-      calculateShippingCost(store.items(), store.shippingMethod())
-    ),
-    $total: computed(() =>
-      store.$subtotal() - store.$discount() + store.$shippingCost()
-    )
+    $shippingCost: computed(() => calculateShippingCost(store.items(), store.shippingMethod())),
+    $total: computed(() => store.$subtotal() - store.$discount() + store.$shippingCost()),
   }))
 );
-
 ```
 
 > Estos `computed` funcionan como **Selectors basados en Signals**, lo cual se alinea con el diseño oficial de NgRx Signals.
-> 
 
 Aquí cada `computed` solo se re-calculará únicamente si sus dependencias cambian ✨.
 
@@ -244,7 +233,7 @@ Aquí cada `computed` solo se re-calculará únicamente si sus dependencias camb
 
 El objetivo de **Signal Store** no es reemplazar el estado local, sino complementar la arquitectura.
 
-Angular recomienda que los componentes manejen su propio estado local mediante [**`computed`**](https://angular.dev/guide/signals#computed), [**`signal`**](https://angular.dev/guide/signals#signal) y [**dependency injection**](https://angular.dev/guide/dependency-injection). 
+Angular recomienda que los componentes manejen su propio estado local mediante [**`computed`**](https://angular.dev/guide/signals#computed), [**`signal`**](https://angular.dev/guide/signals#signal) y [**dependency injection**](https://angular.dev/guide/dependency-injection).
 
 Miremos este ejemplo de “**sobre carga al store**”
 
@@ -256,10 +245,9 @@ const store = signalStore(
     ctaLabel: computed(() => {
       if (store.isCheckingOut()) return 'Processing...';
       return 'Checkout now';
-    })
+    }),
   }))
 );
-
 ```
 
 Este valor **solo sirve para un botón**, no es dominio global y ni va a ser compartido en múltiples lugares → debe moverse al componente.
@@ -275,7 +263,7 @@ Ejemplo correcto aplicado a un component sería:
       {{ $ctaLabel() }}
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartCheckoutButtonComponent {
   private readonly store = inject(cartStore);
@@ -290,7 +278,6 @@ export class CartCheckoutButtonComponent {
     return 'Checkout now';
   });
 }
-
 ```
 
 Esto respeta las recomendaciones de:

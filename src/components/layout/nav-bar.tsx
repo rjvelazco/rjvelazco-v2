@@ -1,19 +1,25 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
+import { ThemeToggle } from '@components/ui/theme-toggle';
+import { cn } from '@components/utils';
 
 export const NavBar = () => {
   return (
     <nav className="px-6 py-4 pr-0" aria-label="Main Navigation">
-      <ul className="hidden md:flex justify-center gap-1">
+      <ul className="hidden md:flex justify-center gap-1 items-center">
         <NavItem href="/" label="Home" />
         <NavItem href="/blog" label="Blog" />
         {/* <NavItem href="/logs" label="Logs" /> */}
         <NavItem href="/portfolio" label="Portfolio" />
         <NavItem href="mailto:rjvelazco21@gmail.com" label="Contacto" />
+        <li className="ml-2">
+          <ThemeToggle />
+        </li>
       </ul>
 
       <MobileMenu />
@@ -29,45 +35,34 @@ const MobileMenu = () => {
   return (
     <div className="md:hidden">
       <button className="cursor-pointer" onClick={() => handleOpenMenu()}>
-        <img src="/assets/menu-icon.svg" alt="Menu" className="w-8 h-8" />
+        <span className="material-symbol text-foreground" style={{ fontSize: '2.5rem' }}>
+          menu
+        </span>
       </button>
 
-      {isOpen && (
-        <div
-          className="fixed top-0 right-0 w-full h-full"
-          onClick={() => handleCloseMenu()}
-        ></div>
-      )}
+      {isOpen && <div className="fixed inset-0 bg-black/30" onClick={() => handleCloseMenu()} aria-hidden="true" />}
       <ul
-        className={`fixed top-0 right-0 w-0 h-full shadow-lg bg-white flex flex-col gap-6 overflow-x-hidden  duration-500 font-bold z-1 pt-14 pb-10 ${
-          isOpen ? "w-[264px] px-6" : ""
+        className={`fixed top-0 right-0 w-0 h-full shadow-xl bg-background border-l border-border flex flex-col gap-6 overflow-x-hidden duration-500 font-bold z-100 pt-14 pb-10 ${
+          isOpen ? 'w-[264px] px-6' : ''
         }`}
       >
-        <button
-          className="absolute top-4 left-8 cursor-pointer"
-          onClick={() => handleCloseMenu()}
-        >
-          <img src="/assets/arrow-left.svg" alt="Close" className="w-6 h-6" />
+        <button className="absolute top-4 left-8 cursor-pointer" onClick={() => handleCloseMenu()}>
+          <span className="material-symbol text-foreground">arrow_left_alt</span>
         </button>
         <NavItem href="/" label="Home" />
-        <NavItem href="/logs" label="Logs" />
         <NavItem href="/portfolio" label="Portfolio" />
         <NavItem href="mailto:rjvelazco21@gmail.com" label="Contact" />
 
+        <div className="pt-2">
+          <ThemeToggle />
+        </div>
+
         <div className="flex-1 flex gap-2 justify-end items-end">
           <Link href="https://github.com/rjvelazco">
-            <img
-              src="/assets/github.svg"
-              alt="GitHub"
-              className="cursor-pointer w-6 h-6"
-            />
+            <Image src="/assets/github.svg" alt="GitHub" width={24} height={24} />
           </Link>
           <Link href="https://www.linkedin.com/in/rafael-velazco/">
-            <img
-              src="/assets/linkedin.svg"
-              alt="LinkedIn"
-              className="cursor-pointer w-6 h-6"
-            />
+            <Image src="/assets/linkedin.svg" alt="LinkedIn" width={24} height={24} />
           </Link>
         </div>
       </ul>
@@ -77,15 +72,18 @@ const MobileMenu = () => {
 
 const NavItem = ({ href, label }: { href: string; label: string }) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const mainPath = pathname.split('/')[1];
+  const isActive = `/${mainPath}` === href;
 
   return (
     <li>
       <Link href={href}>
         <span
-          className={`px-2 py-1 rounded transition-colors duration-200 focus:ring-2 hover:text-blue-600 hover:underline underline-offset-8 focus:outline-none ${
-            isActive ? "text-blue-600 underline" : "text-slate-900"
-          }`}
+          className={cn(
+            'px-3 py-2 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+            'text-muted-foreground hover:text-foreground hover:bg-accent/60',
+            isActive && 'text-foreground underline decoration-primary-500 underline-offset-8'
+          )}
           aria-label={`Navigate to ${label}`}
         >
           {label}

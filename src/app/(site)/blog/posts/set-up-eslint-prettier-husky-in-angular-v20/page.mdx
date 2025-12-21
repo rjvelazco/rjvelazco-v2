@@ -1,38 +1,37 @@
-import MdxLayout from "@components/layout/mdx-layout";
+import MdxLayout from '@components/layout/mdx-layout';
 
 export const metadata = {
-  title: "Set Up ESLint + Prettier + Husky in Angular v20 (In Minutes)",
-  date: "2025-07-17",
+  title: 'Set Up ESLint + Prettier + Husky in Angular v20 (In Minutes)',
+  date: '2025-07-17',
   description:
-    "Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.",
-  category: "Angular",
-  publishDate: "2025-07-17",
+    'Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.',
+  category: 'Angular',
+  publishDate: '2025-07-17',
   openGraph: {
-    title: "ESLint + Prettier + Husky in Angular v20 (Fast Setup)",
+    title: 'ESLint + Prettier + Husky in Angular v20 (Fast Setup)',
     description:
-      "Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.",
-    type: "article",
-    locale: "en_US",
-    url: "https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/",
-    siteName: "Rafael Velazco",
+      'Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.',
+    type: 'article',
+    locale: 'en_US',
+    url: 'https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/',
+    siteName: 'Rafael Velazco',
     images: [
       {
-        url: "/assets/ngrx-signal-store.png",
-        alt: "Angular v20 - ESLint, Prettier, Husky setup",
+        url: '/assets/ngrx-signal-store.png',
+        alt: 'Angular v20 - ESLint, Prettier, Husky setup',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "ESLint + Prettier + Husky in Angular v20 (Fast Setup)",
+    card: 'summary_large_image',
+    title: 'ESLint + Prettier + Husky in Angular v20 (Fast Setup)',
     description:
-      "Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.",
-    creator: "@rjvelazco21",
-    images: ["/assets/ngrx-signal-store.png"],
+      'Quick guide for Angular v20 to add ESLint, Prettier, and Husky so you enforce consistent formatting and catch errors automatically before every commit.',
+    creator: '@rjvelazco21',
+    images: ['/assets/ngrx-signal-store.png'],
   },
   alternates: {
-    canonical:
-      "https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/",
+    canonical: 'https://www.rjvelazco.com/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/',
   },
 };
 
@@ -47,10 +46,10 @@ If you're working with Angular v20, this quick guide will help you integrate **E
 
 ## Tools You'll Be Using
 
-* **Angular CLI** - Angular's command-line tool
-* **ESLint** - Linter to catch errors and enforce code standards
-* **Prettier** - Code formatter for consistent style
-* **Husky** - Tool to automate tasks on Git hooks (e.g., before commits)
+- **Angular CLI** - Angular's command-line tool
+- **ESLint** - Linter to catch errors and enforce code standards
+- **Prettier** - Code formatter for consistent style
+- **Husky** - Tool to automate tasks on Git hooks (e.g., before commits)
 
 ## Section Preview
 
@@ -66,9 +65,9 @@ ng add @angular-eslint/schematics
 
 This command will:
 
-* Install ESLint and generate an `eslint.config.js` file
-* Add a `lint` script to your `package.json`
-* Configure Angular CLI to use ESLint schematics
+- Install ESLint and generate an `eslint.config.js` file
+- Add a `lint` script to your `package.json`
+- Configure Angular CLI to use ESLint schematics
 
 ## Step 2: Integrate Prettier
 
@@ -81,16 +80,16 @@ npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 Update your `eslint.config.js` to include Prettier:
 
 ```ts
-import js from "@eslint/js";
-import globals from "globals";
-import tseslint from "typescript-eslint";
-import angular from "angular-eslint";
-import prettier from "eslint-plugin-prettier";
-import prettierConfig from "eslint-config-prettier";
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import angular from 'angular-eslint';
+import prettier from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
-    files: ["**/*.ts"],
+    files: ['**/*.ts'],
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
@@ -108,31 +107,28 @@ export default tseslint.config(
       prettier,
     },
     rules: {
-      "@angular-eslint/directive-selector": [
-        "error",
+      '@angular-eslint/directive-selector': [
+        'error',
         {
-          type: "attribute",
-          prefix: "app",
-          style: "camelCase",
+          type: 'attribute',
+          prefix: 'app',
+          style: 'camelCase',
         },
       ],
-      "@angular-eslint/component-selector": [
-        "error",
+      '@angular-eslint/component-selector': [
+        'error',
         {
-          type: "element",
-          prefix: "app",
-          style: "kebab-case",
+          type: 'element',
+          prefix: 'app',
+          style: 'kebab-case',
         },
       ],
-      "prettier/prettier": "error",
+      'prettier/prettier': 'error',
     },
   },
   {
-    files: ["**/*.html"],
-    extends: [
-      ...angular.configs.templateRecommended,
-      ...angular.configs.templateAccessibility,
-    ],
+    files: ['**/*.html'],
+    extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
     rules: {},
   }
 );
