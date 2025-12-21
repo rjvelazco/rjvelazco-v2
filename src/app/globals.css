@@ -188,9 +188,7 @@
     @apply bg-background text-foreground;
     line-height: 1.7;
   }
-}
 
-@layer utilities {
   .material-symbol {
     font-family: 'Material Symbols Outlined';
     font-weight: normal;
