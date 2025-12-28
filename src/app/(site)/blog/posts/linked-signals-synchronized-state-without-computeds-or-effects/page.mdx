@@ -1,0 +1,209 @@
+import MdxLayout from '@components/layout/mdx-layout';
+
+export const metadata = {
+  title: 'Linked Signals: estado sincronizado sin computeds ni effects',
+  date: '2025-12-28',
+  description:
+    'Aprende a usar linkedSignal en Angular para mantener estado sincronizado con una fuente reactiva, sin depender de computeds mal usados ni effects para state.',
+  category: 'Angular',
+  publishDate: '2025-12-28',
+  openGraph: {
+    title: 'Linked Signals: estado sincronizado sin computeds ni effects',
+    description:
+      'Aprende a usar linkedSignal en Angular para mantener estado sincronizado con una fuente reactiva, sin depender de computeds mal usados ni effects para state.',
+    type: 'article',
+    locale: 'es_ES',
+    url: 'https://www.rjvelazco.com/blog/posts/linked-signals-synchronized-state-without-computeds-or-effects/',
+    siteName: 'Rafael Velazco',
+    images: [
+      {
+        url: '/assets/ngrx-signal-store.png',
+        alt: 'Angular linkedSignal - estado sincronizado sin computeds ni effects',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Linked Signals: estado sincronizado sin computeds ni effects',
+    description:
+      'Aprende a usar linkedSignal en Angular para mantener estado sincronizado con una fuente reactiva, sin depender de computeds mal usados ni effects para state.',
+    creator: '@rjvelazco21',
+    images: ['/assets/ngrx-signal-store.png'],
+  },
+  alternates: {
+    canonical: 'https://www.rjvelazco.com/blog/posts/linked-signals-synchronized-state-without-computeds-or-effects/',
+  },
+};
+
+export default function Layout({ children }) {
+  return <MdxLayout metadata={metadata}>{children}</MdxLayout>;
+}
+
+# **Linked Signals: estado sincronizado sin computeds ni effects**
+
+La forma más sencilla de explicar un **Linked Signal** es pensar en él como un **writable computed**.
+
+Se comporta como un `computed`, pero con una diferencia clave:
+👉 **puedes setear su valor manualmente**, y al mismo tiempo mantenerlo sincronizado con una fuente reactiva.
+
+Es uno de esos conceptos que se entienden mucho mejor con ejemplos, así que veamos dos casos muy comunes:
+
+- reemplazar un `computed` mal usado por un `linkedSignal`
+- reemplazar un `effect` usado para manejar state
+
+## **Computed no siempre es la mejor opción**
+
+Imaginemos el siguiente componente:
+
+> 📚 Un selector de libros donde el usuario puede elegir uno,
+> pero por lógica de negocio **siempre hay un libro seleccionado por defecto**.
+
+### ❌ Mala práctica: usar `computed` para manejar selección
+
+```tsx
+export class BookSelectorComponent {
+  books = input.required<Book[]>();
+  userSelectedBook = signal<Book | null>(null);
+
+  selectedBook = computed(() => this.userSelectedBook() ?? this.books()[0]);
+
+  onSelectBook(book: Book) {
+    this.userSelectedBook.set(book);
+  }
+}
+```
+
+A simple vista parece correcto, pero tiene varios problemas.
+
+#### Problemas con este approach
+
+❌ **Complejidad innecesaria**: Tenemos más propiedades de las que realmente necesitamos para un component simple.
+
+⚠️ **Glitches potenciales**:
+¿Qué pasa si el `books` input cambia y el libro que el usuario había seleccionado ya no existe?
+
+Ahora necesitas:
+
+- un `effect`
+- lógica extra
+- más código solo para mantener consistencia
+
+Todo eso es una señal clara de que el modelado del state no es el correcto.
+
+---
+
+## ✅ Buena práctica: usar Linked Signals para sincronizar state
+
+En lugar de tener múltiples Signals para decidir cuál es el libro seleccionado, podemos usar un **Linked Signal** para mantener ese estado sincronizado con el input.
+
+```tsx
+export class BookSelectorComponent {
+  books = input.required<Book[]>();
+
+  selectedBook = linkedSignal(() => this.books()[0]);
+
+  onSelectBook(book: Book) {
+    this.selectedBook.set(book);
+  }
+}
+```
+
+### ¿Qué ganamos con esto?
+
+✅ **Clean Code**: Menos propiedades, menos ramas lógicas, menos código.
+
+✅ **Synchronous State**: Si `books` cambia, `selectedBook` se reinicia automáticamente al nuevo valor por defecto.
+
+✅ **Modelo mental más simple**: `selectedBook` es _el_ estado, no una combinación de estados.
+
+## **Cuando un effect es una señal de alarma**
+
+Ahora veamos un caso muy común: una lista con paginación.
+
+La regla de negocio es simple:
+👉 **si cambia la lista de libros, la paginación debe reiniciarse**.
+
+### ❌ Mala práctica: usar `effect` para manejar state
+
+```tsx
+export class BookListComponent {
+  books = input.required<Book[]>();
+  currentPage = signal(1);
+
+  constructor() {
+    effect(() => {
+      this.books(); // creamos dependencia
+      untrack(() => this.currentPage.set(1));
+    });
+  }
+
+  nextPage() {
+    this.currentPage.update((p) => p + 1);
+  }
+
+  previousPage() {
+    this.currentPage.update((p) => p - 1);
+  }
+}
+```
+
+#### Problemas con este approach
+
+❌ **Mal uso de `effect`**:
+El propio equipo de Angular recomienda usar effects solo para **side effects** como API calls, logging o integraciones externas, no para manejar state.
+
+❌ **Sobrecomplejidad**:
+`untrack`, dependencias manuales y mayor riesgo de loops infinitos.
+
+⚠️ **Glitches**:
+Los effects no son sincrónicos y pueden generar estados intermedios inconsistentes.
+
+## ✅ Buena práctica: Linked Signals para state reactivo
+
+Con `linkedSignal`, el mismo caso se vuelve mucho más claro:
+
+```tsx
+export class BookListComponent {
+  books = input.required<Book[]>();
+
+  currentPage = linkedSignal({
+    source: this.books,
+    computation: () => 1,
+  });
+
+  nextPage() {
+    this.currentPage.update((p) => p + 1);
+  }
+
+  previousPage() {
+    this.currentPage.update((p) => p - 1);
+  }
+}
+```
+
+### Beneficios claros
+
+✅ **Clean Code**: No hay effects, no hay `untrack`, no hay lógica oculta.
+
+✅ **Synchronous State**: El estado de la paginación siempre está sincronizado con el input.
+
+✅ **Código expresivo**: El código refleja directamente la regla de negocio.
+
+## **TL;DR**
+
+- Usa **Linked Signals** cuando un state:
+  - depende de otra Signal
+  - pero también debe poder actualizarse manualmente
+
+- Evita usar `computed` para estados que el usuario puede modificar
+- Evita usar `effect` para manejar state
+- Si necesitas sincronizar estado, **Linked Signals suelen ser la mejor opción**
+
+Linked Signals te permiten modelar el state **como realmente funciona**, sin hacks y sin sobreingeniería.
+
+Si quieres, el siguiente paso natural sería:
+
+- conectar este post con el de **Signal Store** como una mini-serie
+- o agregar un **diagrama mental simple** que refuerce el concepto
+
+Decime cómo seguimos 👌
