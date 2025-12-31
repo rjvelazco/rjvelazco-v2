@@ -51,6 +51,36 @@ Es uno de esos conceptos que se entienden mucho mejor con ejemplos, así que vea
 - reemplazar un `computed` mal usado por un `linkedSignal`
 - reemplazar un `effect` usado para manejar state
 
+Antes de ver los ejemplos, expliquemos rápidamente cómo usar `linkedSignal`.
+
+## **Cómo usar `linkedSignal` en pocas palabras**
+
+Antes de ver los ejemplos, vale la pena saber que `linkedSignal` se puede usar **de dos formas**.
+
+### **1. Forma simple**
+
+Ideal cuando solo necesitas derivar un valor reactivo y mantenerlo sincronizado:
+
+```ts
+const isUserOnline = linkedSignal(() => user().status === 'online');
+```
+
+### **2. Forma extendida**
+
+Útil cuando necesitas más control o acceder al valor anterior:
+
+```ts
+const activeOption = linkedSignal({
+  source: optionsSignal,
+  computation: (newOptions, previous) => newOptions.find((opt) => opt.id === previous?.value.id) ?? newOptions[0],
+});
+```
+
+Ambas formas crean un estado **reactivo y writable**, sincronizado automáticamente con su fuente.
+
+Si quieres profundizar en el API completo, la documentación oficial lo explica en detalle:
+👉 [https://angular.dev/api/core/linkedSignal](https://angular.dev/api/core/linkedSignal)
+
 ## **Computed no siempre es la mejor opción**
 
 Imaginemos el siguiente componente:
@@ -200,10 +230,3 @@ export class BookListComponent {
 - Si necesitas sincronizar estado, **Linked Signals suelen ser la mejor opción**
 
 Linked Signals te permiten modelar el state **como realmente funciona**, sin hacks y sin sobreingeniería.
-
-Si quieres, el siguiente paso natural sería:
-
-- conectar este post con el de **Signal Store** como una mini-serie
-- o agregar un **diagrama mental simple** que refuerce el concepto
-
-Decime cómo seguimos 👌
