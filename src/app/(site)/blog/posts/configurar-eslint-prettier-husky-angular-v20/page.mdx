@@ -1,0 +1,199 @@
+import MdxLayout from '@components/layout/mdx-layout';
+
+export const metadata = {
+  title: 'Configurar ESLint + Prettier + Husky en Angular v20 (en minutos)',
+  date: '2025-07-17',
+  description:
+    'Guía rápida para Angular v20: cómo agregar ESLint, Prettier y Husky para mantener formato consistente y detectar errores automáticamente antes de cada commit.',
+  category: 'Angular',
+  publishDate: '2025-07-17',
+  openGraph: {
+    title: 'Configurar ESLint + Prettier + Husky en Angular v20',
+    description:
+      'Guía rápida para Angular v20: cómo agregar ESLint, Prettier y Husky para mantener formato consistente y detectar errores automáticamente antes de cada commit.',
+    type: 'article',
+    locale: 'es_ES',
+    url: 'https://www.rjvelazco.com/blog/posts/configurar-eslint-prettier-husky-angular-v20/',
+    siteName: 'Rafael Velazco',
+    images: [
+      {
+        url: '/assets/ngrx-signal-store.png',
+        alt: 'Angular v20 - Configuración de ESLint, Prettier, Husky',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Configurar ESLint + Prettier + Husky en Angular v20',
+    description:
+      'Guía rápida para Angular v20: cómo agregar ESLint, Prettier y Husky para mantener formato consistente y detectar errores automáticamente antes de cada commit.',
+    creator: '@rjvelazco21',
+    images: ['/assets/ngrx-signal-store.png'],
+  },
+  alternates: {
+    canonical: 'https://www.rjvelazco.com/blog/posts/configurar-eslint-prettier-husky-angular-v20/',
+  },
+};
+
+export default function Layout({ children }) {
+  return <MdxLayout metadata={metadata}>{children}</MdxLayout>;
+}
+
+# Configurar ESLint + Prettier + Husky en Angular v20 (en minutos)
+
+Mantener tu código limpio, consistente y libre de errores ya no es opcional, es esencial.
+Si estás trabajando con Angular v20, esta guía rápida te ayudará a integrar **ESLint**, **Prettier** y **Husky** para garantizar calidad desde el primer commit.
+
+## Herramientas que usarás
+
+- **Angular CLI** - Herramienta de línea de comandos de Angular
+- **ESLint** - Linter para detectar errores y hacer cumplir estándares de código
+- **Prettier** - Formateador de código para mantener un estilo consistente
+- **Husky** - Herramienta para automatizar tareas en Git hooks (ej: antes de commits)
+
+## Vista previa de la sección
+
+![Section Preview](/assets/angular-starter-kit-template.gif)
+
+## Paso 1: Configurar ESLint
+
+Instala ESLint en tu proyecto de Angular:
+
+```bash
+ng add @angular-eslint/schematics
+```
+
+Este comando va a:
+
+- Instalar ESLint y generar un archivo `eslint.config.js`
+- Agregar un script `lint` a tu `package.json`
+- Configurar Angular CLI para usar schematics de ESLint
+
+## Paso 2: Integrar Prettier
+
+Instala Prettier y sus plugins de ESLint:
+
+```bash
+npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+Actualiza tu `eslint.config.js` para incluir Prettier:
+
+```ts
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import angular from 'angular-eslint';
+import prettier from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
+
+export default tseslint.config(
+  {
+    files: ['**/*.ts'],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
+      ...angular.configs.tsRecommended,
+      prettierConfig,
+    ],
+    processor: angular.processInlineTemplates,
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+    plugins: {
+      prettier,
+    },
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: 'app',
+          style: 'camelCase',
+        },
+      ],
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: 'app',
+          style: 'kebab-case',
+        },
+      ],
+      'prettier/prettier': 'error',
+    },
+  },
+  {
+    files: ['**/*.html'],
+    extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+    rules: {},
+  }
+);
+```
+
+Agrega un script de formateo en tu `package.json`:
+
+```json
+"scripts": {
+  "format": "prettier --write ."
+}
+```
+
+Crea un archivo de configuración `.prettierrc.json`:
+
+```json
+{
+  "tabWidth": 2,
+  "singleQuote": true,
+  "semi": true,
+  "arrowParens": "avoid",
+  "trailingComma": "es5",
+  "printWidth": 120
+}
+```
+
+## Paso 3: Automatizar con Husky
+
+Instala e inicializa Husky:
+
+```bash
+npm install --save-dev husky
+npx husky init
+```
+
+Esto va a crear el directorio `.husky` y configurar el script `prepare` en tu `package.json`.
+
+Ahora configura un hook de pre-commit:
+
+```bash
+echo "npm run lint && npm run format" > .husky/pre-commit
+```
+
+## Verificación final
+
+Ejecuta los siguientes comandos para asegurarte de que todo funciona:
+
+```bash
+# Verifica el linting
+npm run lint
+
+# Verifica el formateo
+npm run format
+
+# Prueba el hook de pre-commit
+git add .
+git commit -m "test: verificar configuración"
+```
+
+## Resultado ✅
+
+¡Listo! Ahora cada vez que hagas un commit:
+
+1. ✅ ESLint detectará errores de código
+2. ✅ Prettier formateará tu código automáticamente
+3. ✅ Husky bloqueará commits con problemas de lint o formato
+
+Tu equipo tendrá código limpio, consistente y listo para producción desde el primer día. ¡Todo configurado en solo unos minutos!

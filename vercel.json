@@ -9,5 +9,27 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/blog/posts/linked-signals-synchronized-state-without-computeds-or-effects",
+      "destination": "/blog/posts/linked-signal-estado-sincronizado-sin-computadas-ni-efectos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/linked-signals-synchronized-state-without-computeds-or-effects/",
+      "destination": "/blog/posts/linked-signal-estado-sincronizado-sin-computadas-ni-efectos/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/set-up-eslint-prettier-husky-in-angular-v20",
+      "destination": "/blog/posts/configurar-eslint-prettier-husky-angular-v20",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/set-up-eslint-prettier-husky-in-angular-v20/",
+      "destination": "/blog/posts/configurar-eslint-prettier-husky-angular-v20/",
+      "permanent": true
+    }
   ]
 }
