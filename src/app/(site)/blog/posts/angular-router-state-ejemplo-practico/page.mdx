@@ -36,10 +36,12 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return <MdxLayout metadata={metadata}>{children}</MdxLayout>;
+  return (
+    <MdxLayout metadata={metadata} toc={tableOfContents}>
+      {children}
+    </MdxLayout>
+  );
 }
-
-# Angular Router State Ejemplo Práctico
 
 El router state en Angular es una forma de mantener información mientras navegamos entre páginas sin perder el estado de la aplicación.
 

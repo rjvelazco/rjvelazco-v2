@@ -38,21 +38,11 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <MdxLayout metadata={metadata} image={'/assets/ngrx-signal-store.png'}>
+    <MdxLayout metadata={metadata} image={'/assets/ngrx-signal-store.png'} toc={tableOfContents}>
       {children}
     </MdxLayout>
   );
 }
-
-# **Tabla de contenido**
-
-1. [**Introducción**](#introduccion)
-2. [**Mantén el state atómico**](#mantener-el-state-atomico)
-   - [Cómo simplificar el state con computed signals](#como-simplificar-el-state-con-computed-signals)
-3. [**Evita los mega-computed dividiendo tus dependencias**](#evita-los-mega-computed-dividiendo-tus-dependencias)
-   - [Define correctamente tus computeds](#define-correctamente-tus-computeds)
-4. [**Si un valor es del component, debe vivir en el component**](#si-un-valor-es-del-component-debe-vivir-en-el-component)
-5. [**Conclusión**](#conclusion)
 
 <a id="introduccion"></a>
 
