@@ -9,8 +9,10 @@ export type TocEntry = {
   children?: TocEntry[];
 };
 
+type Toc = TocEntry[];
+
 type TableOfContentsProps = {
-  toc: TocEntry[];
+  toc: Toc;
   className?: string;
   title?: string;
   minDepth?: number;
@@ -18,22 +20,57 @@ type TableOfContentsProps = {
   defaultOpen?: boolean;
 };
 
-function filterToc(entries: TocEntry[], minDepth: number, maxDepth: number): TocEntry[] {
+/**
+ * Filter the TOC by depth.
+ * @param entries - The TOC entries.
+ * @param minDepth - The minimum depth.
+ * @param maxDepth - The maximum depth.
+ * @returns The filtered TOC.
+ */
+function filterTocByDepth(entries: Toc, minDepth: number, maxDepth: number): Toc {
   return entries
     .filter((entry) => entry.depth >= minDepth && entry.depth <= maxDepth)
     .map((entry) => ({
       ...entry,
-      children: entry.children ? filterToc(entry.children, minDepth, maxDepth) : undefined,
+      children: entry.children ? filterTocByDepth(entry.children, minDepth, maxDepth) : undefined,
     }));
 }
 
-function TocList({ toc }: { toc: TocEntry[] }) {
+/**
+ * The props for the TocList component.
+ * @param toc - The TOC entries.
+ * @param isNested - Whether the list is nested.
+ * @param keyPrefix - The prefix for the key.
+ */
+type TocListProps = {
+  toc: Toc;
+  /** Used to slightly tighten spacing for nested lists. */
+  isNested?: boolean;
+  /** Helps generate stable keys even when values repeat across levels. */
+  keyPrefix?: string;
+};
+
+/**
+ * The TocList component.
+ * @param toc - The TOC entries.
+ * @param isNested - Whether the list is nested.
+ * @param keyPrefix - The prefix for the key.
+ */
+function TocList({ toc, isNested = false, keyPrefix = 'toc' }: TocListProps) {
+  const listClassName = cn(
+    'm-0 list-disc text-sm text-foreground sm:text-base',
+    isNested ? 'mt-1.5 space-y-1 pl-4 sm:mt-2 sm:space-y-1.5 sm:pl-5' : 'space-y-1.5 pl-4 sm:space-y-2 sm:pl-5'
+  );
+
   return (
-    <ul className="m-0 list-disc space-y-2.5 pl-4 text-sm text-foreground sm:space-y-2 sm:pl-5 sm:text-base">
-      {toc.map((entry) => {
+    <ul className={listClassName}>
+      {toc.map((entry, index) => {
         const href = entry.id ? `#${entry.id}` : undefined;
+        const keyBase = entry.id ?? entry.value;
+        const key = `${keyPrefix}:${index}:${keyBase}`;
+
         return (
-          <li key={`${entry.depth}-${entry.id ?? entry.value}`}>
+          <li key={key} className="leading-relaxed">
             {href ? (
               <Link
                 href={href}
@@ -44,7 +81,9 @@ function TocList({ toc }: { toc: TocEntry[] }) {
             ) : (
               <span className="break-words">{entry.value}</span>
             )}
-            {entry.children && entry.children.length > 0 ? <TocList toc={entry.children} /> : null}
+            {entry.children && entry.children.length > 0 ? (
+              <TocList toc={entry.children} isNested keyPrefix={key} />
+            ) : null}
           </li>
         );
       })}
@@ -52,6 +91,15 @@ function TocList({ toc }: { toc: TocEntry[] }) {
   );
 }
 
+/**
+ * The TableOfContents component.
+ * @param toc - The TOC entries.
+ * @param className - The class name.
+ * @param title - The title.
+ * @param minDepth - The minimum depth.
+ * @param maxDepth - The maximum depth.
+ * @param defaultOpen - Whether the table of contents is open by default.
+ */
 export function TableOfContents({
   toc,
   className,
@@ -60,14 +108,13 @@ export function TableOfContents({
   maxDepth = 3,
   defaultOpen = true,
 }: TableOfContentsProps) {
-  const filtered = filterToc(toc, minDepth, maxDepth);
+  const filtered = filterTocByDepth(toc, minDepth, maxDepth);
   if (filtered.length === 0) return null;
 
   return (
     <details
       className={cn(
-        // `not-prose` prevents `prose prose-lg` from inflating fonts/spaces inside the article on mobile.
-        'not-prose group my-8 rounded-md border border-border bg-muted/30 p-4 sm:my-10 sm:rounded-2xl sm:p-5',
+        'not-prose group my-4 rounded-md border border-border bg-muted/30 p-4 sm:my-10 sm:rounded-2xl sm:p-5',
         className
       )}
       open={defaultOpen}
