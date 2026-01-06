@@ -44,16 +44,6 @@ export default function Layout({ children }) {
   );
 }
 
-# **Tabla de contenido**
-
-1. [**Introducción**](#introduccion)
-2. [**Mantén el state atómico**](#mantener-el-state-atomico)
-   - [Cómo simplificar el state con computed signals](#como-simplificar-el-state-con-computed-signals)
-3. [**Evita los mega-computed dividiendo tus dependencias**](#evita-los-mega-computed-dividiendo-tus-dependencias)
-   - [Define correctamente tus computeds](#define-correctamente-tus-computeds)
-4. [**Si un valor es del component, debe vivir en el component**](#si-un-valor-es-del-component-debe-vivir-en-el-component)
-5. [**Conclusión**](#conclusion)
-
 <a id="introduccion"></a>
 
 Signal Store es una solución moderna de [**state management**](https://ngrx.io/guide/store) creada por el equipo de NgRx para trabajar con [**Angular Signals**](https://angular.dev/guide/signals). Aunque no es obligatoria para usar Signals, sí es una de las opciones más recomendadas por su diseño reactivo, escalabilidad y consistencia con la [**arquitectura Reactiva de Angular**](https://angular.dev/guide/signals#reactivity-in-angular).

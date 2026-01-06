@@ -1,7 +1,9 @@
 import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
+import remarkToc from 'remark-toc';
 import rehypePrettyCode from 'rehype-pretty-code';
+import { remarkInjectToc } from './src/utils/remark-inject-toc';
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
@@ -15,7 +17,19 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [
+      remarkGfm,
+      remarkInjectToc,
+      [
+        remarkToc,
+        {
+          heading: 'tabla de contenidos',
+          maxDepth: 3,
+          ordered: false,
+          tight: true,
+        },
+      ],
+    ],
     rehypePlugins: [
       [
         rehypePrettyCode,
