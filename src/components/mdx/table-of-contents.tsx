@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ChevronDown } from 'lucide-react';
 import { cn } from '@components/utils';
 
 export type TocEntry = {
@@ -14,6 +15,7 @@ type TableOfContentsProps = {
   title?: string;
   minDepth?: number;
   maxDepth?: number;
+  defaultOpen?: boolean;
 };
 
 function filterToc(entries: TocEntry[], minDepth: number, maxDepth: number): TocEntry[] {
@@ -53,14 +55,23 @@ export function TableOfContents({
   title = 'Tabla de Contenidos',
   minDepth = 2,
   maxDepth = 3,
+  defaultOpen = true,
 }: TableOfContentsProps) {
   const filtered = filterToc(toc, minDepth, maxDepth);
   if (filtered.length === 0) return null;
 
   return (
-    <nav className={cn('my-10 rounded-2xl border border-border bg-muted/30 p-5', className)} aria-label={title}>
-      <div className="mb-3 text-xl font-semibold tracking-tight text-foreground">{title}</div>
-      <TocList toc={filtered} />
-    </nav>
+    <details
+      className={cn('group my-10 rounded-md border border-border bg-muted/30 p-5', className)}
+      open={defaultOpen}
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 select-none [&::-webkit-details-marker]:hidden">
+        <span className="text-xl font-semibold tracking-tight text-foreground">{title}</span>
+        <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+      </summary>
+      <nav className="mt-4" aria-label={title}>
+        <TocList toc={filtered} />
+      </nav>
+    </details>
   );
 }
