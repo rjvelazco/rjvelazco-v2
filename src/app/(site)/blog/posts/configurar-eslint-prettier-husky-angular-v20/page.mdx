@@ -36,7 +36,11 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return <MdxLayout metadata={metadata}>{children}</MdxLayout>;
+  return (
+    <MdxLayout metadata={metadata} toc={tableOfContents}>
+      {children}
+    </MdxLayout>
+  );
 }
 
 Mantener tu código limpio, consistente y libre de errores ya no es opcional, es esencial.

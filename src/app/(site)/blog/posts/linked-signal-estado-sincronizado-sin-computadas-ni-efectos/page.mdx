@@ -36,8 +36,14 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return <MdxLayout metadata={metadata}>{children}</MdxLayout>;
+  return (
+    <MdxLayout metadata={metadata} toc={tableOfContents}>
+      {children}
+    </MdxLayout>
+  );
 }
+
+# HEADING 1
 
 La forma más sencilla de explicar un **Linked Signal** es pensar en él como un **writable computed**.
 
