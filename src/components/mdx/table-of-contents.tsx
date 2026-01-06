@@ -113,10 +113,7 @@ export function TableOfContents({
 
   return (
     <details
-      className={cn(
-        'not-prose group my-4 rounded-md border border-border bg-muted/30 p-4 sm:my-10 sm:rounded-2xl sm:p-5',
-        className
-      )}
+      className={cn('not-prose group my-4 rounded-sm border border-border bg-muted/30 p-4 sm:my-10 sm:p-5', className)}
       open={defaultOpen}
     >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 select-none [&::-webkit-details-marker]:hidden sm:gap-4">
